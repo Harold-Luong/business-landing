@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description"
+        content="Orbit — concept landing page cho nền tảng quản lý công việc. Demo thiết kế bởi CoreBrisk.">
+    <meta name="theme-color" content="#163e2d">
+    <title>Orbit — Quản lý dự án và công việc</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./assets/fonts.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./main.js" defer></script>
+</head>
+
+<body>
+    <a class="skip" href="#main">Đến nội dung chính</a>
+    <div class="demo-bar"><a class="demo-back" href="<!-- BACK_URL -->">← Về trang chính</a><span
+            class="demo-label">COREBRISK / DEMO CONCEPT</span><a href="<!-- CONTACT_URL -->">Chọn mẫu website này ↗</a>
+    </div>
+    <header class="header wrap"><a class="logo" href="#" aria-label="Orbit trang đầu"><img src="./favicon.svg" alt=""
+                width="36" height="36">orbit<span>®</span></a><button class="menu-toggle" aria-expanded="false"
+            aria-controls="navigation" aria-label="Mở menu" hidden>☰</button>
+        <nav id="navigation" aria-label="Điều hướng chính"><a href="#san-pham">Sản phẩm</a><a
+                href="#cach-hoat-dong">Cách hoạt động</a><a href="#bang-gia">Bảng giá</a><a class="button small"
+                href="./app.html">Mở ứng dụng demo <span>↗</span></a></nav>
+    </header>
+    <main id="main">
+        <section class="hero wrap">
+            <div class="eyebrow"><span class="dot"></span> QUẢN LÝ DỰ ÁN VÀ CÔNG VIỆC</div>
+            <h1>Projects.<br>In one <em>orbit.</em><span class="hero-star" aria-hidden="true">✳</span></h1>
+            <p>Theo dõi dự án, phân công công việc<br>và xem tiến độ của đội ngũ trong một workspace.</p>
+            <div class="hero-actions"><a class="button" href="./app.html">Mở ứng dụng demo <span>↗</span></a><a
+                    class="plain-link" href="#cach-hoat-dong">Xem cách hoạt động <span>↓</span></a></div>
+            <div class="hero-note"><span class="avatars" aria-hidden="true"><i>H</i><i>M</i><i>A</i></span><span>Workspace mẫu với dự án, công việc và thành viên.</span></div>
+        </section>
+        <section class="workspace-section wrap" id="workspace" aria-labelledby="workspace-heading">
+            <div class="app-preview-link"><div><strong>Xem giao diện sử dụng hằng ngày</strong><p>Tổng quan, bảng công việc, dự án và thành viên trong ứng dụng riêng.</p></div><a class="button" href="./app.html">Mở ứng dụng demo ↗</a></div>
+            <div class="workspace">
+                <aside class="sidebar">
+                    <div class="workspace-brand"><img src="./favicon.svg" alt="" width="27" height="27"> Studio
+                        workspace <span>⌄</span></div><span class="side-label">WORKSPACE</span>
+                    <div class="tabs" role="tablist" aria-label="Chế độ workspace" aria-orientation="vertical"><button
+                            id="tab-overview" role="tab" aria-label="Tổng quan" aria-selected="true"
+                            aria-controls="panel-overview">▦ <span>Tổng quan</span></button><button id="tab-projects"
+                            role="tab" aria-label="Dự án" aria-selected="false" aria-controls="panel-projects"
+                            tabindex="-1">▤ <span>Dự án</span></button><button id="tab-team" role="tab"
+                            aria-label="Đội ngũ" aria-selected="false" aria-controls="panel-team" tabindex="-1">♧
+                            <span>Đội ngũ</span></button></div>
+                    <div class="sidebar-bottom"><span class="dot"></span> Workspace của đội<small>Không gian demo
+                            tương tác</small></div>
+                </aside>
+                <div class="workspace-main">
+                    <div class="workspace-top"><span>Workspace / <strong id="view-name">Tổng quan</strong></span><span
+                            class="avatar">MA</span></div>
+                    <div id="panel-overview" role="tabpanel" aria-labelledby="tab-overview">
+                        <div class="dashboard-heading">
+                            <div>
+                                <p class="overline">TỔNG QUAN CÔNG VIỆC</p>
+                                <h2 id="workspace-heading">Tổng quan tuần này</h2>
+                                <p>Dự án đang chạy và các công việc cần xử lý.</p>
+                            </div><span class="pill">Tuần này ↗</span>
+                        </div>
+                        <div class="stats">
+                            <article><span>Dự án đang chạy</span><strong>24 <small>↗ 4 dự án mới</small></strong>
+                                <div class="mini-bars" aria-hidden="true">
+                                    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                            </article>
+                            <article><span>Công việc hoàn thành</span><strong>86<small>/ 100 công việc</small></strong>
+                                <div class="meter"><span style="width:86%"></span></div>
+                            </article>
+                            <article class="stat-green"><span>Công việc đã giao</span><strong>32 <span
+                                        aria-hidden="true">↗</span></strong><small>Trong 3 dự án · số liệu minh họa</small></article>
+                        </div>
+                        <div class="dashboard-grid">
+                            <article class="task-card">
+                                <div class="card-heading">
+                                    <h3>Ưu tiên hôm nay</h3><span id="task-count" aria-live="polite">1/3 hoàn
+                                        thành</span>
+                                </div><label class="task"><input type="checkbox" checked><span>Thống nhất hướng thiết
+                                        kế<small>Brand refresh</small></span><b
+                                        class="initial peach">LT</b></label><label class="task"><input
+                                        type="checkbox"><span>Hoàn thiện landing page<small>Website
+                                            launch</small></span><b class="initial lavender">MA</b></label><label
+                                    class="task"><input type="checkbox"><span>Review cùng đội sản phẩm<small>Orbit
+                                            mobile</small></span><b class="initial lime">HN</b></label>
+                            </article>
+                            <article class="focus-card"><span>DANH SÁCH CÔNG VIỆC</span>
+                                <div class="orbit-art" aria-hidden="true"><i></i><i></i><b>✳</b></div>
+                                <h3>Chọn công việc.<br>Theo dõi tiến độ.</h3>
+                            </article>
+                        </div>
+                    </div>
+                    <div id="panel-projects" role="tabpanel" aria-labelledby="tab-projects" hidden>
+                        <div class="dashboard-heading">
+                            <div>
+                                <p class="overline">DANH SÁCH DỰ ÁN</p>
+                                <h2>Dự án của đội</h2>
+                                <p>Trạng thái và tiến độ của từng dự án.</p>
+                            </div>
+                        </div>
+                        <div class="project-grid">
+                            <article><span class="project-icon peach">✳</span>
+                                <h3>Brand refresh</h3>
+                                <p>Cập nhật bộ nhận diện thương hiệu.</p><span class="pill">Đang thiết kế</span>
+                                <div class="meter"><span style="width:75%"></span></div><small>Tiến độ minh họa ·
+                                    75%</small>
+                            </article>
+                            <article><span class="project-icon lime">↗</span>
+                                <h3>Website launch</h3>
+                                <p>Thiết kế và triển khai website.</p><span class="pill">Đang phát triển</span>
+                                <div class="meter"><span style="width:50%"></span></div><small>Tiến độ minh họa ·
+                                    50%</small>
+                            </article>
+                            <article><span class="project-icon lavender">◉</span>
+                                <h3>Orbit mobile</h3>
+                                <p>Thiết kế ứng dụng Orbit trên điện thoại.</p><span class="pill">Lên ý tưởng</span>
+                                <div class="meter"><span style="width:25%"></span></div><small>Tiến độ minh họa ·
+                                    25%</small>
+                            </article>
+                        </div>
+                    </div>
+                    <div id="panel-team" role="tabpanel" aria-labelledby="tab-team" hidden>
+                        <div class="dashboard-heading">
+                            <div>
+                                <p class="overline">THÀNH VIÊN VÀ VAI TRÒ</p>
+                                <h2>Thành viên của đội</h2>
+                                <p>Nhân vật minh họa trong workspace Orbit.</p>
+                            </div>
+                        </div>
+                        <div class="project-grid team-grid">
+                            <article><b class="initial peach">LT</b>
+                                <h3>Linh Trần</h3>
+                                <p>Brand designer</p><span class="pill">Brand refresh</span>
+                            </article>
+                            <article><b class="initial lavender">MA</b>
+                                <h3>Minh Anh</h3>
+                                <p>Product designer</p><span class="pill">Website launch</span>
+                            </article>
+                            <article><b class="initial lime">HN</b>
+                                <h3>Hà Nguyễn</h3>
+                                <p>Product manager</p><span class="pill">Orbit mobile</span>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="demo-caption"><span class="dot"></span> Thử chuyển tab và đánh dấu công việc. Dữ liệu minh họa,
+                thay đổi chỉ tồn tại trong phiên xem.</p>
+        </section>
+        <section class="features wrap section" id="san-pham">
+            <div class="section-heading">
+                <div>
+                    <p class="overline">01 / CHỨC NĂNG SẢN PHẨM</p>
+                    <h2>Theo dõi dự án.<br>Phân công công việc.</h2>
+                </div>
+                <p>Mẫu giao diện cho nền tảng quản lý dự án, gồm tổng quan tiến độ, danh sách công việc và thông tin thành viên.</p>
+            </div>
+            <div class="feature-grid">
+                <article><span class="feature-icon">▦</span>
+                    <h3>Quản lý dự án</h3>
+                    <p>Xem trạng thái, mức độ ưu tiên và tiến độ của các dự án trong cùng một bảng tổng quan.
+                    </p><span class="feature-tag">QUẢN LÝ DỰ ÁN</span>
+                </article>
+                <article><span class="feature-icon">↗</span>
+                    <h3>Phân công công việc</h3>
+                    <p>Gắn công việc với người phụ trách để theo dõi phân công và trao đổi trong đội.</p>
+                    <span class="feature-tag">CỘNG TÁC</span>
+                </article>
+                <article><span class="feature-icon">✳</span>
+                    <h3>Danh sách cá nhân</h3>
+                    <p>Xem các việc cần xử lý và đánh dấu khi hoàn thành. Có thể thử thao tác này trong dashboard phía trên.
+                    </p><span class="feature-tag">KHÔNG GIAN CÁ NHÂN</span>
+                </article>
+            </div>
+        </section>
+        <section class="how section" id="cach-hoat-dong">
+            <div class="wrap">
+                <p class="overline">02 / CÁCH SỬ DỤNG</p>
+                <h2>Tạo dự án.<br>Theo dõi công việc.</h2>
+                <div class="steps">
+                    <article><span>01</span>
+                        <h3>Tạo không gian của đội</h3>
+                        <p>Tập hợp dự án và thành viên trong một workspace.</p>
+                    </article>
+                    <article><span>02</span>
+                        <h3>Lập danh sách công việc</h3>
+                        <p>Chia việc thành từng bước nhỏ, xác định ưu tiên và người phụ trách.</p>
+                    </article>
+                    <article><span>03</span>
+                        <h3>Cập nhật tiến độ</h3>
+                        <p>Cập nhật trạng thái, trao đổi phản hồi và đánh dấu việc đã hoàn thành.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section class="pricing section wrap" id="bang-gia">
+            <p class="overline">03 / BẢNG GIÁ MINH HỌA</p>
+            <h2>Gói cá nhân<br>và đội ngũ.</h2>
+            <p class="muted">Bảng giá concept minh họa, không phải dịch vụ đang mở bán.</p>
+            <div class="billing" role="group" aria-label="Chu kỳ thanh toán" hidden><button aria-pressed="true"
+                    data-billing="monthly">Hàng tháng</button><button aria-pressed="false" data-billing="yearly">Hàng
+                    năm <span>−20%</span></button></div>
+            <div class="price-grid">
+                <article><span class="overline">STARTER</span>
+                    <h3>Cho nhóm nhỏ</h3>
+                    <div class="price">0₫</div>
+                    <p>Cho cá nhân và đội ngũ nhỏ mới bắt đầu.</p><a class="button outline"
+                        href="<!-- CONTACT_URL -->">Tư vấn mẫu Starter ↗</a>
+                    <ul>
+                        <li>Tối đa 3 thành viên</li>
+                        <li>3 dự án chung</li>
+                        <li>Danh sách công việc cơ bản</li>
+                    </ul>
+                </article>
+                <article class="featured"><span class="price-badge">THÊM BÁO CÁO VÀ PHÂN QUYỀN</span><span
+                        class="overline">TEAM</span>
+                    <h3>Cho nhiều dự án</h3>
+                    <div class="price" id="team-price" aria-live="polite">150.000₫</div>
+                    <p id="billing-note">/ người / tháng · thanh toán hàng tháng</p><a class="button"
+                        href="<!-- CONTACT_URL -->">Tư vấn mẫu Team ↗</a>
+                    <ul>
+                        <li>Mọi tính năng của Starter</li>
+                        <li>Dự án không giới hạn</li>
+                        <li>Báo cáo tiến độ và phân quyền</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+        <section class="faq wrap section">
+            <div>
+                <p class="overline">THÔNG TIN VỀ BẢN DEMO</p>
+                <h2>Câu hỏi thường gặp</h2>
+            </div>
+            <div>
+                <details>
+                    <summary>Đây có phải sản phẩm SaaS đang hoạt động?</summary>
+                    <p>Orbit là concept website do CoreBrisk thiết kế. Dashboard và bảng giá dùng dữ liệu minh họa; demo
+                        không tạo tài khoản hoặc xử lý thanh toán.</p>
+                </details>
+                <details>
+                    <summary>Tôi có thể tùy chỉnh mẫu này cho doanh nghiệp?</summary>
+                    <p>Có. Chọn “Chọn mẫu website này” để quay về CoreBrisk và trao đổi về thương hiệu, nội dung, tính
+                        năng bạn cần.</p>
+                </details>
+                <details>
+                    <summary>Các thay đổi trong workspace có được lưu không?</summary>
+                    <p>Bạn có thể tạo, sửa công việc và đổi trạng thái trong ứng dụng demo. Thay đổi chỉ có trong phiên xem và sẽ đặt lại khi tải lại trang.</p>
+                </details>
+            </div>
+        </section>
+        <section class="cta wrap"><span class="cta-star" aria-hidden="true">✳</span>
+            <p class="overline">TƯ VẤN MẪU WEBSITE ORBIT</p>
+            <h2>Cần website<br>cho sản phẩm SaaS?</h2><a class="button" href="<!-- CONTACT_URL -->">Chọn mẫu website
+                này <span>↗</span></a>
+            <p>Trao đổi với CoreBrisk về bố cục, nội dung và tính năng cần tùy chỉnh.</p>
+        </section>
+    </main>
+    <footer class="wrap"><a class="logo" href="#"><img src="./favicon.svg" alt="" width="30"
+                height="30">orbit</a><span>Concept by CoreBrisk · Không phải sản phẩm thương mại</span><a
+            href="<!-- CONTACT_URL -->">Trao đổi về website của bạn ↗</a></footer>
+</body>
+
+</html>

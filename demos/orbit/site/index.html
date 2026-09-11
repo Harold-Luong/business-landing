@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#163e2d">
+  <meta name="description" content="Dùng thử giao diện ứng dụng Orbit: tổng quan, bảng công việc, dự án và thành viên với dữ liệu mẫu.">
+  <title>Workspace — Orbit demo</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/fonts.css">
+  <link rel="stylesheet" href="./app.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Đến nội dung chính</a>
+  <div class="demo-banner"><a href="<!-- BACK_URL -->">← Về trang CoreBrisk</a><span>BẢN DEMO · Thay đổi được đặt lại khi tải lại trang</span><a href="<!-- CONTACT_URL -->">Chọn mẫu này ↗</a></div>
+  <div class="app-shell">
+    <aside class="app-sidebar" id="app-navigation">
+      <a class="brand" href="#overview" data-view="overview" aria-label="Orbit — Tổng quan"><img src="./favicon.svg" alt="" width="35" height="35">orbit<span>WORKSPACE</span></a>
+      <div class="workspace-switch"><span class="workspace-icon">S</span><div><strong>Studio workspace</strong><small>Gói Team · Dữ liệu mẫu</small></div></div>
+      <p class="nav-label">KHÔNG GIAN LÀM VIỆC</p>
+      <nav aria-label="Điều hướng ứng dụng">
+        <a href="#overview" data-view="overview" aria-current="page"><span aria-hidden="true">▦</span>Tổng quan</a>
+        <a href="#tasks" data-view="tasks"><span aria-hidden="true">☷</span>Công việc <b id="nav-task-count">9</b></a>
+        <a href="#projects" data-view="projects"><span aria-hidden="true">▤</span>Dự án <b>3</b></a>
+        <a href="#team" data-view="team"><span aria-hidden="true">♧</span>Thành viên <b>4</b></a>
+      </nav>
+      <div class="sidebar-projects"><p class="nav-label">DỰ ÁN ĐANG LÀM</p><a href="#tasks" data-project-link="website"><i class="project-dot green"></i>Website launch</a><a href="#tasks" data-project-link="brand"><i class="project-dot purple"></i>Brand refresh</a><a href="#tasks" data-project-link="mobile"><i class="project-dot orange"></i>Orbit mobile</a></div>
+      <div class="sidebar-help"><span>Đang xem giao diện mẫu</span><p>Thử tạo công việc, đổi trạng thái và xem tiến độ dự án.</p><a href="<!-- BACK_URL -->">← Về trang CoreBrisk</a></div>
+      <div class="profile"><span class="avatar lavender">MA</span><div><strong>Minh Anh</strong><small>Product designer · Demo</small></div></div>
+    </aside>
+    <div class="app-body">
+      <header class="app-header"><div class="breadcrumb"><button id="sidebar-toggle" class="icon-button" aria-expanded="false" aria-controls="app-navigation" aria-label="Mở điều hướng" hidden>☰</button><span>Workspace <span class="slash">/</span> <strong id="breadcrumb-name">Tổng quan</strong></span></div><div class="header-right"><span class="sample-status"><i></i>Dữ liệu minh họa</span><span class="avatar lavender" aria-label="Minh Anh">MA</span></div></header>
+      <main id="main" tabindex="-1">
+        <div class="page-heading"><div><p class="eyebrow" id="page-eyebrow">WORKSPACE / OVERVIEW</p><h1 id="page-title">Tổng quan công việc</h1><p id="page-description">Tiến độ dự án và các việc cần xử lý của Studio workspace.</p></div><button class="button primary" id="new-task" hidden><span aria-hidden="true">＋</span> Tạo công việc</button></div>
+        <noscript><div class="noscript-note">Bật JavaScript để dùng thử các màn hình và quản lý công việc trong demo. <a href="<!-- BACK_URL -->">Về trang CoreBrisk →</a></div></noscript>
+        <div class="app-content" id="app-content"></div>
+        <p id="app-status" class="app-status" role="status" aria-live="polite"></p>
+        <footer class="app-footer"><span>Studio workspace · 3 dự án · 4 thành viên mẫu</span><a href="<!-- CONTACT_URL -->">Tư vấn giao diện này ↗</a></footer>
+      </main>
+    </div>
+  </div>
+  <dialog id="task-dialog" aria-labelledby="dialog-title">
+    <form id="task-form">
+      <div class="dialog-heading"><div><p class="eyebrow">STUDIO WORKSPACE</p><h2 id="dialog-title">Tạo công việc</h2></div><button class="icon-button" type="button" id="close-dialog" aria-label="Đóng chi tiết công việc">✕</button></div>
+      <input type="hidden" name="id">
+      <label>Tên công việc <span class="required">*</span><input name="title" required maxlength="120" placeholder="Ví dụ: Thiết kế trang dịch vụ" autofocus></label>
+      <label>Mô tả<textarea name="description" rows="3" maxlength="1500" placeholder="Nội dung cần thực hiện và kết quả mong muốn"></textarea></label>
+      <div class="form-grid"><label>Dự án<select name="project"><option value="website">Website launch</option><option value="brand">Brand refresh</option><option value="mobile">Orbit mobile</option></select></label><label>Người phụ trách<select name="owner"><option value="ma">Minh Anh</option><option value="lt">Linh Trần</option><option value="hn">Hà Nguyễn</option><option value="qd">Quang Đỗ</option></select></label><label>Trạng thái<select name="status"><option value="todo">Cần làm</option><option value="doing">Đang làm</option><option value="done">Hoàn thành</option></select></label><label>Ưu tiên<select name="priority"><option value="normal">Bình thường</option><option value="high">Cao</option></select></label><label>Hạn hoàn thành<input name="due" type="date" required min="2000-01-01" max="2100-12-31"></label></div>
+      <p class="dialog-note">Dữ liệu chỉ thay đổi trong phiên xem demo này.</p><div class="dialog-actions"><button class="button" type="button" id="cancel-dialog">Hủy</button><button class="button primary" type="submit">Lưu công việc</button></div>
+    </form>
+  </dialog>
+</body>
+</html>

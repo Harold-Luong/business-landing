@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+# This concept demo uses noindex in its HTML.

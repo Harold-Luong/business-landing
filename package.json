@@ -1,0 +1,20 @@
+{
+  "name": "corebrisk-business-landing",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5174",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 4174",
+    "test": "node tests/seo.test.mjs",
+    "generate:social": "node scripts/social-card.mjs",
+    "test:browser": "npm run build && node tests/browser.mjs"
+  },
+  "devDependencies": {
+    "vite": "^8.2.2"
+  },
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  }
+}

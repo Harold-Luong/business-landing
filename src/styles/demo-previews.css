@@ -1,0 +1,83 @@
+/* Bổ sung cuối cascade: liên kết demo, Aster và lưới concept desktop. */
+.work-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 20px;
+}
+.work-actions .text-link {
+    font-size: 12px;
+}
+
+/* Showcase examples map to the three service scopes. */
+.work-card {
+    min-width: 0;
+}
+.car-preview {
+    background: #e8e6e2;
+    color: #18232d;
+}
+.car-preview .preview-top strong {
+    letter-spacing: 2px;
+    font-size: 21px;
+}
+.car-preview .preview-title {
+    font-size: 30px;
+}
+.car-preview .preview-title em {
+    font-family: inherit;
+    font-size: 20px;
+    font-style: normal;
+    letter-spacing: -0.5px;
+}
+.car-preview-image {
+    position: absolute;
+    width: 100%;
+    height: 210px;
+    left: 0;
+    bottom: 0;
+    object-fit: cover;
+    object-position: center 56%;
+    mix-blend-mode: multiply;
+}
+.car-preview .preview-index {
+    background: #f5f3eed9;
+    padding: 5px 7px;
+    left: 15px;
+    bottom: 18px;
+}
+@media (min-width: 1101px) {
+    .work-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+    }
+    .work-preview {
+        padding: 24px;
+        height: 330px;
+    }
+    .work-preview .preview-title {
+        font-size: 30px;
+    }
+    .work-preview .preview-top > span {
+        font-size: 5px;
+    }
+    .work-caption {
+        gap: 10px;
+        align-items: start;
+    }
+    .work-caption > span {
+        font-size: 8px;
+        max-width: 110px;
+        text-align: center;
+    }
+    .work-preview .dashboard {
+        width: 265px;
+        right: 20px;
+    }
+    .work-preview .concept-building {
+        width: 150px;
+        height: 185px;
+        right: 23px;
+    }
+}
