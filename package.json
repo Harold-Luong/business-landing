@@ -12,7 +12,8 @@
     "test:browser": "npm run build && node tests/browser.mjs"
   },
   "devDependencies": {
-    "vite": "^8.2.2"
+    "vite": "^8.2.2",
+    "wrangler": "^4.154.0"
   },
   "engines": {
     "node": "^20.19.0 || >=22.12.0"
