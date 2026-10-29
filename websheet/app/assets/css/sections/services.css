@@ -1,0 +1,130 @@
+/* Tiêu đề section dùng chung và hai nhóm thẻ dịch vụ. */
+.section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 50px;
+    margin-bottom: 32px;
+}
+
+.section-heading > p {
+    max-width: 365px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 4px;
+}
+
+.services {
+    position: relative;
+    padding-block: 64px;
+}
+
+.service-paths {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.service-family {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    border: 1px solid #d8e3d1;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.service-family:first-child {
+    background: var(--surface);
+}
+
+.service-family-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 22px;
+}
+
+.service-family-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border: 1px solid #d5e1cc;
+    border-radius: 6px;
+    background: #f7faf3;
+    color: var(--accent);
+}
+
+.service-family-icon svg {
+    width: 25px;
+    height: 25px;
+}
+
+.service-family-label {
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--accent);
+}
+
+.service-family h3 {
+    font-size: clamp(25px, 2.5vw, 30px);
+    font-weight: 400;
+    letter-spacing: -0.8px;
+    line-height: 1.4;
+}
+
+.service-family > p {
+    margin: 14px 0 24px;
+    max-width: 470px;
+    font-size: 14px;
+    line-height: 1.8;
+    color: var(--muted);
+}
+
+.service-family-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 20px;
+    margin-top: auto;
+}
+
+.service-detail-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    padding-block: 10px;
+    color: var(--accent);
+    font-size: 13px;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+@media (max-width: 850px) {
+    .service-paths {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+    .service-family > p {
+        max-width: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .service-family {
+        padding: 24px 20px;
+    }
+    .service-family-label {
+        font-size: 9px;
+    }
+    .service-family-actions {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 10px;
+    }
+}

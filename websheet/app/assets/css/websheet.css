@@ -1,0 +1,27 @@
+/* Brand adaptation and Vue-specific states. Existing section styles remain authoritative. */
+:root {
+  --text: #34443c;
+  --font-body: 'Be Vietnam Pro', sans-serif;
+  --accent-hover: #41613a;
+  --focus: #648f25;
+  --pricing-bg: #f7f9f3;
+  --contact-bg: #edf5e6;
+  --recommended-bg: #edf5e5;
+  --sheet-preview-bg: #eaf2e6;
+}
+.websheet-mark { flex-shrink: 0; color: var(--accent); }
+.brand { letter-spacing: -0.8px; }
+.brand-sub { letter-spacing: 1.3px; }
+.demo-pending { display: inline-block; color: var(--muted); font-size: 12px; padding-block: 12px; }
+.work-card > a { display: block; }
+.sample-preview-link { display: block; }
+.error-page { min-height: 85vh; display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
+.error-page h1 { font-size: clamp(32px, 5vw, 54px); font-weight: 400; }
+.service-detail .detail-hero-grid > *, .service-detail .detail-card-grid > * { min-width: 0; }
+@media (max-width: 600px) {
+  .websheet-mark { width: 35px; height: 35px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}

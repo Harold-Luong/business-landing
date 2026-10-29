@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+# Development/preview. Generated output follows NUXT_PUBLIC_SITE_URL.

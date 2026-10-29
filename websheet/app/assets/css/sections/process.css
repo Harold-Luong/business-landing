@@ -1,0 +1,38 @@
+/* Các bước triển khai dự án. */
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 27px;
+}
+
+.step-number {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid #d9dfcf;
+    padding-top: 21px;
+    font-size: 32px;
+    letter-spacing: -1px;
+    color: #748361;
+    margin-bottom: 18px;
+}
+
+.step-number b {
+    font-size: 20px;
+    font-weight: 400;
+    color: #778b62;
+}
+
+.process-grid h3 {
+    font-size: 15px;
+    letter-spacing: -0.4px;
+    margin-bottom: 12px;
+}
+
+.process-grid p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #6b735f;
+    min-height: 0;
+}
+

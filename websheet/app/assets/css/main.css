@@ -1,0 +1,23 @@
+/* Điểm vào CSS chung. Giữ thứ tự import để bảo toàn cascade. */
+@import "./fonts.css";
+@import "./sections/base.css";
+@import "./sections/header.css";
+@import "./sections/hero.css";
+@import "./sections/services.css";
+@import "./sections/showcase.css";
+@import "./sections/pricing.css";
+@import "./sections/process.css";
+@import "./sections/faq.css";
+@import "./sections/contact.css";
+@import "./sections/footer.css";
+@import "./sections/dialog.css";
+@import "./sections/responsive/desktop.css";
+@import "./sections/responsive/tablet.css";
+@import "./sections/responsive/mobile.css";
+@import "./sections/responsive/compact.css";
+@import "./sections/reduced-motion.css";
+@import "./sections/demo-previews.css";
+
+@import "./service.css";
+@import "./websheet.css";
+
