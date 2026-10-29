@@ -14,7 +14,7 @@ export const serviceMeta = [
     "path": "/dich-vu/google-apps-script/",
     "name": "Google Apps Script",
     "title": "Lập trình Google Apps Script, tự động hóa Sheets | WebSheet",
-    "description": "Lập trình Apps Script theo yêu cầu để tự động hóa Google Sheets, báo cáo và nhắc việc. Chi phí thiết kế riêng từ 2,9 triệu/dự án, tùy phạm vi triển khai.",
+    "description": "Lập trình Apps Script theo yêu cầu để tự động hóa Google Sheets, báo cáo và nhắc việc. Chi phí thiết kế riêng từ 0,9 triệu/dự án, tùy phạm vi triển khai.",
     "plan": "apps-script"
   },
   {

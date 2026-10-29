@@ -23,12 +23,11 @@ export type ServiceContent = {
   eyebrow: string
   title: string[]
   lead: string
-  estimate: {
+  estimate?: {
     label: string
     facts: { label: string, value: string }[]
     note: string
-    pricePlan: ServicePlanId | null
-    heading?: string[]
+    pricePlan: ServicePlanId
   }
   gallery: boolean
   faqs: Faq[]

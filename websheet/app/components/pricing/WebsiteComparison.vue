@@ -7,7 +7,7 @@ const rows = [
 ] as const
 </script>
 <template>
-    <section id="bang-gia-website" class="website-pricing" aria-labelledby="website-pricing-title">
+    <section v-reveal id="bang-gia-website" class="website-pricing" aria-labelledby="website-pricing-title">
         <div class="pricing-group-heading">
             <p class="eyebrow">THIẾT KẾ WEBSITE</p>
             <h2 id="website-pricing-title">So sánh Launch / Business / Custom</h2>

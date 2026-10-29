@@ -6,11 +6,11 @@ useSiteSeo(serviceMeta.find(page => page.path === '/dich-vu/google-apps-script/'
 definePageMeta({ layout: 'service' })
 </script>
 <template>
-  <main id="noi-dung">
-    <ServiceHero :service="service" />
-    <SheetFlowPreview />
-    <GoogleAppsScriptContent />
-    <ServiceFaq :items="service.faqs" />
-    <ServiceClosing :service="service" />
-  </main>
+    <main id="noi-dung">
+        <ServiceHero :service="service" />
+        <SheetFlowPreview />
+        <GoogleAppsScriptContent />
+        <ServiceFaq :items="service.faqs" />
+        <ServiceClosing :service="service" />
+    </main>
 </template>

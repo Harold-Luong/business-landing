@@ -4,8 +4,8 @@ export const plans: ServicePlan[] = [
     "id": "apps-script",
     "name": "Google Apps Script",
     "category": "google",
-    "startingPriceVnd": 2900000,
-    "formLabel": "Google Apps Script · từ 2,9 triệu · Theo yêu cầu",
+    "startingPriceVnd": 900000,
+    "formLabel": "Google Apps Script · từ 0,9 triệu · Theo yêu cầu",
     "kicker": "LẬP TRÌNH THEO YÊU CẦU",
     "features": [
       "01 quy trình tự động hóa trên tối đa 2 file Google Sheets.",
@@ -23,7 +23,7 @@ export const plans: ServicePlan[] = [
     "id": "appsheet",
     "name": "AppSheet",
     "category": "google",
-    "startingPriceVnd": 7900000,
+    "startingPriceVnd": 3900000,
     "formLabel": "AppSheet · từ 7,9 triệu · Theo yêu cầu",
     "kicker": "ỨNG DỤNG THEO YÊU CẦU",
     "features": [
@@ -42,7 +42,7 @@ export const plans: ServicePlan[] = [
     "id": "launch",
     "name": "Launch",
     "category": "website",
-    "startingPriceVnd": 6900000,
+    "startingPriceVnd": 4900000,
     "formLabel": "Launch · từ 6,9 triệu",
     "kicker": "MỘT TRANG",
     "features": [

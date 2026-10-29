@@ -28,7 +28,7 @@ async function submit() {
 </script>
 
 <template>
-    <form ref="form" @submit.prevent="submit" class="contact-form" id="quote-form" tabindex="-1"
+    <form v-reveal ref="form" @submit.prevent="submit" class="contact-form" id="quote-form" tabindex="-1"
         aria-labelledby="quote-form-title">
         <h3 id="quote-form-title">Thông tin dự án</h3>
         <p class="form-intro">Tạo bản yêu cầu để sao chép hoặc gửi qua email.</p>

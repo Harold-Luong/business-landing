@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { samples, sampleQuoteHref } from '~/data/samples'
-import { planById, priceMillions } from '~/data/plans'
+import { planById } from '~/data/plans'
 import AsterPreview from './AsterPreview.vue'
 import AnStudioPreview from './AnStudioPreview.vue'
 import OrbitPreview from './OrbitPreview.vue'
@@ -11,7 +11,7 @@ const urls = useDemoUrls()
 <template>
     <section id="mau-giao-dien" class="container detail-section service-samples"
         aria-labelledby="website-samples-title">
-        <div class="section-heading">
+        <div v-reveal class="section-heading">
             <div>
                 <p class="eyebrow">MẪU WEBSITE</p>
                 <h2 id="website-samples-title">Chọn hướng giao diện phù hợp.</h2>
@@ -19,7 +19,7 @@ const urls = useDemoUrls()
             <p>Khám phá landing page, website doanh nghiệp và web app theo từng phạm vi dịch vụ.</p>
         </div>
         <div class="work-grid">
-            <article v-for="sample in cards" :key="sample.id" class="work-card">
+            <article v-for="(sample, index) in cards" v-reveal="index * 80" :key="sample.id" class="work-card">
                 <a v-if="urls[sample.id]" :href="urls[sample.id]" target="_blank" rel="noopener noreferrer"
                     :aria-label="`Xem demo ${sample.name}, mở trong tab mới`">
                     <component :is="previews[sample.id as keyof typeof previews]" />
@@ -29,8 +29,7 @@ const urls = useDemoUrls()
                     <div>
                         <h3>{{ sample.name }}</h3>
                         <p>{{ sample.description }}</p>
-                    </div><span>{{ planById[sample.plan].name }} · từ {{
-                        priceMillions(planById[sample.plan].startingPriceVnd) }} triệu</span>
+                    </div><span>{{ planById[sample.plan].name }}</span>
                 </div>
                 <div class="work-actions">
                     <DemoLink :sample-id="sample.id" />

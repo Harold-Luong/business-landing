@@ -3,7 +3,7 @@ import { readFile, readdir, access } from 'node:fs/promises'
 import { routes, homeMeta, serviceMeta } from '../shared/site.ts'
 import { publicConfig, validateUrl, robots, sitemap } from '../shared/config.ts'
 const config = publicConfig(process.env)
-const root = '.output/public'
+const root = process.env.WEBSHEET_OUTPUT_DIR || '.output/production/public'
 const read = path => readFile(`${root}/${path}`, 'utf8')
 for (const path of routes) {
   const html = await read(path.slice(1) + 'index.html')
@@ -19,11 +19,24 @@ for (const path of routes) {
   const schemas = [...html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs)].map(match => JSON.parse(match[1]))
   assert.equal(schemas[0]['@type'], path === '/' ? 'ProfessionalService' : 'Service')
   if (config.siteUrl) {
-    assert.ok(html.includes(`href="${new URL(path, config.siteUrl).href}"`), path + ' canonical')
+    const canonical = new URL(path, config.siteUrl).href
+    const canonicalTags = html.match(/<link\b[^>]*rel="canonical"[^>]*>/g) || []
+    assert.equal(canonicalTags.length, 1, path + ' exactly one canonical')
+    assert.ok(canonicalTags[0].includes(`href="${canonical}"`), path + ' canonical')
+    assert.ok(html.includes(`property="og:url" content="${canonical}"`), path + ' Open Graph URL')
+    assert.ok(!/<meta\b[^>]*name="robots"[^>]*content="[^"]*noindex/.test(html), path + ' must be indexable')
     assert.ok(html.includes('index, follow, max-image-preview:large'))
     assert.equal(schemas.length, 2)
     assert.equal(schemas[1]['@type'], path === '/' ? 'WebSite' : 'BreadcrumbList')
     assert.ok(html.includes(`${config.siteUrl}social-card.png`))
+    if (path === '/') {
+      assert.equal(schemas[1].name, 'WebSheet')
+      assert.equal(schemas[1].url, config.siteUrl)
+      assert.equal(schemas[0].logo.url, `${config.siteUrl}logo.png`)
+    } else {
+      assert.equal(schemas[0].url, canonical)
+      assert.equal(schemas[1].itemListElement[1].item, canonical)
+    }
   } else {
     assert.ok(html.includes('noindex, follow'))
     assert.ok(!html.includes('rel="canonical"'))
@@ -33,6 +46,14 @@ for (const path of routes) {
 assert.equal(await read('robots.txt'), robots(config.siteUrl))
 if (config.siteUrl) assert.equal(await read('sitemap.xml'), sitemap(config.siteUrl, routes))
 else await assert.rejects(access(`${root}/sitemap.xml`))
+if (process.env.WEBSHEET_DEPLOY_ENV === 'dev') {
+  assert.equal(config.siteUrl, '', 'dev must not have a canonical origin')
+  assert.ok((await read('_headers')).includes('X-Robots-Tag: noindex, follow'))
+} else if (process.env.WEBSHEET_DEPLOY_ENV === 'production') {
+  assert.equal(config.siteUrl, 'https://websheet.shop/')
+  await assert.rejects(access(`${root}/_headers`), 'production must not inherit the dev noindex header')
+}
+await access(`${root}/404.html`) // Hosting serves this fallback with HTTP 404; checked by test:browser.
 await assert.rejects(access(`${root}/demos`))
 await assert.rejects(access(`${root}/aster-preview-480.webp`))
 await assert.rejects(access(`${root}/aster-preview-960.webp`))

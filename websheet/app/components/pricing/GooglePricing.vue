@@ -4,18 +4,18 @@ const { selectPlan } = useQuoteSelection()
 </script>
 <template>
     <section id="bang-gia-google" class="automation-pricing" aria-labelledby="google-pricing-title">
-        <div class="pricing-group-heading">
+        <div v-reveal class="pricing-group-heading">
             <p class="eyebrow">GOOGLE AUTOMATION</p>
             <h2 id="google-pricing-title">Thiết kế Google Sheets & AppSheet theo yêu cầu</h2>
         </div>
-        <div class="custom-service-note"><strong>Chi phí thiết kế riêng cho quy trình của bạn</strong>
+        <div v-reveal class="custom-service-note"><strong>Chi phí thiết kế riêng cho quy trình của bạn</strong>
             <p>Giá dưới đây dành cho khảo sát, xây dựng và bàn giao giải pháp theo yêu cầu khách hàng; không phải giá
                 mua mẫu có sẵn.</p>
             <p>Mẫu làm sẵn có giá thấp hơn; giá và phạm vi sử dụng sẽ được công bố riêng theo từng sản phẩm. Các demo
                 hiện tại chỉ minh họa giao diện để tham khảo khi trao đổi yêu cầu.</p>
         </div>
         <div class="pricing-grid automation-grid">
-            <article v-for="plan in googlePlans" :key="plan.id" class="price-card"
+            <article v-for="(plan, index) in googlePlans" v-reveal="index * 80" :key="plan.id" class="price-card"
                 :aria-labelledby="`price-${plan.id}`">
                 <p class="plan-kicker">{{ plan.kicker }}</p>
                 <h3 :id="`price-${plan.id}`">{{ plan.name }}</h3>

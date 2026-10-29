@@ -51,13 +51,13 @@ Phạm vi đầy đủ, điều kiện triển khai và FAQ chuyên sâu đượ
 
 Các trang là HTML tĩnh, có nội dung và điều hướng đầy đủ khi tắt JavaScript:
 
-| Dịch vụ | URL | Mã nguồn |
-| --- | --- | --- |
-| Google Automation (tổng quan) | `/dich-vu/google-automation/` | `dich-vu/google-automation/index.html` |
-| Apps Script | `/dich-vu/google-apps-script/` | `dich-vu/google-apps-script/index.html` |
-| AppSheet | `/dich-vu/appsheet/` | `dich-vu/appsheet/index.html` |
-| Tiện ích Sheets | `/dich-vu/tien-ich-google-sheets/` | `dich-vu/tien-ich-google-sheets/index.html` |
-| Thiết kế website | `/dich-vu/thiet-ke-website/` | `dich-vu/thiet-ke-website/index.html` |
+| Dịch vụ                       | URL                                | Mã nguồn                                    |
+| ----------------------------- | ---------------------------------- | ------------------------------------------- |
+| Google Automation (tổng quan) | `/dich-vu/google-automation/`      | `dich-vu/google-automation/index.html`      |
+| Apps Script                   | `/dich-vu/google-apps-script/`     | `dich-vu/google-apps-script/index.html`     |
+| AppSheet                      | `/dich-vu/appsheet/`               | `dich-vu/appsheet/index.html`               |
+| Tiện ích Sheets               | `/dich-vu/tien-ich-google-sheets/` | `dich-vu/tien-ich-google-sheets/index.html` |
+| Thiết kế website              | `/dich-vu/thiet-ke-website/`       | `dich-vu/thiet-ke-website/index.html`       |
 
 Metadata và danh sách URL nằm trong `src/seo.mjs`; Vite build cả sáu trang qua `build.rolldownOptions.input`. CSS cho trang chi tiết nằm trong `src/service.css`. Nút tư vấn dẫn về `/?plan=...#lien-he` và chọn sẵn dịch vụ hợp lệ trong form.
 
@@ -69,7 +69,7 @@ Hosting cần phục vụ các thư mục con bằng `index.html` tương ứng,
 
 ## Báo giá Google Sheets & ứng dụng nội bộ
 
-Nhóm báo giá tại `/#bang-gia-google` gồm Google Apps Script (từ 2,9 triệu/dự án) và AppSheet (từ 7,9 triệu/dự án). Đây là chi phí thiết kế và triển khai theo yêu cầu riêng của khách hàng, không phải giá mua mẫu làm sẵn. Mẫu làm sẵn có giá thấp hơn và sẽ có bảng giá riêng theo từng sản phẩm. Demo hiện tại chỉ minh họa giao diện. Chi phí bản quyền, dịch vụ bên thứ ba và yêu cầu mở rộng được tách riêng.
+Nhóm báo giá tại `/#bang-gia-google` gồm Google Apps Script (từ 0,9 triệu/dự án) và AppSheet (từ 7,9 triệu/dự án). Đây là chi phí thiết kế và triển khai theo yêu cầu riêng của khách hàng, không phải giá mua mẫu làm sẵn. Mẫu làm sẵn có giá thấp hơn và sẽ có bảng giá riêng theo từng sản phẩm. Demo hiện tại chỉ minh họa giao diện. Chi phí bản quyền, dịch vụ bên thứ ba và yêu cầu mở rộng được tách riêng.
 
 Nút tư vấn chọn sẵn dịch vụ trong form. Bản yêu cầu dùng tiêu đề chung cho dự án và tải xuống dưới tên `yeu-cau-tu-van-du-an.txt`. Khi đổi giá, cập nhật bảng giá và option trong `index.html`, các trang `dich-vu/*/index.html` (gồm trang tổng quan Google Automation), metadata trong `src/seo.mjs` và kỳ vọng tương ứng trong `tests/browser.mjs`.
 
@@ -105,18 +105,18 @@ AN_STUDIO_DEMO_URL=https://url-demo-thuc-te-cua-ban.vn/
 
 Thương hiệu sử dụng trong project là **CoreBrisk**. **Giá, phạm vi và thời gian thực hiện là nội dung mẫu.** Ba mẫu Aster S5, An Studio và Orbit là concept minh họa, không phải dự án khách hàng đã triển khai. Chỉnh nội dung theo năng lực và chính sách dịch vụ thực tế trước khi xuất bản.
 
-| Cần thay | File |
-| --- | --- |
-| Thương hiệu, dịch vụ, giá, thời gian, FAQ, footer | `index.html` |
-| Title, description và thông tin schema | `src/seo.mjs` |
-| Tên thương hiệu trong bản yêu cầu và email | `src/main.js` |
-| Thứ tự nạp CSS | `src/style.css` |
-| Màu sắc, font, thành phần chung | `src/styles/base.css` |
-| Style từng section | `src/styles/hero.css`, `services.css`, `pricing.css`, … |
-| Bố cục responsive | `src/styles/responsive/` |
-| Logo favicon | `public/favicon.svg` |
-| Thiết kế ảnh chia sẻ | `scripts/social-card.html` |
-| Tên miền và email liên hệ | `.env` (tạo từ `.env.example`) |
+| Cần thay                                          | File                                                    |
+| ------------------------------------------------- | ------------------------------------------------------- |
+| Thương hiệu, dịch vụ, giá, thời gian, FAQ, footer | `index.html`                                            |
+| Title, description và thông tin schema            | `src/seo.mjs`                                           |
+| Tên thương hiệu trong bản yêu cầu và email        | `src/main.js`                                           |
+| Thứ tự nạp CSS                                    | `src/style.css`                                         |
+| Màu sắc, font, thành phần chung                   | `src/styles/base.css`                                   |
+| Style từng section                                | `src/styles/hero.css`, `services.css`, `pricing.css`, … |
+| Bố cục responsive                                 | `src/styles/responsive/`                                |
+| Logo favicon                                      | `public/favicon.svg`                                    |
+| Thiết kế ảnh chia sẻ                              | `scripts/social-card.html`                              |
+| Tên miền và email liên hệ                         | `.env` (tạo từ `.env.example`)                          |
 
 Khi sửa giá, cập nhật đồng bộ bảng giá, các option chọn gói trong `index.html`, các trang dịch vụ và description trong `src/seo.mjs`. Website chỉ giới thiệu dịch vụ; project này không triển khai hệ thống CMS, backend, Apps Script hoặc AppSheet cho khách hàng.
 
@@ -232,8 +232,6 @@ Ba mẫu được gắn với phạm vi: **Launch → Aster S5**, **Business →
 Mã nguồn tại [`demos/aster/`](demos/aster/README.md). Build gốc đóng kèm vào `dist/demos/aster/`. Khi host riêng, đặt `ASTER_DEMO_URL` ở CoreBrisk. Demo luôn noindex; ảnh xe tạo bằng AI, tên xe, nhân viên, thông số và giá đều giả định.
 
 Kiểm tra Aster: `npm run test:browser` xác minh 6 độ rộng, chọn phiên bản/màu, form báo giá/lái thử, clipboard/TXT, luồng chọn mẫu Launch và nội dung khi tắt JavaScript. Ảnh kiểm tra lưu tại `/tmp/aster-*.png`.
-
-
 
 Đề xuất
 P0

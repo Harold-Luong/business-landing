@@ -16,17 +16,66 @@ try {
       await evaluate('document.fonts.ready')
       await delay(80)
     }
+    await send('Emulation.setFocusEmulationEnabled', { enabled: true })
+    await send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 800, deviceScaleFactor: 1, mobile: false })
+    await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'no-preference' }] })
+    await navigate('/')
+    await poll(() => evaluate("document.querySelector('.price-card')?.dataset.revealState === 'pending'"))
+    assert.equal(await evaluate("getComputedStyle(document.querySelector('h1')).opacity"), '1', 'First viewport stays visible')
+    await evaluate(`window.__revealCount = 0; const card = document.querySelector('.price-card'); card.addEventListener('animationstart', () => window.__revealCount++); card.scrollIntoView({block:'center', behavior:'instant'})`)
+    await poll(() => evaluate("document.querySelector('.price-card').dataset.revealState === 'visible' && window.__revealCount === 1"))
+    await poll(() => evaluate("document.querySelector('.price-card').getAnimations().length === 0"))
+    assert.equal(await evaluate("getComputedStyle(document.querySelector('.price-card')).opacity"), '1')
+    await screenshot(`${shots}/reveal-pricing.png`)
+    await evaluate("window.scrollTo({top:0, behavior:'instant'})")
+    await delay(80)
+    await evaluate("document.querySelector('.price-card').scrollIntoView({block:'center', behavior:'instant'})")
+    await delay(200)
+    assert.equal(await evaluate('window.__revealCount'), 1, 'Reveal must not replay on scrolling back')
+    await evaluate("document.querySelector('#name').focus({preventScroll:true})")
+    assert.deepEqual(await evaluate("({ opacity: getComputedStyle(document.querySelector('#quote-form')).opacity, state: document.querySelector('#quote-form').dataset.revealState, active: document.activeElement.id })"), { opacity: '1', state: 'done', active: 'name' }, 'Keyboard focus reveals its block immediately: ' + JSON.stringify(errors))
+    await send('Emulation.setEmulatedMedia', { media: 'print' })
+    assert.ok(await evaluate("[...document.querySelectorAll('[data-reveal-state]')].every(el => getComputedStyle(el).opacity === '1')"), 'Printing must include pending blocks')
+    await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'reduce' }] })
+    await poll(() => evaluate("!document.querySelector('[data-reveal-state=pending]')"))
+    await navigate('/dich-vu/thiet-ke-website/')
+    assert.equal(await evaluate("document.querySelector('[data-reveal-state=pending]')"), null, 'Reduced motion starts with all content visible')
+    await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'no-preference' }] })
     for (const width of [1440,1024,768,600,390,320]) {
       await send('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: false })
       for (const path of routes) {
         await navigate(path)
         assert.ok(await evaluate('document.documentElement.scrollWidth <= innerWidth + 1'), `${path} overflows at ${width}`)
         assert.equal(await evaluate("document.querySelectorAll('h1').length"), 1)
+        assert.deepEqual(await evaluate("[...document.querySelectorAll('#navigation > a')].map(a => a.textContent.replace('↗', '').trim())"), ['Dịch vụ', 'Bảng giá', 'Quy trình', 'Liên hệ'])
+        if (path !== '/') {
+          assert.deepEqual(await evaluate("[...document.querySelectorAll('#navigation > a')].map(a => a.getAttribute('href'))"), ['/#dich-vu', '/#bang-gia', '/#quy-trinh', '/#lien-he'])
+          assert.equal(await evaluate("document.querySelector('#navigation [aria-current]')?.getAttribute('href')"), '/#dich-vu')
+          assert.equal(await evaluate("document.querySelector('.detail-process')"), null)
+        }
         if ([1440,390].includes(width) && ['/', '/dich-vu/thiet-ke-website/', '/dich-vu/google-apps-script/'].includes(path)) {
           await evaluate(`Promise.all([...document.images].map(image => { image.loading = 'eager'; return image.decode().catch(() => {}) }))`)
+          // Visit blocks before full-page capture; an offscreen block intentionally waits for scrolling.
+          await evaluate(`(async () => { for (let y = 0; y < document.documentElement.scrollHeight; y += innerHeight * 0.75) { window.scrollTo({top:y, behavior:'instant'}); await new Promise(resolve => setTimeout(resolve, 40)); } window.scrollTo({top:0, behavior:'instant'}); })()`)
+          await poll(() => evaluate("!document.querySelector('[data-reveal-state=pending]') && document.getAnimations().every(animation => animation.animationName !== 'block-reveal')"))
           await screenshot(`${shots}/${path === '/' ? 'home' : path.split('/')[2]}-${width}.png`, true)
         }
       }
+    }
+    // Shared mobile menu must navigate from a service back to landing anchors.
+    await navigate('/dich-vu/google-automation/')
+    await evaluate("window.__navigationMarker = 'shared-header'; document.querySelector('.menu-toggle').click()")
+    assert.equal(await evaluate("document.querySelector('.menu-toggle').getAttribute('aria-expanded')"), 'true')
+    await evaluate("document.querySelector('#navigation a[href=\"/#quy-trinh\"]').click()")
+    await poll(() => evaluate("location.pathname === '/' && location.hash === '#quy-trinh' && !!document.querySelector('#quy-trinh')"))
+    await poll(() => evaluate("document.querySelector('#navigation [aria-current]')?.getAttribute('href') === '#quy-trinh'"))
+    assert.equal(await evaluate("document.querySelector('.menu-toggle').getAttribute('aria-expanded')"), 'false')
+    assert.equal(await evaluate('window.__navigationMarker'), 'shared-header')
+    for (const [slug, plan] of [['google-automation', 'automation'], ['google-apps-script', 'apps-script'], ['appsheet', 'appsheet'], ['tien-ich-google-sheets', 'automation'], ['thiet-ke-website', 'launch']]) {
+      await navigate(`/dich-vu/${slug}/`)
+      await evaluate("document.querySelector('.detail-cta a').click()")
+      await poll(() => evaluate(`document.querySelector('#plan')?.value === ${JSON.stringify(plan)}`))
+      assert.equal(await evaluate('location.hash'), '#lien-he')
     }
     await navigate('/?plan=launch&concept=sheetflow#quote-form')
     await poll(() => evaluate("document.querySelector('#plan').value === 'apps-script'"))
@@ -85,8 +134,9 @@ try {
     await delay(500)
     assert.equal(await evaluate("document.querySelector('#quote-form button[type=submit]').disabled"), true)
     assert.ok(await evaluate("document.body.textContent.includes('Thiết kế website.')"))
+    assert.equal(await evaluate("document.querySelector('[data-reveal-state=pending]')"), null, 'Prerendered/no-JS content must never be hidden')
     await send('Emulation.setScriptExecutionDisabled', { value: false })
     assert.deepEqual(errors, [], 'Browser console/hydration errors')
-    console.log('PASS: 36 route/viewport checks; client navigation, query/plan/concept, draft, dialog, copy fallback, TXT, menu, no-JS and 404. Screenshots: ' + shots)
+    console.log('PASS: scroll reveal, reduced motion, keyboard focus, print; 36 route/viewport checks; client navigation, query/plan/concept, draft, dialog, copy fallback, TXT, menu, no-JS and 404. Screenshots: ' + shots)
   })
 } finally { await server.close() }

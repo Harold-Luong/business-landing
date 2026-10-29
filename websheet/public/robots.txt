@@ -1,3 +1,9 @@
 User-agent: *
 Allow: /
-# Development/preview. Generated output follows NUXT_PUBLIC_SITE_URL.
+<<<<<<< Updated upstream
+# Preview: HTML contains noindex.
+Sitemap: https://websheet.ductrong-luongnguyen.workers.dev/sitemap.xml
+=======
+
+# Local development. Build generates this file for the selected environment.
+>>>>>>> Stashed changes

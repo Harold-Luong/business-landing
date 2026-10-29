@@ -3,14 +3,21 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
+    "build": "npm run build:production",
+    "build:dev": "node scripts/environment.mjs dev build",
+    "build:production": "node scripts/environment.mjs production build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "node scripts/preview.mjs",
+    "generate": "npm run build:production",
+    "preview": "node scripts/environment.mjs production preview",
+    "preview:dev": "node scripts/environment.mjs dev preview",
+    "deploy:dev": "node scripts/environment.mjs dev deploy",
+    "deploy:production": "node scripts/environment.mjs production deploy",
     "postinstall": "nuxt prepare",
     "typecheck": "nuxt typecheck",
-    "test:output": "node tests/output.mjs",
-    "test:browser": "node tests/browser.mjs",
+    "test:output": "node scripts/environment.mjs production test:output",
+    "test:output:dev": "node scripts/environment.mjs dev test:output",
+    "test:browser": "node scripts/environment.mjs production test:browser",
+    "test:browser:dev": "node scripts/environment.mjs dev test:browser",
     "generate:brand": "node scripts/brand-assets.mjs"
   },
   "dependencies": {
@@ -36,6 +43,7 @@
     "@tiptap/starter-kit": "^3.32.1",
     "@tiptap/suggestion": "^3.32.1",
     "@tiptap/vue-3": "^3.32.1",
+    "crossws": "^0.4.17",
     "eslint": "^10.13.0",
     "nuxt": "^4.6.3",
     "tailwindcss": "^4.3.3",
@@ -45,6 +53,7 @@
   },
   "devDependencies": {
     "@types/node": "^26.6.6",
-    "vue-tsc": "^3.3.13"
+    "vue-tsc": "^3.3.13",
+    "wrangler": "4.154.0"
   }
 }

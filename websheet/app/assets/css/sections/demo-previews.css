@@ -340,29 +340,45 @@
     }
 }
 
-/* Two compact entry points; complete galleries live on service pages. */
-.home-samples {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+/* Illustrations inside service cards; complete galleries live on service pages. */
+.service-family-preview .work-preview {
+    height: 260px;
+    padding: 20px 22px;
 }
-.home-samples .work-preview {
-    height: 300px;
+.service-family-preview .work-preview:hover {
+    box-shadow: none;
 }
-.home-samples .work-actions .text-link {
-    min-height: 44px;
+.service-family-preview .preview-arrow {
+    display: none;
+}
+.service-family-preview .preview-index {
+    left: 22px;
+    bottom: 18px;
+    font-size: 6px;
+}
+.service-family-preview .architecture-preview .preview-title {
+    margin-top: 12px;
+    font-size: 30px;
+}
+.service-family-preview .concept-building {
+    width: 140px;
+    height: 145px;
+    right: 24px;
+    bottom: -24px;
 }
 .sheet-teaser {
     background: #eaf2e6;
     color: #286042;
 }
-.home-samples .sheet-teaser .preview-title {
-    margin-top: 14px;
-    font-size: clamp(24px, 2vw, 28px);
+.sheet-teaser .preview-title {
+    margin-top: 8px;
+    font-size: 22px;
     line-height: 1.15;
 }
 .sheet-teaser-grid {
     position: absolute;
     right: 25px;
-    bottom: 52px;
+    bottom: 36px;
     width: 62%;
     max-width: 340px;
     overflow: hidden;
@@ -370,7 +386,7 @@
     border-radius: 6px;
     background: #fff;
     box-shadow: 0 12px 28px #264d2e12;
-    transform: rotate(-4deg);
+    transform: rotate(-2deg);
 }
 .sheet-teaser-grid > div {
     display: grid;
@@ -392,7 +408,6 @@
     line-height: 1.4;
 }
 @media (max-width: 600px) {
-    .home-samples { grid-template-columns: minmax(0, 1fr); }
-    .sheet-teaser-grid { width: 76%; right: 15px; bottom: 48px; }
+    .sheet-teaser-grid { width: 76%; right: 15px; }
     .sheet-teaser .preview-index { left: 20px; font-size: 6px; }
 }

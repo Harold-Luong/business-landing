@@ -41,6 +41,43 @@
     max-width: 359px;
 }
 
+.contact-copy {
+    min-width: 0;
+}
+
+.contact-channels {
+    display: grid;
+    gap: 8px;
+    margin-top: 24px;
+    font-style: normal;
+}
+
+.contact-channels a {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-height: 44px;
+    padding: 12px 16px;
+    border: 1px solid #bfcea9;
+    border-radius: 6px;
+    color: var(--ink);
+}
+
+.contact-channels a:hover {
+    background: var(--paper);
+}
+
+.contact-channel-label {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.contact-channel-value {
+    font-size: 14px;
+    font-weight: 500;
+    overflow-wrap: anywhere;
+}
+
 .contact-promise {
     display: flex;
     align-items: center;
@@ -159,4 +196,3 @@
     justify-content: space-between;
     font-size: 12px;
 }
-

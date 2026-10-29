@@ -1,3 +1,5 @@
+import { contactDetails } from './contact.ts'
+
 export function validateUrl(value: string = '', key = 'URL', rootOnly = false) {
   if (!value.trim()) return ''
   let url: URL
@@ -10,7 +12,7 @@ export function validateUrl(value: string = '', key = 'URL', rootOnly = false) {
 export function publicConfig(env: Record<string, string | undefined>) {
   return {
     siteUrl: validateUrl(env.NUXT_PUBLIC_SITE_URL, 'NUXT_PUBLIC_SITE_URL', true),
-    contactEmail: (env.NUXT_PUBLIC_CONTACT_EMAIL || '').trim(),
+    contactEmail: (env.NUXT_PUBLIC_CONTACT_EMAIL ?? contactDetails.email).trim(),
     asterDemoUrl: validateUrl(env.NUXT_PUBLIC_ASTER_DEMO_URL, 'NUXT_PUBLIC_ASTER_DEMO_URL'),
     anStudioDemoUrl: validateUrl(env.NUXT_PUBLIC_AN_STUDIO_DEMO_URL, 'NUXT_PUBLIC_AN_STUDIO_DEMO_URL'),
     orbitDemoUrl: validateUrl(env.NUXT_PUBLIC_ORBIT_DEMO_URL, 'NUXT_PUBLIC_ORBIT_DEMO_URL'),

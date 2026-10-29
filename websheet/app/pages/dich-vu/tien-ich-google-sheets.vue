@@ -6,11 +6,11 @@ useSiteSeo(serviceMeta.find(page => page.path === '/dich-vu/tien-ich-google-shee
 definePageMeta({ layout: 'service' })
 </script>
 <template>
-  <main id="noi-dung">
-    <ServiceHero :service="service" />
-    
-    <TienIchGoogleSheetsContent />
-    <ServiceFaq :items="service.faqs" />
-    <ServiceClosing :service="service" />
-  </main>
+    <main id="noi-dung">
+        <ServiceHero :service="service" />
+
+        <TienIchGoogleSheetsContent />
+        <ServiceFaq :items="service.faqs" />
+        <ServiceClosing :service="service" />
+    </main>
 </template>

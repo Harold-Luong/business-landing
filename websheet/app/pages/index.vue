@@ -5,7 +5,6 @@ useSiteSeo()
     <main id="noi-dung">
         <HeroSection />
         <ServiceGroups />
-        <SampleTeasers />
         <PricingSection />
         <ProcessSection />
         <HomeFaq />

@@ -1,24 +1,3 @@
-.detail-header {
-    border-bottom: 1px solid var(--line);
-    background: var(--paper);
-}
-
-.detail-nav,
-.detail-nav nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 28px;
-}
-
-.detail-nav {
-    min-height: 80px;
-}
-
-.detail-nav nav {
-    font-size: 12px;
-}
-
 .detail-intro {
     background: linear-gradient(125deg, #fdfefb 20%, #f0f6e9 100%);
     padding: 28px 0 76px;
@@ -45,6 +24,15 @@
     grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
     align-items: center;
     gap: 64px;
+}
+
+.detail-hero-simple {
+    grid-template-columns: minmax(0, 880px);
+}
+
+.detail-hero-simple .detail-lead {
+    max-width: 720px;
+    margin-bottom: 0;
 }
 
 .service-detail h1 {
@@ -132,6 +120,13 @@
 
 .detail-card-grid {
     display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.detail-card-grid-gg {
+    display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
     margin-top: 40px;
@@ -143,13 +138,13 @@
     padding: 26px;
 }
 
-.detail-card-grid h3 {
+.detail-card h3 {
     font-size: 17px;
     line-height: 1.5;
     margin-bottom: 14px;
 }
 
-.detail-card-grid p {
+.detail-card p {
     font-size: 13px;
     color: var(--muted);
     line-height: 1.9;
@@ -195,14 +190,6 @@
     color: var(--accent);
 }
 
-.detail-step {
-    display: block;
-    padding-top: 20px;
-    border-top: 1px solid var(--line);
-    margin-bottom: 18px;
-    color: var(--accent);
-}
-
 .detail-faq {
     display: grid;
     grid-template-columns: 1fr 1.4fr;
@@ -211,15 +198,17 @@
 }
 
 .detail-cta {
-    background: #edf5e6;
-    padding-block: 48px;
-}
-
-.detail-cta > .container {
+    border-top: 1px solid var(--line);
+    padding-block: 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 32px;
+}
+
+.service-detail .detail-cta h2 {
+    font-size: 22px;
+    letter-spacing: -0.5px;
 }
 
 .detail-cta p {
@@ -264,19 +253,11 @@
         grid-template-columns: 1fr;
         gap: 32px;
     }
-    .detail-card-grid {
+    .detail-card-grid,
+    .detail-card-grid-gg {
         grid-template-columns: 1fr;
     }
-    .detail-nav {
-        flex-wrap: wrap;
-        padding-block: 20px;
-        gap: 20px;
-    }
-    .detail-nav nav {
-        flex-wrap: wrap;
-        gap: 16px;
-    }
-    .detail-cta > .container {
+    .detail-cta {
         align-items: flex-start;
         flex-direction: column;
     }
@@ -311,13 +292,14 @@
 
 .service-samples {
     border-bottom: 1px solid var(--line);
-    scroll-margin-top: 24px;
+    scroll-margin-top: 104px;
 }
 .detail-intro-actions {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 16px 24px;
+    margin-top: 24px;
 }
 .detail-intro-actions .text-link {
     min-height: 44px;

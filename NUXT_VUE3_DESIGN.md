@@ -44,17 +44,17 @@ Hướng dẫn cấu trúc, quy tắc code, màu sắc, font và style dành cho
 
 Các nguồn chính:
 
-| Phạm vi | Nguồn hiện tại |
-|---|---|
-| Trang chủ và form | [index.html](index.html) |
-| Tương tác trang chủ | [src/main.js](src/main.js) |
-| CSS entry và thứ tự cascade | [src/style.css](src/style.css) |
-| Trang dịch vụ | [dich-vu/](dich-vu/) và [src/service.css](src/service.css) |
-| Metadata, schema, sitemap, robots | [src/seo.mjs](src/seo.mjs) |
-| Build, chèn metadata, đóng gói demo | [vite.config.js](vite.config.js), [scripts/](scripts/) |
-| Hosting | [wrangler.jsonc](wrangler.jsonc) |
-| Biến public | [.env.example](.env.example) |
-| Kiểm thử | [tests/](tests/) |
+| Phạm vi                             | Nguồn hiện tại                                             |
+| ----------------------------------- | ---------------------------------------------------------- |
+| Trang chủ và form                   | [index.html](index.html)                                   |
+| Tương tác trang chủ                 | [src/main.js](src/main.js)                                 |
+| CSS entry và thứ tự cascade         | [src/style.css](src/style.css)                             |
+| Trang dịch vụ                       | [dich-vu/](dich-vu/) và [src/service.css](src/service.css) |
+| Metadata, schema, sitemap, robots   | [src/seo.mjs](src/seo.mjs)                                 |
+| Build, chèn metadata, đóng gói demo | [vite.config.js](vite.config.js), [scripts/](scripts/)     |
+| Hosting                             | [wrangler.jsonc](wrangler.jsonc)                           |
+| Biến public                         | [.env.example](.env.example)                               |
+| Kiểm thử                            | [tests/](tests/)                                           |
 
 ## 2. Định vị sản phẩm và giới hạn phạm vi
 
@@ -69,7 +69,7 @@ Google Automation đứng trước Website trong nhóm dịch vụ và bảng gi
 
 ### 2.2. Quy tắc kinh doanh phải giữ
 
-- Apps Script từ **2,9 triệu VNĐ/dự án** và AppSheet từ **7,9 triệu VNĐ/dự án** là chi phí **thiết kế và triển khai theo yêu cầu riêng**.
+- Apps Script từ **0,9 triệu VNĐ/dự án** và AppSheet từ **7,9 triệu VNĐ/dự án** là chi phí **thiết kế và triển khai theo yêu cầu riêng**.
 - Giá này bao gồm phạm vi khảo sát, xây dựng, kiểm thử, bàn giao được nêu trên từng gói; chi phí cuối cùng phụ thuộc yêu cầu đã thống nhất.
 - Demo Sheets không phải sản phẩm làm sẵn đang được bán với mức giá đó.
 - Mẫu làm sẵn có giá thấp hơn; bảng giá và phạm vi sử dụng sẽ công bố riêng theo từng sản phẩm. Chưa có mức giá cụ thể để đưa vào ứng dụng.
@@ -89,15 +89,15 @@ Google Automation đứng trước Website trong nhóm dịch vụ và bảng gi
 
 ### 2.4. Thương hiệu và tên miền đã chốt
 
-| Hạng mục | Quyết định |
-|---|---|
-| Tên thương hiệu hiển thị | **WebSheet**; viết thống nhất với W và S hoa |
-| Tên miền đã mua | `websheet.shop` — theo xác nhận của người dùng |
-| DNS / HTTPS / triển khai | Chưa xác nhận; cần kiểm tra trước khi chuyển traffic |
-| URL production đích | `https://websheet.shop/` (không `www`), chỉ kích hoạt sau khi cấu hình và kiểm tra thành công |
-| Mô tả thương hiệu | **Thiết kế website & Google Sheets theo yêu cầu.** |
-| Trạng thái hiện tại | Website tĩnh giới thiệu dịch vụ; chưa có API bán hàng, giỏ hàng hoặc thanh toán |
-| Hướng mở rộng | Bán mẫu website/Sheets và sản phẩm số trong giai đoạn sau; chưa đưa vào phạm vi hiện tại |
+| Hạng mục                 | Quyết định                                                                                    |
+| ------------------------ | --------------------------------------------------------------------------------------------- |
+| Tên thương hiệu hiển thị | **WebSheet**; viết thống nhất với W và S hoa                                                  |
+| Tên miền đã mua          | `websheet.shop` — theo xác nhận của người dùng                                                |
+| DNS / HTTPS / triển khai | Chưa xác nhận; cần kiểm tra trước khi chuyển traffic                                          |
+| URL production đích      | `https://websheet.shop/` (không `www`), chỉ kích hoạt sau khi cấu hình và kiểm tra thành công |
+| Mô tả thương hiệu        | **Thiết kế website & Google Sheets theo yêu cầu.**                                            |
+| Trạng thái hiện tại      | Website tĩnh giới thiệu dịch vụ; chưa có API bán hàng, giỏ hàng hoặc thanh toán               |
+| Hướng mở rộng            | Bán mẫu website/Sheets và sản phẩm số trong giai đoạn sau; chưa đưa vào phạm vi hiện tại      |
 
 Đuôi `.shop` là lựa chọn tên miền, không thay đổi nghiệp vụ hiện tại thành cửa hàng trực tuyến. Bảng giá vẫn là giá thiết kế riêng; demo vẫn là mẫu tham khảo. Không dùng CTA “Mua ngay” hoặc mô tả đang bán template khi chưa triển khai chức năng đó.
 
@@ -135,15 +135,15 @@ HTML nguồn + CSS + src/main.js + SITE_URL + URL demo
 
 ### 3.3. Lệnh đang có
 
-| Lệnh | Chức năng |
-|---|---|
-| `npm run dev` | Vite tại `127.0.0.1:5174` |
-| `npm run build` | Tạo `dist/` |
-| `npm run preview` | Phục vụ build tại `127.0.0.1:4174` |
-| `npm test` | Kiểm thử SEO và hai build trong thư mục tạm |
-| `npm run test:browser` | Build rồi chạy Chrome kiểm thử ở cổng 4187 |
-| `npm run generate:social` | Tạo ảnh social card bằng Chrome |
-| `npm run generate:icons` | Rasterize biểu tượng SVG thành PNG bằng Chrome |
+| Lệnh                      | Chức năng                                      |
+| ------------------------- | ---------------------------------------------- |
+| `npm run dev`             | Vite tại `127.0.0.1:5174`                      |
+| `npm run build`           | Tạo `dist/`                                    |
+| `npm run preview`         | Phục vụ build tại `127.0.0.1:4174`             |
+| `npm test`                | Kiểm thử SEO và hai build trong thư mục tạm    |
+| `npm run test:browser`    | Build rồi chạy Chrome kiểm thử ở cổng 4187     |
+| `npm run generate:social` | Tạo ảnh social card bằng Chrome                |
+| `npm run generate:icons`  | Rasterize biểu tượng SVG thành PNG bằng Chrome |
 
 Không cần Chrome trên máy build Cloudflare nếu các ảnh sinh sẵn được đưa vào repository.
 
@@ -151,30 +151,30 @@ Không cần Chrome trên máy build Cloudflare nếu các ảnh sinh sẵn đư
 
 ### 4.1. Sáu route public phải giữ
 
-| URL chuẩn | Mục đích | Lựa chọn form khi mở tư vấn |
-|---|---|---|
-| `/` | Trang chủ, mẫu rút gọn, bảng giá, form | `unsure` mặc định |
-| `/dich-vu/google-automation/` | Chọn giải pháp Google Automation | `automation` |
-| `/dich-vu/google-apps-script/` | Dịch vụ Apps Script, SheetFlow | `apps-script` |
-| `/dich-vu/appsheet/` | Dịch vụ AppSheet | `appsheet` |
-| `/dich-vu/tien-ich-google-sheets/` | Giải thích nhóm tiện ích Sheets | `automation` |
-| `/dich-vu/thiet-ke-website/` | Website, ba gói, thư viện demo | `launch` |
+| URL chuẩn                          | Mục đích                               | Lựa chọn form khi mở tư vấn |
+| ---------------------------------- | -------------------------------------- | --------------------------- |
+| `/`                                | Trang chủ, mẫu rút gọn, bảng giá, form | `unsure` mặc định           |
+| `/dich-vu/google-automation/`      | Chọn giải pháp Google Automation       | `automation`                |
+| `/dich-vu/google-apps-script/`     | Dịch vụ Apps Script, SheetFlow         | `apps-script`               |
+| `/dich-vu/appsheet/`               | Dịch vụ AppSheet                       | `appsheet`                  |
+| `/dich-vu/tien-ich-google-sheets/` | Giải thích nhóm tiện ích Sheets        | `automation`                |
+| `/dich-vu/thiet-ke-website/`       | Website, ba gói, thư viện demo         | `launch`                    |
 
 ### 4.2. Anchor và URL tương thích
 
-| Trang | Anchor/URL cần giữ |
-|---|---|
-| Trang chủ | `#noi-dung`, `#dich-vu`, `#dich-vu-google`, `#dich-vu-website` |
-| Trang chủ | `#giao-dien`, `#bang-gia`, `#bang-gia-google`, `#bang-gia-website` |
-| Trang chủ | `#quy-trinh`, `#cau-hoi`, `#lien-he`, `#quote-form` |
-| Các trang dịch vụ | `#noi-dung`, `#giai-phap`, `#pham-vi`, `#giai-dap`, `#tu-van` |
-| Apps Script / AppSheet / Website | `#trien-khai` |
-| Website và Apps Script | `#mau-giao-dien` |
-| Website | `#goi-launch`, `#goi-business`, `#goi-custom` |
-| Tư vấn từ dịch vụ | `/?plan=<plan>#lien-he` |
-| Tư vấn từ thẻ mẫu dịch vụ | `/?concept=<concept>&plan=<plan>#quote-form` |
-| Tư vấn từ demo ngoài | `<landing-origin>/?concept=<concept>#lien-he` |
-| Link quay về từ demo ngoài | `<landing-origin>/#giao-dien` |
+| Trang                            | Anchor/URL cần giữ                                                 |
+| -------------------------------- | ------------------------------------------------------------------ |
+| Trang chủ                        | `#noi-dung`, `#dich-vu`, `#dich-vu-google`, `#dich-vu-website`     |
+| Trang chủ                        | `#giao-dien`, `#bang-gia`, `#bang-gia-google`, `#bang-gia-website` |
+| Trang chủ                        | `#quy-trinh`, `#cau-hoi`, `#lien-he`, `#quote-form`                |
+| Các trang dịch vụ                | `#noi-dung`, `#giai-phap`, `#pham-vi`, `#giai-dap`, `#tu-van`      |
+| Apps Script / AppSheet / Website | `#trien-khai`                                                      |
+| Website và Apps Script           | `#mau-giao-dien`                                                   |
+| Website                          | `#goi-launch`, `#goi-business`, `#goi-custom`                      |
+| Tư vấn từ dịch vụ                | `/?plan=<plan>#lien-he`                                            |
+| Tư vấn từ thẻ mẫu dịch vụ        | `/?concept=<concept>&plan=<plan>#quote-form`                       |
+| Tư vấn từ demo ngoài             | `<landing-origin>/?concept=<concept>#lien-he`                      |
+| Link quay về từ demo ngoài       | `<landing-origin>/#giao-dien`                                      |
 
 Với link từ demo ngoài, `<landing-origin>` là URL tuyệt đối của landing; production đích là `https://websheet.shop` sau khi cấu hình hoạt động.
 
@@ -216,21 +216,21 @@ Nhận diện nguồn CoreBrisk hiện dùng dòng phụ **DIGITAL STUDIO**, ch�
 
 Nguồn: [base.css](src/styles/base.css).
 
-| Token | Giá trị | Vai trò |
-|---|---|---|
-| Màu chữ mặc định | `#34443c` | Body |
-| `--ink` | `#293e33` | Heading, chữ đậm |
-| `--muted` | `#657469` | Mô tả, thông tin phụ |
-| `--lime` | `#dcebcf` | Nền nút sáng, brand mark |
-| `--accent` | `#527449` | CTA đậm, link, nhấn |
-| `--line` | `#e2e9df` | Border, phân cách |
-| `--paper` | `#fdfefb` | Nền trang |
-| `--surface` | `#f3f7ef` | Nền section/thẻ nhẹ |
-| Focus ring | `#648f25` | Outline 3px, offset mặc định 5px |
-| Nền bảng giá | `#f7f9f3` | Pricing |
-| Nền liên hệ | `#edf5e6` | Contact |
-| Nền Business được đề xuất | `#edf5e5` | Cột giá Website |
-| Nền preview Sheets | `#eaf2e6` | SheetFlow |
+| Token                     | Giá trị   | Vai trò                          |
+| ------------------------- | --------- | -------------------------------- |
+| Màu chữ mặc định          | `#34443c` | Body                             |
+| `--ink`                   | `#293e33` | Heading, chữ đậm                 |
+| `--muted`                 | `#657469` | Mô tả, thông tin phụ             |
+| `--lime`                  | `#dcebcf` | Nền nút sáng, brand mark         |
+| `--accent`                | `#527449` | CTA đậm, link, nhấn              |
+| `--line`                  | `#e2e9df` | Border, phân cách                |
+| `--paper`                 | `#fdfefb` | Nền trang                        |
+| `--surface`               | `#f3f7ef` | Nền section/thẻ nhẹ              |
+| Focus ring                | `#648f25` | Outline 3px, offset mặc định 5px |
+| Nền bảng giá              | `#f7f9f3` | Pricing                          |
+| Nền liên hệ               | `#edf5e6` | Contact                          |
+| Nền Business được đề xuất | `#edf5e5` | Cột giá Website                  |
+| Nền preview Sheets        | `#eaf2e6` | SheetFlow                        |
 
 Các màu minh họa riêng của Aster, An Studio, Orbit nằm trong `showcase.css` và `demo-previews.css`; giữ nguyên.
 
@@ -248,14 +248,14 @@ Các màu minh họa riêng của Aster, An Studio, Orbit nằm trong `showcase.
 
 ### 5.4. Bố cục và responsive
 
-| Mốc | Quy tắc chính |
-|---|---|
-| Mặc định | Container `min(1180px, calc(100% - 96px))`; section padding dọc 104px |
-| `min-width: 1450px` | Hero có khoảng đệm và chiều cao visual rộng hơn |
-| `max-width: 1100px` | Container `calc(100% - 64px)`, giảm gap/size hero |
-| `max-width: 850px` | Hero, nhóm dịch vụ, contact chuyển dọc; section 74px |
-| `max-width: 600px` | Container `calc(100% - 40px)`, menu mobile, thẻ mẫu trang chủ một cột |
-| `max-width: 360px` | Container `calc(100% - 32px)`, thu nhỏ mockup |
+| Mốc                 | Quy tắc chính                                                         |
+| ------------------- | --------------------------------------------------------------------- |
+| Mặc định            | Container `min(1180px, calc(100% - 96px))`; section padding dọc 104px |
+| `min-width: 1450px` | Hero có khoảng đệm và chiều cao visual rộng hơn                       |
+| `max-width: 1100px` | Container `calc(100% - 64px)`, giảm gap/size hero                     |
+| `max-width: 850px`  | Hero, nhóm dịch vụ, contact chuyển dọc; section 74px                  |
+| `max-width: 600px`  | Container `calc(100% - 40px)`, menu mobile, thẻ mẫu trang chủ một cột |
+| `max-width: 360px`  | Container `calc(100% - 32px)`, thu nhỏ mockup                         |
 
 - Hai thẻ mẫu trang chủ: hai cột trên desktop/tablet trên 600px; một cột ở mobile; preview cao 300px.
 - Thư viện website: ba cột trên 1100px, hai cột ở trung gian, một cột mobile.
@@ -364,16 +364,16 @@ Sáu câu hỏi: Apps Script là gì; AppSheet là gì; tiện ích Sheets và e
 
 ### 7.1. Google Sheets / Apps Script / AppSheet
 
-| Thuộc tính | Apps Script | AppSheet |
-|---|---|---|
-| Loại dịch vụ | Lập trình theo yêu cầu | Ứng dụng theo yêu cầu |
-| Giá khởi điểm | 2,9 triệu VNĐ/dự án | 7,9 triệu VNĐ/dự án |
-| Phạm vi cơ bản | 01 quy trình, tối đa 2 file Sheets | 01 app, tối đa 5 bảng dữ liệu và 5 màn hình |
-| Công việc | Làm sạch, đối soát, tổng hợp theo quy tắc | Nhập liệu, danh sách, báo cáo |
-| Chạy/phân quyền | Theo lịch hoặc nút bấm; ghi nhận kết quả/lỗi cơ bản | Tối đa 2 vai trò, 01 luồng thông báo hoặc phê duyệt cơ bản |
-| Tiến độ tham khảo | 3–5 ngày làm việc | 7–12 ngày làm việc |
-| Bàn giao | Mã nguồn, cấu hình, hướng dẫn | Cấu hình, hướng dẫn quản trị |
-| Bảo hành lỗi trong phạm vi | 1 tháng | 1 tháng |
+| Thuộc tính                 | Apps Script                                         | AppSheet                                                   |
+| -------------------------- | --------------------------------------------------- | ---------------------------------------------------------- |
+| Loại dịch vụ               | Lập trình theo yêu cầu                              | Ứng dụng theo yêu cầu                                      |
+| Giá khởi điểm              | 0,9 triệu VNĐ/dự án                                 | 7,9 triệu VNĐ/dự án                                        |
+| Phạm vi cơ bản             | 01 quy trình, tối đa 2 file Sheets                  | 01 app, tối đa 5 bảng dữ liệu và 5 màn hình                |
+| Công việc                  | Làm sạch, đối soát, tổng hợp theo quy tắc           | Nhập liệu, danh sách, báo cáo                              |
+| Chạy/phân quyền            | Theo lịch hoặc nút bấm; ghi nhận kết quả/lỗi cơ bản | Tối đa 2 vai trò, 01 luồng thông báo hoặc phê duyệt cơ bản |
+| Tiến độ tham khảo          | 3–5 ngày làm việc                                   | 7–12 ngày làm việc                                         |
+| Bàn giao                   | Mã nguồn, cấu hình, hướng dẫn                       | Cấu hình, hướng dẫn quản trị                               |
+| Bảo hành lỗi trong phạm vi | 1 tháng                                             | 1 tháng                                                    |
 
 Chưa gồm bản quyền AppSheet/Google Workspace, API, dịch vụ bên thứ ba và thuế nếu áp dụng. Tiến độ tính từ khi chốt yêu cầu và nhận đủ dữ liệu mẫu. Yêu cầu ngoài phạm vi báo giá riêng.
 
@@ -381,15 +381,15 @@ Giữ đoạn phân biệt mẫu sẵn ngay cạnh bảng giá, trên trang dị
 
 ### 7.2. Website
 
-| Thuộc tính | Launch | Business | Custom |
-|---|---|---|---|
-| Giá từ | 6,9 triệu | 14,9 triệu | 29,9 triệu |
-| Loại | Một trang | Website doanh nghiệp | Website/web app theo nghiệp vụ |
-| Quy mô | 01 landing page, tối đa 8 section | Tối đa 10 trang | Theo phạm vi |
-| Quản trị | Trang tĩnh, CMS báo riêng | CMS & blog | Theo yêu cầu |
-| Tiến độ | 5–7 ngày làm việc | 15–20 ngày làm việc | Theo phạm vi dự án |
-| Bảo hành | 3 tháng | 6 tháng | Theo hợp đồng |
-| Demo | Aster S5 | An Studio | Orbit |
+| Thuộc tính | Launch                            | Business             | Custom                         |
+| ---------- | --------------------------------- | -------------------- | ------------------------------ |
+| Giá từ     | 6,9 triệu                         | 14,9 triệu           | 29,9 triệu                     |
+| Loại       | Một trang                         | Website doanh nghiệp | Website/web app theo nghiệp vụ |
+| Quy mô     | 01 landing page, tối đa 8 section | Tối đa 10 trang      | Theo phạm vi                   |
+| Quản trị   | Trang tĩnh, CMS báo riêng         | CMS & blog           | Theo yêu cầu                   |
+| Tiến độ    | 5–7 ngày làm việc                 | 15–20 ngày làm việc  | Theo phạm vi dự án             |
+| Bảo hành   | 3 tháng                           | 6 tháng              | Theo hợp đồng                  |
+| Demo       | Aster S5                          | An Studio            | Orbit                          |
 
 - Launch: nhận diện, responsive, SEO cơ bản, form/Zalo/hotline theo phạm vi, mã nguồn và hướng dẫn.
 - Business: hạng mục Launch, CMS, blog, đo lường theo yêu cầu, hướng dẫn quản trị.
@@ -419,7 +419,7 @@ CTA Liên hệ/Trao đổi nhu cầu/Tạo yêu cầu tư vấn dẫn về trang
 ### 8.3. Google Apps Script
 
 - H1: **Lập trình Google Apps Script. Bớt việc lặp lại mỗi ngày.**
-- Panel **CHI PHÍ THIẾT KẾ THEO YÊU CẦU**, từ 2,9 triệu.
+- Panel **CHI PHÍ THIẾT KẾ THEO YÊU CẦU**, từ 0,9 triệu.
 - Hero có **Xem mẫu giao diện** tới `#mau-giao-dien`.
 - SheetFlow đầy đủ đặt sau hero, trước phần giải thích giải pháp.
 - Ba tình huống: tổng hợp báo cáo, đối soát dữ liệu, nhắc việc theo lịch.
@@ -461,17 +461,17 @@ CTA Liên hệ/Trao đổi nhu cầu/Tạo yêu cầu tư vấn dẫn về trang
 - `SHEETS_DEMO_URL` trống: hiển thị văn bản **Demo đang chuẩn bị**, không có link giả hoặc nút bị vô hiệu hóa giả dạng link.
 - Có URL HTTPS hợp lệ: hiện **Xem demo Sheets**, tab mới, `noopener noreferrer`.
 - CTA **Trao đổi từ mẫu này** → `/?concept=sheetflow&plan=apps-script#quote-form`.
-- Ghi rõ SheetFlow chỉ phục vụ trao đổi yêu cầu; giá 2,9 triệu là thiết kế riêng.
+- Ghi rõ SheetFlow chỉ phục vụ trao đổi yêu cầu; giá 0,9 triệu là thiết kế riêng.
 
 ### 9.2. Hiện trạng ba website demo trong repo Vite cũ
 
 Các đường dẫn dưới đây là hiện trạng của hệ thống cũ, không phải route phải dựng trong Nuxt. Chức năng bên trong demo thuộc project demo riêng.
 
-| Demo | Nguồn hiện tại | Đường dẫn cũ | Chức năng của demo riêng |
-|---|---|---|---|
-| Aster S5 | `demos/aster/site/` | `/demos/aster/` | Phiên bản/màu xe, ảnh đồng bộ, form báo giá/lái thử, dialog, copy/TXT |
-| An Studio | `demos/an-studio/site/` | `/demos/an-studio/` | Bộ lọc nhà ở/nội thất, dialog công trình, menu, nội dung khi tắt JS |
-| Orbit | `demos/orbit/site/` | `/demos/orbit/` | Tổng quan, board/list, tìm kiếm/lọc, tạo/sửa task, dự án/thành viên |
+| Demo      | Nguồn hiện tại          | Đường dẫn cũ        | Chức năng của demo riêng                                              |
+| --------- | ----------------------- | ------------------- | --------------------------------------------------------------------- |
+| Aster S5  | `demos/aster/site/`     | `/demos/aster/`     | Phiên bản/màu xe, ảnh đồng bộ, form báo giá/lái thử, dialog, copy/TXT |
+| An Studio | `demos/an-studio/site/` | `/demos/an-studio/` | Bộ lọc nhà ở/nội thất, dialog công trình, menu, nội dung khi tắt JS   |
+| Orbit     | `demos/orbit/site/`     | `/demos/orbit/`     | Tổng quan, board/list, tìm kiếm/lọc, tạo/sửa task, dự án/thành viên   |
 
 - Aster: Standard 649 triệu, Premium 749 triệu là giá xe giả định trong demo; không liên quan bảng giá WebSheet. Trắng ngọc/Xám graphite thay ảnh. Form tạo phiếu local, không gửi đi.
 - An Studio: ba concept công trình; các nội dung ảnh không đại diện dự án thật đã thực hiện. Khi tắt JS, phần mô tả công trình vẫn đọc được.
@@ -503,36 +503,36 @@ Với URL cũ `/demos/.../` đã được chia sẻ, lập ánh xạ redirect sa
 
 ### 10.1. Trường dữ liệu
 
-| Field / id | Kiểu | Bắt buộc | Giới hạn / mặc định |
-|---|---|---|---|
-| `name` | text, autocomplete name | Có | Trim, ít nhất 1 ký tự, maxlength 100 |
-| `company` | text, autocomplete organization | Không | maxlength 150 |
-| `email` | email, autocomplete email | Có | Native validation, maxlength 150 |
-| `plan` | select | Có giá trị mặc định | `unsure`; chỉ dùng allowlist bên dưới |
-| `budget` | select | Có giá trị mặc định | `Chưa xác định` |
-| `message` | textarea | Có | Trim, 10–3000 ký tự |
+| Field / id | Kiểu                            | Bắt buộc            | Giới hạn / mặc định                   |
+| ---------- | ------------------------------- | ------------------- | ------------------------------------- |
+| `name`     | text, autocomplete name         | Có                  | Trim, ít nhất 1 ký tự, maxlength 100  |
+| `company`  | text, autocomplete organization | Không               | maxlength 150                         |
+| `email`    | email, autocomplete email       | Có                  | Native validation, maxlength 150      |
+| `plan`     | select                          | Có giá trị mặc định | `unsure`; chỉ dùng allowlist bên dưới |
+| `budget`   | select                          | Có giá trị mặc định | `Chưa xác định`                       |
+| `message`  | textarea                        | Có                  | Trim, 10–3000 ký tự                   |
 
 Ngân sách: Chưa xác định; Dưới 10 triệu; 10–20 triệu; 20–50 triệu; Trên 50 triệu.
 
 ### 10.2. Plan và concept
 
-| `plan` | Nhãn hiện tại |
-|---|---|
-| `unsure` | Cần tư vấn thêm |
-| `automation` | Tiện ích Sheets · Apps Script & AppSheet |
-| `website` | Website · Cần tư vấn chọn gói |
-| `launch` | Launch · từ 6,9 triệu |
-| `business` | Business · từ 14,9 triệu |
-| `custom` | Custom · từ 29,9 triệu |
-| `apps-script` | Google Apps Script · từ 2,9 triệu · Theo yêu cầu |
-| `appsheet` | AppSheet · từ 7,9 triệu · Theo yêu cầu |
+| `plan`        | Nhãn hiện tại                                    |
+| ------------- | ------------------------------------------------ |
+| `unsure`      | Cần tư vấn thêm                                  |
+| `automation`  | Tiện ích Sheets · Apps Script & AppSheet         |
+| `website`     | Website · Cần tư vấn chọn gói                    |
+| `launch`      | Launch · từ 6,9 triệu                            |
+| `business`    | Business · từ 14,9 triệu                         |
+| `custom`      | Custom · từ 29,9 triệu                           |
+| `apps-script` | Google Apps Script · từ 0,9 triệu · Theo yêu cầu |
+| `appsheet`    | AppSheet · từ 7,9 triệu · Theo yêu cầu           |
 
-| `concept` | Plan tương ứng | Tên đưa vào mô tả |
-|---|---|---|
-| `aster` | `launch` | Aster S5 — Landing page ô tô |
-| `an-studio` | `business` | An Studio — Kiến trúc & nội thất |
-| `orbit` | `custom` | Orbit — Công nghệ & SaaS |
-| `sheetflow` | `apps-script` | SheetFlow — Quản lý đơn hàng trên Google Sheets |
+| `concept`   | Plan tương ứng | Tên đưa vào mô tả                               |
+| ----------- | -------------- | ----------------------------------------------- |
+| `aster`     | `launch`       | Aster S5 — Landing page ô tô                    |
+| `an-studio` | `business`     | An Studio — Kiến trúc & nội thất                |
+| `orbit`     | `custom`       | Orbit — Công nghệ & SaaS                        |
+| `sheetflow` | `apps-script`  | SheetFlow — Quản lý đơn hàng trên Google Sheets |
 
 Quy tắc hiện tại:
 
@@ -583,12 +583,12 @@ Nguồn duy nhất hiện tại: `src/seo.mjs` (vẫn mang thương hiệu CoreB
 
 ### 11.2. Structured data
 
-| Trang | Schema |
-|---|---|
-| Trang chủ | `ProfessionalService` |
-| Trang chủ có site URL | Thêm đúng một `WebSite` |
-| Dịch vụ | `Service` |
-| Dịch vụ có site URL | Thêm `BreadcrumbList`: Trang chủ → tên dịch vụ |
+| Trang                 | Schema                                         |
+| --------------------- | ---------------------------------------------- |
+| Trang chủ             | `ProfessionalService`                          |
+| Trang chủ có site URL | Thêm đúng một `WebSite`                        |
+| Dịch vụ               | `Service`                                      |
+| Dịch vụ có site URL   | Thêm `BreadcrumbList`: Trang chủ → tên dịch vụ |
 
 - Business: `@id=<siteUrl>#business`, name WebSheet, url, logo ImageObject 512×512, areaServed Việt Nam, knowsAbout các dịch vụ.
 - Website: `@id=<siteUrl>#website`, name WebSheet, alternateName `websheet.shop` khi tên miền này được hiển thị nhất quán trên website, url canonical trang chủ, inLanguage vi-VN, publisher tham chiếu business.
@@ -598,11 +598,11 @@ Nguồn duy nhất hiện tại: `src/seo.mjs` (vẫn mang thương hiệu CoreB
 
 ### 11.3. Hai chế độ build
 
-| Điều kiện | Kết quả |
-|---|---|
-| Không có site URL | `noindex, follow`; không canonical, og:url, ảnh absolute, sitemap; robots vẫn Allow để crawler thấy noindex |
-| Có site URL hợp lệ | `index, follow, max-image-preview:large`; canonical/OG/schema URL và sitemap đồng bộ |
-| Site URL sai định dạng | Fail build; không tự sửa thành hostname giả |
+| Điều kiện              | Kết quả                                                                                                     |
+| ---------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Không có site URL      | `noindex, follow`; không canonical, og:url, ảnh absolute, sitemap; robots vẫn Allow để crawler thấy noindex |
+| Có site URL hợp lệ     | `index, follow, max-image-preview:large`; canonical/OG/schema URL và sitemap đồng bộ                        |
+| Site URL sai định dạng | Fail build; không tự sửa thành hostname giả                                                                 |
 
 Site URL chỉ chấp nhận HTTPS tại root, không username/password, subpath, query hoặc hash. Chuẩn hóa thành origin có dấu `/` cuối.
 
@@ -632,17 +632,17 @@ Việc mua tên miền đã hoàn tất theo xác nhận của người dùng; c
 
 ## 12. Tài nguyên và hiệu năng
 
-| Tài nguyên | Mục đích |
-|---|---|
-| `public/favicon.svg` | Nguồn vector hiện là chữ C của CoreBrisk; cần cập nhật cho WebSheet |
-| `public/favicon.png` | Favicon 192×192 |
-| `public/apple-touch-icon.png` | Apple icon 180×180 |
-| `public/logo.png` | Logo schema 512×512 |
-| `public/social-card.png` | OG/Twitter 1200×630 |
-| `public/aster-preview-480.webp` | Preview responsive nhỏ |
-| `public/aster-preview-960.webp` | Preview responsive lớn |
-| `public/fonts/` | Be Vietnam Pro, 12 WOFF2 và OFL.txt |
-| `demos/*/site/assets/` (repo cũ) | Thuộc các project demo riêng; không copy toàn bộ vào Nuxt |
+| Tài nguyên                       | Mục đích                                                            |
+| -------------------------------- | ------------------------------------------------------------------- |
+| `public/favicon.svg`             | Nguồn vector hiện là chữ C của CoreBrisk; cần cập nhật cho WebSheet |
+| `public/favicon.png`             | Favicon 192×192                                                     |
+| `public/apple-touch-icon.png`    | Apple icon 180×180                                                  |
+| `public/logo.png`                | Logo schema 512×512                                                 |
+| `public/social-card.png`         | OG/Twitter 1200×630                                                 |
+| `public/aster-preview-480.webp`  | Preview responsive nhỏ                                              |
+| `public/aster-preview-960.webp`  | Preview responsive lớn                                              |
+| `public/fonts/`                  | Be Vietnam Pro, 12 WOFF2 và OFL.txt                                 |
+| `demos/*/site/assets/` (repo cũ) | Thuộc các project demo riêng; không copy toàn bộ vào Nuxt           |
 
 - Giữ URL public ổn định; không cần đổi favicon URL ở mỗi build.
 - Aster preview có `srcset`, `sizes`, width/height, lazy loading, decoding async. Không dùng ảnh PNG xe gần 2MB làm preview trên landing.
@@ -718,51 +718,58 @@ Nuxt dùng `app/pages` cho file-based routing; `app.vue` cần render `<NuxtPage
 
 ### 13.2. Mapping trách nhiệm
 
-| Hiện tại | Đích đề xuất |
-|---|---|
-| `index.html` | `pages/index.vue` ghép section components |
-| Năm HTML dịch vụ | Năm pages, chung layout service; giữ section khác nhau |
-| CSS toàn cục | `app/assets/css/main.css` và các file nguồn tương ứng |
-| DOM listeners trong `main.js` | Vue bindings, composable theo trách nhiệm |
-| `seoHead()` trả chuỗi HTML | `useSeoMeta` + `useHead` |
-| `servicePages` + giá lặp ở nhiều HTML | Data modules có type, cùng một nguồn |
-| Placeholder demo | Props/computed URL và conditional rendering |
-| `configureServer()` phục vụ demo | Loại bỏ; mở URL của deployment demo riêng |
-| `generateBundle()` cho demo | Loại bỏ; pipeline Nuxt không build/copy demo |
-| `generateBundle()` robots/sitemap | Generator chạy trong pipeline Nuxt |
-| `dist/` | `.output/public/` cho phương án SSG |
+| Hiện tại                              | Đích đề xuất                                           |
+| ------------------------------------- | ------------------------------------------------------ |
+| `index.html`                          | `pages/index.vue` ghép section components              |
+| Năm HTML dịch vụ                      | Năm pages, chung layout service; giữ section khác nhau |
+| CSS toàn cục                          | `app/assets/css/main.css` và các file nguồn tương ứng  |
+| DOM listeners trong `main.js`         | Vue bindings, composable theo trách nhiệm              |
+| `seoHead()` trả chuỗi HTML            | `useSeoMeta` + `useHead`                               |
+| `servicePages` + giá lặp ở nhiều HTML | Data modules có type, cùng một nguồn                   |
+| Placeholder demo                      | Props/computed URL và conditional rendering            |
+| `configureServer()` phục vụ demo      | Loại bỏ; mở URL của deployment demo riêng              |
+| `generateBundle()` cho demo           | Loại bỏ; pipeline Nuxt không build/copy demo           |
+| `generateBundle()` robots/sitemap     | Generator chạy trong pipeline Nuxt                     |
+| `dist/`                               | `.output/public/` cho phương án SSG                    |
 
 ### 13.3. Dữ liệu nên thống nhất
 
 ```ts
-type PlanId = 'unsure' | 'automation' | 'website' | 'launch'
-  | 'business' | 'custom' | 'apps-script' | 'appsheet'
-type SampleId = 'aster' | 'an-studio' | 'orbit' | 'sheetflow'
+type PlanId =
+    | "unsure"
+    | "automation"
+    | "website"
+    | "launch"
+    | "business"
+    | "custom"
+    | "apps-script"
+    | "appsheet";
+type SampleId = "aster" | "an-studio" | "orbit" | "sheetflow";
 
 type ServicePlan = {
-  id: PlanId
-  name: string
-  category: 'website' | 'google'
-  deliveryModel: 'custom-service'
-  startingPriceVnd: number
-  formLabel: string
-  scope: string[]
-  delivery: string
-  warranty: string
-  features: string[]
-  detailHref: string
-  recommended?: boolean
-}
+    id: PlanId;
+    name: string;
+    category: "website" | "google";
+    deliveryModel: "custom-service";
+    startingPriceVnd: number;
+    formLabel: string;
+    scope: string[];
+    delivery: string;
+    warranty: string;
+    features: string[];
+    detailHref: string;
+    recommended?: boolean;
+};
 
 type Sample = {
-  id: SampleId
-  name: string
-  plan: PlanId
-  role: 'illustration'
-  galleryHref: string
-  demoUrl?: string
-  quoteHref: string
-}
+    id: SampleId;
+    name: string;
+    plan: PlanId;
+    role: "illustration";
+    galleryHref: string;
+    demoUrl?: string;
+    quoteHref: string;
+};
 ```
 
 Hai nhóm `automation`/`website` và `unsure` là lựa chọn tư vấn, không phải gói có giá. Để chúng ở form option registry, không tạo ServicePlan với giá 0. Không đưa object demo vào model sản phẩm bán lẻ. Giá lưu bằng số VNĐ, format tiếng Việt ở view.
@@ -817,15 +824,15 @@ Nuxt lưu ý URL fragment không được gửi lên server; dùng `route.fullPa
 
 ### 15.2. Biến môi trường
 
-| Hiện tại | Đề xuất Nuxt | runtimeConfig.public |
-|---|---|---|
-| `SITE_URL` | `NUXT_PUBLIC_SITE_URL` | `siteUrl` |
-| `VITE_CONTACT_EMAIL` | `NUXT_PUBLIC_CONTACT_EMAIL` | `contactEmail` |
-| `ASTER_DEMO_URL` | `NUXT_PUBLIC_ASTER_DEMO_URL` | `asterDemoUrl` |
-| `AN_STUDIO_DEMO_URL` | `NUXT_PUBLIC_AN_STUDIO_DEMO_URL` | `anStudioDemoUrl` |
-| `ORBIT_DEMO_URL` | `NUXT_PUBLIC_ORBIT_DEMO_URL` | `orbitDemoUrl` |
-| `SHEETS_DEMO_URL` | `NUXT_PUBLIC_SHEETS_DEMO_URL` | `sheetsDemoUrl` |
-| `COREBRISK_URL` trong demo riêng | Giữ cho script demo | Không phải config của app chính |
+| Hiện tại                         | Đề xuất Nuxt                     | runtimeConfig.public            |
+| -------------------------------- | -------------------------------- | ------------------------------- |
+| `SITE_URL`                       | `NUXT_PUBLIC_SITE_URL`           | `siteUrl`                       |
+| `VITE_CONTACT_EMAIL`             | `NUXT_PUBLIC_CONTACT_EMAIL`      | `contactEmail`                  |
+| `ASTER_DEMO_URL`                 | `NUXT_PUBLIC_ASTER_DEMO_URL`     | `asterDemoUrl`                  |
+| `AN_STUDIO_DEMO_URL`             | `NUXT_PUBLIC_AN_STUDIO_DEMO_URL` | `anStudioDemoUrl`               |
+| `ORBIT_DEMO_URL`                 | `NUXT_PUBLIC_ORBIT_DEMO_URL`     | `orbitDemoUrl`                  |
+| `SHEETS_DEMO_URL`                | `NUXT_PUBLIC_SHEETS_DEMO_URL`    | `sheetsDemoUrl`                 |
+| `COREBRISK_URL` trong demo riêng | Giữ cho script demo              | Không phải config của app chính |
 
 Các giá trị trên là public. Không đặt API key/password trong public runtime config. Nuxt expose các key public và dùng tên biến `NUXT_PUBLIC_*` để override. [Tài liệu runtimeConfig](https://nuxt.com/docs/4.x/guide/going-further/runtime-config).
 
@@ -837,33 +844,33 @@ Với static output, cấu hình được chốt ở lúc generate; thay biến 
 
 ```ts
 export default defineNuxtConfig({
-  builder: 'vite', // Ghi rõ lựa chọn builder mặc định của Nuxt
-  ssr: true,
-  css: ['~/assets/css/main.css'],
-  runtimeConfig: {
-    public: {
-      siteUrl: '',
-      contactEmail: '',
-      asterDemoUrl: '',
-      anStudioDemoUrl: '',
-      orbitDemoUrl: '',
-      sheetsDemoUrl: '',
+    builder: "vite", // Ghi rõ lựa chọn builder mặc định của Nuxt
+    ssr: true,
+    css: ["~/assets/css/main.css"],
+    runtimeConfig: {
+        public: {
+            siteUrl: "",
+            contactEmail: "",
+            asterDemoUrl: "",
+            anStudioDemoUrl: "",
+            orbitDemoUrl: "",
+            sheetsDemoUrl: "",
+        },
     },
-  },
-  nitro: {
-    prerender: {
-      crawlLinks: false,
-      routes: [
-        '/',
-        '/dich-vu/google-automation/',
-        '/dich-vu/google-apps-script/',
-        '/dich-vu/appsheet/',
-        '/dich-vu/tien-ich-google-sheets/',
-        '/dich-vu/thiet-ke-website/',
-      ],
+    nitro: {
+        prerender: {
+            crawlLinks: false,
+            routes: [
+                "/",
+                "/dich-vu/google-automation/",
+                "/dich-vu/google-apps-script/",
+                "/dich-vu/appsheet/",
+                "/dich-vu/tien-ich-google-sheets/",
+                "/dich-vu/thiet-ke-website/",
+            ],
+        },
     },
-  },
-})
+});
 ```
 
 Prerender explicit sáu route để không crawl link chọn mẫu có query hoặc nhầm demo thành trang Nuxt. Dùng registry route chung trong implementation thực tế, không duy trì nhiều danh sách lệch nhau.
@@ -913,17 +920,17 @@ Chỉ cân nhắc sau nếu có dữ liệu thay đổi theo request, CMS độn
 
 ### 18.1. Phân bổ kiểm thử từ hệ thống hiện tại
 
-| File | Phạm vi |
-|---|---|
-| `tests/seo.test.mjs` | Normalize URL, hai chế độ build, title/description, schema, sitemap, assets, demo links |
-| `tests/navigation.mjs` | Active section khi scroll/hash, deep link, cuối trang, menu mobile |
-| `tests/ctas.mjs` | Hero, link dịch vụ, touch target, dữ liệu form giữ nguyên, keyboard |
-| `tests/pricing.mjs` | Năm details, bảng ba cột, cuộn mobile, chọn gói, no-JS |
-| `tests/services.mjs` | Năm route dịch vụ, metadata, FAQ, responsive, chọn dịch vụ về form |
-| `tests/browser.mjs` | Giữ form/dialog, validation, copy fallback, TXT, menu và link mẫu; tách kiểm thử nội bộ An Studio sang project demo |
-| `tests/aster.mjs` | Chuyển sang project Aster riêng; Nuxt chỉ kiểm tra URL/CTA/chọn concept |
-| `tests/orbit-app.mjs` | Chuyển sang project Orbit riêng; không chạy CRUD của demo trong CI landing |
-| `tests/browser-helper.mjs` | Chrome/CDP, screenshot, poll |
+| File                       | Phạm vi                                                                                                             |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `tests/seo.test.mjs`       | Normalize URL, hai chế độ build, title/description, schema, sitemap, assets, demo links                             |
+| `tests/navigation.mjs`     | Active section khi scroll/hash, deep link, cuối trang, menu mobile                                                  |
+| `tests/ctas.mjs`           | Hero, link dịch vụ, touch target, dữ liệu form giữ nguyên, keyboard                                                 |
+| `tests/pricing.mjs`        | Năm details, bảng ba cột, cuộn mobile, chọn gói, no-JS                                                              |
+| `tests/services.mjs`       | Năm route dịch vụ, metadata, FAQ, responsive, chọn dịch vụ về form                                                  |
+| `tests/browser.mjs`        | Giữ form/dialog, validation, copy fallback, TXT, menu và link mẫu; tách kiểm thử nội bộ An Studio sang project demo |
+| `tests/aster.mjs`          | Chuyển sang project Aster riêng; Nuxt chỉ kiểm tra URL/CTA/chọn concept                                             |
+| `tests/orbit-app.mjs`      | Chuyển sang project Orbit riêng; không chạy CRUD của demo trong CI landing                                          |
+| `tests/browser-helper.mjs` | Chrome/CDP, screenshot, poll                                                                                        |
 
 Test Nuxt kiểm tra link demo và trạng thái cấu hình bằng dữ liệu kiểm thử, không phụ thuộc HTTP của host demo hoặc chạy ứng dụng demo trong CI landing. Kiểm thử chức năng demo và link quay về thực hiện trong từng project demo.
 
@@ -985,21 +992,21 @@ Các test và các bước trên là tiêu chí cho migration tương lai. Nhữ
 
 ## 20. Điểm đã quyết định và điểm chưa chốt
 
-| Hạng mục | Trạng thái |
-|---|---|
-| Website giới thiệu dịch vụ, form tạo bản yêu cầu local | Hiện trạng cần giữ |
-| Hai mẫu trang chủ; gallery ở service | Đã thống nhất, đã có trong source |
-| Bỏ cột nhãn so sánh và giảm CTA tư vấn | Đã thống nhất, đã có trong source |
-| Giá Sheets là thiết kế riêng; mẫu sẵn giá thấp hơn | Đã thống nhất, đã thể hiện trong source |
-| Thương hiệu WebSheet, tên miền `websheet.shop` | Đã chốt và đã mua tên miền; DNS/HTTPS/triển khai chưa xác nhận, source còn CoreBrisk |
-| Logo/favicon/social card WebSheet | Cần thiết kế/cập nhật khi triển khai; tài sản hiện tại còn nhận diện CoreBrisk |
-| Website tĩnh, chưa có API bán hàng | Phạm vi hiện tại đã xác nhận; `.shop` không bổ sung chức năng thương mại |
-| Nuxt 4 + Vue 3 + Vite + TypeScript + SSG | Đề xuất của tài liệu; chưa cài hoặc migration |
-| Hệ thống mới chỉ nhận URL demo ngoài | Đã chốt; không chứa source demo, không build/copy demo cùng Nuxt |
-| Build/deploy demo độc lập | Đã chốt; URL triển khai thực tế cần cấu hình riêng cho từng demo |
-| Danh mục/bộ lọc/chi tiết sản phẩm số | Ý tưởng tương lai, chưa có route/data |
-| Giá mẫu làm sẵn | Chưa được cung cấp |
-| Backend nhận lead / CMS / thanh toán | Chưa được yêu cầu triển khai |
+| Hạng mục                                               | Trạng thái                                                                           |
+| ------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| Website giới thiệu dịch vụ, form tạo bản yêu cầu local | Hiện trạng cần giữ                                                                   |
+| Hai mẫu trang chủ; gallery ở service                   | Đã thống nhất, đã có trong source                                                    |
+| Bỏ cột nhãn so sánh và giảm CTA tư vấn                 | Đã thống nhất, đã có trong source                                                    |
+| Giá Sheets là thiết kế riêng; mẫu sẵn giá thấp hơn     | Đã thống nhất, đã thể hiện trong source                                              |
+| Thương hiệu WebSheet, tên miền `websheet.shop`         | Đã chốt và đã mua tên miền; DNS/HTTPS/triển khai chưa xác nhận, source còn CoreBrisk |
+| Logo/favicon/social card WebSheet                      | Cần thiết kế/cập nhật khi triển khai; tài sản hiện tại còn nhận diện CoreBrisk       |
+| Website tĩnh, chưa có API bán hàng                     | Phạm vi hiện tại đã xác nhận; `.shop` không bổ sung chức năng thương mại             |
+| Nuxt 4 + Vue 3 + Vite + TypeScript + SSG               | Đề xuất của tài liệu; chưa cài hoặc migration                                        |
+| Hệ thống mới chỉ nhận URL demo ngoài                   | Đã chốt; không chứa source demo, không build/copy demo cùng Nuxt                     |
+| Build/deploy demo độc lập                              | Đã chốt; URL triển khai thực tế cần cấu hình riêng cho từng demo                     |
+| Danh mục/bộ lọc/chi tiết sản phẩm số                   | Ý tưởng tương lai, chưa có route/data                                                |
+| Giá mẫu làm sẵn                                        | Chưa được cung cấp                                                                   |
+| Backend nhận lead / CMS / thanh toán                   | Chưa được yêu cầu triển khai                                                         |
 
 ## 21. Tham chiếu kỹ thuật
 
@@ -1034,7 +1041,7 @@ Metadata đích dựa trên [src/seo.mjs](src/seo.mjs), đã thay tên thương 
 
 - Route: `/dich-vu/google-apps-script/`
 - Title: Lập trình Google Apps Script, tự động hóa Sheets | WebSheet
-- Description: Lập trình Apps Script theo yêu cầu để tự động hóa Google Sheets, báo cáo và nhắc việc. Chi phí thiết kế riêng từ 2,9 triệu/dự án, tùy phạm vi triển khai.
+- Description: Lập trình Apps Script theo yêu cầu để tự động hóa Google Sheets, báo cáo và nhắc việc. Chi phí thiết kế riêng từ 0,9 triệu/dự án, tùy phạm vi triển khai.
 
 ### 22.4. Ứng dụng AppSheet
 

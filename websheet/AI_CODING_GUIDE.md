@@ -15,7 +15,7 @@
 Các quyết định phải giữ:
 
 - Thương hiệu **WebSheet**; mô tả **Thiết kế website & Google Sheets theo yêu cầu.**
-- `websheet.shop` đã mua; DNS/HTTPS/deployment chưa xác nhận. URL production đích là `https://websheet.shop/` khi đã cấu hình hoạt động.
+- Hai môi trường: dev dùng Worker `websheet-dev` trên `workers.dev`, không custom domain, noindex và không sitemap; production dùng Worker `websheet` với `https://websheet.shop/`. Dùng `build:dev`/`deploy:dev` hoặc `build:production`/`deploy:production`. Output tách riêng `.output/dev/public` và `.output/production/public`; script môi trường cố định URL để CI không vô tình bật index cho dev. Xem README cho xác thực Cloudflare, domain và Search Console.
 - Website tĩnh giới thiệu dịch vụ; chưa có API bán hàng, tài khoản, CMS, giỏ hàng, checkout hoặc lưu yêu cầu lên server.
 - Apps Script/AppSheet là dịch vụ thiết kế riêng. Template làm sẵn là hướng tương lai, chưa có giá bán cụ thể.
 - Demo build/deploy riêng. Nuxt chỉ giữ metadata, preview và URL ngoài; không copy hoặc build ứng dụng demo.
@@ -43,8 +43,8 @@ app/
       thiet-ke-website.vue
   components/
     common/                       # BrandMark, BaseButton, SectionHeading
-    navigation/                   # SiteHeader, ServiceHeader, SiteFooter
-    home/                         # HeroSection, ServiceGroups, SampleTeasers
+    navigation/                   # SiteHeader dùng chung, SiteFooter
+    home/                         # HeroSection, ServiceGroups (kèm preview)
     pricing/                      # GooglePricing, WebsiteComparison
     samples/                      # WebsiteGallery, SheetFlowPreview
     services/                     # ServiceHero, ServiceScope, ServiceRelated
@@ -232,13 +232,16 @@ Hero giữ gradient nhẹ hiện có: `linear-gradient(125deg, #fdfefb 20%, #f0f
 | ≥1450px | Hero mở rộng theo CSS desktop hiện tại |
 | ≤1100px | Container `calc(100% - 64px)`; thu gap/size hero |
 | ≤850px | Hero, service groups, contact xếp dọc; section padding dọc 74px |
-| ≤600px | Container `calc(100% - 40px)`; menu mobile, sample teaser một cột |
+| ≤600px | Container `calc(100% - 40px)`; menu mobile, thu padding thẻ dịch vụ |
 | ≤360px | Container `calc(100% - 32px)`; thu mockup |
 
-- Giữ thứ tự section: hero → chọn nhóm → hai mẫu tham khảo → bảng giá → quy trình → FAQ → liên hệ/footer.
-- Homepage có hai sample teaser; gallery đầy đủ nằm ở trang dịch vụ. Không tự thêm carousel.
-- Website gallery: 3 cột trên 1100px, 2 cột ở khoảng giữa, 1 cột mobile. Sample teaser: 2 cột trên 600px, 1 cột mobile, preview cao 300px.
-- Header homepage sticky, min-height 80px, z-index 10; mobile theo source là 73px. Header dịch vụ có layout riêng.
+- Giữ thứ tự section: hero → chọn nhóm kèm preview → bảng giá → quy trình → FAQ → liên hệ/footer. Section được đánh số 01–04; không có section “Một số mẫu tham khảo” riêng.
+- Hai thẻ dịch vụ chứa preview SheetFlow/An Studio; toàn bộ mỗi thẻ là một `NuxtLink`, bấm vào tiêu đề, preview hoặc khoảng trống đều mở dịch vụ tương ứng. Nhãn “Xem giải pháp tự động hóa”/“Xem dịch vụ website” là text trong link, không lồng link/nút khác. Mỗi thẻ có một điểm Tab, hỗ trợ Enter, mở tab mới bằng thao tác trình duyệt và focus rõ. Gallery đầy đủ nằm ở trang dịch vụ. Không tự thêm carousel.
+- Menu trang chủ: Dịch vụ, Bảng giá, Quy trình, Liên hệ. Hero chỉ có CTA “Trao đổi dự án”; giữ `#giao-dien` làm anchor tương thích tại đầu nhóm dịch vụ cho link demo cũ.
+- Website gallery: 3 cột trên 1100px, 2 cột ở khoảng giữa, 1 cột mobile. Thẻ dịch vụ: 2 cột trên 850px, 1 cột bên dưới; preview trong thẻ cao 260px.
+- Hai layout dùng chung `SiteHeader`: Dịch vụ, Bảng giá, Quy trình, Liên hệ; sticky, min-height 80px, z-index 10, mobile 73px. Trên dịch vụ, menu dẫn về anchor trang chủ và đánh dấu Dịch vụ; trên homepage đánh dấu section đang xem. Layout service chỉ giữ wrapper nội dung và footer gọn.
+- Landing giữ quy trình, FAQ và liên hệ chung. Trang dịch vụ tập trung vào tình huống sử dụng, phạm vi/giới hạn, demo và FAQ chuyên biệt; không dựng lại quy trình chung hoặc CTA tư vấn trong hero.
+- Google Automation so sánh hai giải pháp; Tiện ích Sheets giải thích menu/nút/thanh bên. Website có đúng một khu vực gói giá; gallery chỉ ghi tên gói. Apps Script/AppSheet giữ panel giá thiết kế riêng trong hero. Một khối trao đổi ngắn cuối mỗi trang chọn sẵn dịch vụ; CTA chọn gói/mẫu vẫn giữ đúng ngữ cảnh.
 - Bảng giá Website có ba cột, mobile min-width 624px trong wrapper cuộn. Không đưa lại cột `.comparison-label`, không sticky cột Launch.
 - Dùng grid/flex, `min-width: 0` khi cần để nội dung co lại. Không dùng `overflow-x: hidden` toàn trang để che lỗi layout.
 - Khoảng cách chung hiện có: gap hero 38px, header 24px, action hero 24px. Khi thêm chi tiết nhỏ, ưu tiên thang 4/8/12/16/24/32px; không ép đổi các khoảng cách nguồn chỉ để khớp thang này.
@@ -255,7 +258,7 @@ Hero giữ gradient nhẹ hiện có: `linear-gradient(125deg, #fdfefb 20%, #f0f
 - Hover nâng 1px, transition 0.2s; giữ trạng thái focus rõ ràng. Tôn trọng reduced motion.
 - Hero mobile: CTA chính full-width, min-height 52px; nút menu 44×44px, mục tiêu tương tác chính ít nhất 44px.
 - Dùng link cho điều hướng; button cho thao tác. Nút phụ trong form đặt `type="button"`.
-- CTA theo vai trò: “Trao đổi dự án”, “Khám phá dịch vụ”, “Chọn gói này”, “Trao đổi yêu cầu”, “Xem demo”. Không lặp nhiều CTA “Tư vấn miễn phí”.
+- CTA theo vai trò: “Trao đổi dự án”, “Xem giải pháp tự động hóa”, “Xem dịch vụ website”, “Chọn gói này”, “Trao đổi yêu cầu”, “Xem demo”. Không lặp nhiều CTA “Tư vấn miễn phí” hoặc “Khám phá dịch vụ”.
 
 ### Card, form và overlay
 
@@ -267,6 +270,8 @@ Hero giữ gradient nhẹ hiện có: `linear-gradient(125deg, #fdfefb 20%, #f0f
 - Icon nhất quán theo SVG/CSS hiện có; icon trang trí `aria-hidden`. Không dùng emoji thay hệ icon hoặc tải thêm cả thư viện cho vài biểu tượng.
 
 ### Tổ chức CSS
+
+Hiệu ứng xuất hiện khi cuộn dùng directive `v-reveal` trong `app/plugins/reveal.ts` và CSS `app/assets/css/reveal.css`. Dùng trên phần tử HTML gốc của block; không gắn đồng thời vào cả block cha và các phần tử con. `v-reveal="80"` đặt độ trễ 80ms (tối đa 180ms) cho card cạnh nhau. Một Intersection Observer dùng chung, ngừng theo dõi sau khi hiện và dọn phần tử khi unmount. Nội dung đầu màn hình hiện ngay; block phía dưới fade/slide 16px trong 900ms, chỉ một lần mỗi lần mount. Không thêm thư viện animation hoặc listener scroll để tạo hiệu ứng này. HTML prerender/no-JS và trình duyệt thiếu Intersection Observer vẫn hiện nội dung; reduced motion, focus bàn phím và bản in phải hiển thị đầy đủ, không có chuyển động. Không dùng directive cho header sticky, dialog hoặc từng ô bảng.
 
 1. `fonts → tokens → base`.
 2. Các section theo thứ tự hiện tại: header, hero, services, showcase, pricing, process, faq, contact, footer, dialog.

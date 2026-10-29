@@ -1,10 +1,11 @@
 <script setup lang="ts">
+import { emailLink } from '~~/shared/contact'
 const props = defineProps<{ summary: string, name: string }>()
 const dialog = ref<HTMLDialogElement | null>(null)
 const textarea = ref<HTMLTextAreaElement | null>(null)
 const status = ref('')
 const email = useRuntimeConfig().public.contactEmail.trim()
-const emailHref = computed(() => /^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]+$/.test(email) ? `mailto:${encodeURIComponent(email)}?subject=${encodeURIComponent('Yêu cầu tư vấn dự án — ' + props.name.trim())}&body=${encodeURIComponent(props.summary)}` : '')
+const emailHref = computed(() => emailLink(email) ? `${emailLink(email)}?subject=${encodeURIComponent('Yêu cầu tư vấn dự án — ' + props.name.trim())}&body=${encodeURIComponent(props.summary)}` : '')
 const downloads = new Map<string, ReturnType<typeof setTimeout>>()
 function open() { status.value = ''; dialog.value?.showModal() }
 defineExpose({ open })

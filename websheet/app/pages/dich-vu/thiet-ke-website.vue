@@ -6,11 +6,11 @@ useSiteSeo(serviceMeta.find(page => page.path === '/dich-vu/thiet-ke-website/')!
 definePageMeta({ layout: 'service' })
 </script>
 <template>
-  <main id="noi-dung">
-    <ServiceHero :service="service" />
-    <WebsiteGallery />
-    <ThietKeWebsiteContent />
-    <ServiceFaq :items="service.faqs" />
-    <ServiceClosing :service="service" />
-  </main>
+    <main id="noi-dung">
+        <ServiceHero :service="service" />
+        <WebsiteGallery />
+        <ThietKeWebsiteContent />
+        <ServiceFaq :items="service.faqs" />
+        <ServiceClosing :service="service" />
+    </main>
 </template>

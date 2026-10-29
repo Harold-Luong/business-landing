@@ -1,9 +1,35 @@
 {
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "websheet",
-  "compatibility_date": "2026-10-28",
-  "assets": {
-    "directory": "./.output/public",
-    "not_found_handling": "404-page"
-  }
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "name": "websheet",
+    "compatibility_date": "2026-10-28",
+    // Always select --env dev or --env production; the top level has no deployable assets.
+    "workers_dev": false,
+    "preview_urls": false,
+    "env": {
+        "dev": {
+            "name": "websheet-dev",
+            "workers_dev": true,
+            "preview_urls": false,
+            "routes": [],
+            "assets": {
+                "directory": "./.output/dev/public",
+                "not_found_handling": "404-page"
+            }
+        },
+        "production": {
+            "name": "websheet-pro",
+            "workers_dev": false,
+            "preview_urls": false,
+            "routes": [
+                {
+                    "pattern": "websheet.shop",
+                    "custom_domain": true
+                }
+            ],
+            "assets": {
+                "directory": "./.output/production/public",
+                "not_found_handling": "404-page"
+            }
+        }
+    }
 }

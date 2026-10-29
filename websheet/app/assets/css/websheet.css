@@ -14,7 +14,6 @@
 .brand-sub { letter-spacing: 1.3px; }
 .demo-pending { display: inline-block; color: var(--muted); font-size: 12px; padding-block: 12px; }
 .work-card > a { display: block; }
-.sample-preview-link { display: block; }
 .error-page { min-height: 85vh; display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
 .error-page h1 { font-size: clamp(32px, 5vw, 54px); font-weight: 400; }
 .service-detail .detail-hero-grid > *, .service-detail .detail-card-grid > * { min-width: 0; }

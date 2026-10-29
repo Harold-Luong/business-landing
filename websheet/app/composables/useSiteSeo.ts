@@ -1,9 +1,11 @@
 import { homeMeta } from '~~/shared/site'
 import { validateUrl } from '~~/shared/config'
+import { contactDetails, emailLink } from '~~/shared/contact'
 
 type PageMeta = { path: string, name: string, title: string, description: string }
 export function useSiteSeo(page?: PageMeta) {
   const siteUrl = validateUrl(useRuntimeConfig().public.siteUrl, 'siteUrl', true)
+  const email = useRuntimeConfig().public.contactEmail.trim()
   const title = page?.title || homeMeta.title
   const description = page?.description || homeMeta.description
   const canonical = siteUrl ? new URL(page?.path || '/', siteUrl).href : ''
@@ -25,6 +27,8 @@ export function useSiteSeo(page?: PageMeta) {
     ...(canonical ? { url: canonical } : {}),
   } : {
     '@context': 'https://schema.org', '@type': 'ProfessionalService', name: 'WebSheet', description,
+    telephone: contactDetails.hotline.number,
+    ...(emailLink(email) ? { email } : {}),
     areaServed: { '@type': 'Country', name: 'Việt Nam' },
     knowsAbout: ['Thiết kế website', 'Google Apps Script', 'AppSheet', 'Tiện ích Google Sheets'],
     ...(siteUrl ? { '@id': `${siteUrl}#business`, url: siteUrl, logo: { '@type': 'ImageObject', url: `${siteUrl}logo.png`, width: 512, height: 512 } } : {}),

@@ -8,26 +8,7 @@ export const services = {
       "Chọn giải pháp.",
       "Bớt việc thủ công."
     ],
-    "lead": "Bạn muốn tự động xử lý bảng tính, có ứng dụng cho nhân viên nhập liệu hay thêm nút thao tác ngay trong Sheets? Bắt đầu từ cách nhóm đang làm việc để chọn Apps Script hoặc AppSheet phù hợp trong nhóm tiện ích Google Sheets.",
-    "estimate": {
-      "label": "CHƯA BIẾT CHỌN GIẢI PHÁP NÀO?",
-      "facts": [
-        {
-          "label": "Đầu vào",
-          "value": "Bảng dữ liệu mẫu và các bước đang làm"
-        },
-        {
-          "label": "Mong muốn",
-          "value": "Kết quả, số người dùng và tần suất xử lý"
-        }
-      ],
-      "note": "Có thể dùng dữ liệu giả hoặc đã ẩn thông tin riêng tư. Phạm vi và chi phí được xác nhận trước khi triển khai.",
-      "pricePlan": null,
-      "heading": [
-        "Mô tả công việc",
-        "bạn muốn rút gọn."
-      ]
-    },
+    "lead": "So sánh hai hướng triển khai: Apps Script xử lý dữ liệu ngay trong bảng tính; AppSheet tạo giao diện nhập liệu và quản lý cho nhóm.",
     "gallery": false,
     "faqs": [
       {
@@ -71,8 +52,8 @@ export const services = {
         ]
       }
     ],
-    "ctaTitle": "Bắt đầu từ công việc bạn đang làm.",
-    "ctaText": "Chia sẻ quy trình và kết quả mong muốn để cùng chọn giải pháp phù hợp.",
+    "ctaTitle": "Cần chọn Apps Script hay AppSheet?",
+    "ctaText": "Mô tả công việc đang làm, số người sử dụng và kết quả cần nhận.",
     "related": [
       {
         "label": "Khám phá dịch vụ Website",
@@ -127,16 +108,6 @@ export const services = {
         ]
       },
       {
-        "question": "Tôi cần chuẩn bị gì để nhận báo giá?",
-        "paragraphs": [
-          [
-            {
-              "text": "Một bảng dữ liệu mẫu đã ẩn thông tin riêng tư, mô tả thao tác hiện tại, số file và tần suất xử lý. Chưa cần cung cấp quyền truy cập dữ liệu thật ở bước trao đổi ban đầu."
-            }
-          ]
-        ]
-      },
-      {
         "question": "Giá này là thiết kế riêng hay mua mẫu có sẵn?",
         "paragraphs": [
           [
@@ -147,8 +118,8 @@ export const services = {
         ]
       }
     ],
-    "ctaTitle": "Bắt đầu từ nhu cầu thực tế.",
-    "ctaText": "Mô tả công việc và kết quả bạn mong muốn để trao đổi về phạm vi, thời gian và chi phí.",
+    "ctaTitle": "Trao đổi về quy trình cần tự động hóa",
+    "ctaText": "Chuẩn bị bảng mẫu đã ẩn thông tin riêng tư, quy tắc xử lý và tần suất chạy mong muốn.",
     "related": [
       {
         "label": "Ứng dụng AppSheet",
@@ -231,8 +202,8 @@ export const services = {
         ]
       }
     ],
-    "ctaTitle": "Bắt đầu từ nhu cầu thực tế.",
-    "ctaText": "Mô tả công việc và kết quả bạn mong muốn để trao đổi về phạm vi, thời gian và chi phí.",
+    "ctaTitle": "Trao đổi về ứng dụng nội bộ",
+    "ctaText": "Cho biết các bảng dữ liệu, màn hình cần dùng và quyền thao tác của từng nhóm người dùng.",
     "related": [
       {
         "label": "Google Apps Script",
@@ -257,25 +228,6 @@ export const services = {
       "Apps Script & AppSheet."
     ],
     "lead": "Tại WebSheet, tiện ích Sheets là tên gọi chung cho các giải pháp tự động hóa và quản lý công việc bằng Apps Script hoặc AppSheet. Bạn chọn theo nhu cầu sử dụng; đây không phải một gói báo giá riêng.",
-    "estimate": {
-      "label": "HAI HƯỚNG TRIỂN KHAI",
-      "facts": [
-        {
-          "label": "Tự động xử lý bảng tính",
-          "value": "Apps Script"
-        },
-        {
-          "label": "Ứng dụng nhập liệu và quản lý",
-          "value": "AppSheet"
-        }
-      ],
-      "note": "Chi phí dành cho thiết kế và triển khai theo yêu cầu riêng, không phải giá mua mẫu làm sẵn. Báo giá dựa trên giải pháp và phạm vi đã thống nhất.",
-      "pricePlan": null,
-      "heading": [
-        "Apps Script",
-        "hay AppSheet?"
-      ]
-    },
     "gallery": false,
     "faqs": [
       {
@@ -319,8 +271,8 @@ export const services = {
         ]
       }
     ],
-    "ctaTitle": "Bắt đầu từ nhu cầu thực tế.",
-    "ctaText": "Mô tả công việc và kết quả bạn mong muốn để trao đổi về phạm vi, thời gian và chi phí.",
+    "ctaTitle": "Bạn muốn rút gọn thao tác nào trong Sheets?",
+    "ctaText": "Mô tả thao tác hiện tại và kết quả mong muốn; chưa cần cấp quyền truy cập dữ liệu thật.",
     "related": [
       {
         "label": "Google Apps Script",
@@ -344,22 +296,7 @@ export const services = {
       "Thiết kế website doanh nghiệp.",
       "Rõ nội dung, đúng nhu cầu."
     ],
-    "lead": "Giới thiệu dịch vụ, nhận yêu cầu tư vấn hoặc xây công cụ phục vụ khách hàng. WebSheet thiết kế và lập trình website theo nhận diện và phạm vi đã thống nhất, với bố cục cho điện thoại, tablet và desktop.",
-    "estimate": {
-      "label": "CHI PHÍ TRIỂN KHAI THAM KHẢO",
-      "facts": [
-        {
-          "label": "Thời gian dự kiến",
-          "value": "Từ 5–7 ngày với gói Launch"
-        },
-        {
-          "label": "Bàn giao",
-          "value": "Mã nguồn & hướng dẫn sử dụng"
-        }
-      ],
-      "note": "Chi phí chính thức được xác nhận sau khi trao đổi yêu cầu. Phí bản quyền và dịch vụ bên thứ ba tính riêng.",
-      "pricePlan": "launch"
-    },
+    "lead": "Chọn landing page, website có quản trị nội dung hoặc web app theo nghiệp vụ. Xem các concept giao diện và phạm vi Launch, Business, Custom bên dưới.",
     "gallery": true,
     "faqs": [
       {
@@ -391,30 +328,10 @@ export const services = {
             }
           ]
         ]
-      },
-      {
-        "question": "Tôi cần chuẩn bị gì trước khi làm website?",
-        "paragraphs": [
-          [
-            {
-              "text": "Bạn có thể bắt đầu với mục tiêu kinh doanh, dịch vụ chính, bộ nhận diện nếu có và một vài website yêu thích. Sau buổi trao đổi, WebSheet sẽ gửi danh sách nội dung cần chuẩn bị. Viết nội dung hoặc chụp ảnh có thể được báo giá riêng."
-            }
-          ]
-        ]
-      },
-      {
-        "question": "Sau bàn giao, website được hỗ trợ như thế nào?",
-        "paragraphs": [
-          [
-            {
-              "text": "Lỗi thuộc phạm vi triển khai được xử lý trong thời gian bảo hành của gói. Các yêu cầu cập nhật nội dung, bổ sung tính năng hoặc bảo trì sau bảo hành được thống nhất bằng gói hỗ trợ hoặc báo giá riêng."
-            }
-          ]
-        ]
       }
     ],
-    "ctaTitle": "Bắt đầu từ nhu cầu thực tế.",
-    "ctaText": "Mô tả công việc và kết quả bạn mong muốn để trao đổi về phạm vi, thời gian và chi phí.",
+    "ctaTitle": "Trao đổi về website bạn cần",
+    "ctaText": "Chia sẻ mục tiêu website, nội dung dự kiến và tính năng cần có để xác định gói phù hợp.",
     "related": [
       {
         "label": "Google Apps Script",

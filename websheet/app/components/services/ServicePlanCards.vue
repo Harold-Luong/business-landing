@@ -3,7 +3,7 @@ import { websitePlans, priceMillions } from '~/data/plans'
 </script>
 <template>
   <div class="detail-card-grid">
-    <article v-for="plan in websitePlans" :id="`goi-${plan.id}`" :key="plan.id" class="detail-card">
+    <article v-for="(plan, index) in websitePlans" v-reveal="index * 80" :id="`goi-${plan.id}`" :key="plan.id" class="detail-card">
       <h3>{{ plan.name }} · từ {{ priceMillions(plan.startingPriceVnd) }} triệu</h3>
       <p>Tiến độ: {{ plan.delivery }}.</p>
       <ul class="detail-package-features"><li v-for="feature in plan.features" :key="feature">{{ feature }}</li></ul>
