@@ -4,9 +4,8 @@ import { poll } from './browser-helper.mjs'
 export async function testCtas({ send, evaluate, screenshot }) {
   const primary = '.hero-actions .button'
   const secondary = '.hero-actions .text-link'
-  const groups = ['automation', 'website']
   const label = (selector) => evaluate(`document.querySelector('${selector}').childNodes[0].textContent.trim()`)
-  assert.equal(await label(primary), 'Nhận tư vấn miễn phí')
+  assert.equal(await label(primary), 'Trao đổi dự án')
   assert.equal(await label(secondary), 'Xem dự án mẫu')
   assert.deepEqual(await evaluate(`[...document.querySelectorAll('.service-family .service-detail-link')].map(a => a.pathname)`), ['/dich-vu/google-automation/', '/dich-vu/thiet-ke-website/'])
   await evaluate(`document.documentElement.style.scrollBehavior = 'auto'`)
@@ -22,7 +21,7 @@ export async function testCtas({ send, evaluate, screenshot }) {
       assert(paths[0].bottom <= paths[1].top, 'Service groups must stack without overlap on mobile/tablet')
     }
     assert.equal(await evaluate(`[...document.querySelectorAll('.service-detail-link')].every(a => a.getBoundingClientRect().height >= 44)`), true)
-    const bounds = await evaluate(`[...document.querySelectorAll('.hero-actions a, .service-group-cta a')].map(el => {
+    const bounds = await evaluate(`[...document.querySelectorAll('.hero-actions a, .service-detail-link')].map(el => {
       const { left, right, height } = el.getBoundingClientRect(); return { left, right, height };
     })`)
     assert.equal(bounds.length, 4)
@@ -34,15 +33,10 @@ export async function testCtas({ send, evaluate, screenshot }) {
       assert.equal(await evaluate(`document.querySelector('${primary}').getBoundingClientRect().bottom < innerHeight`), true)
       assert.equal(await evaluate(`document.querySelector('${primary}').getBoundingClientRect().width === document.querySelector('.hero-actions').getBoundingClientRect().width`), true)
     }
-    for (const group of groups) {
-      await evaluate(`document.querySelector('.service-group-cta [data-select-plan="${group}"]').click()`)
-      await poll(() => evaluate(`location.hash === '#quote-form' && document.querySelector('#plan').value === '${group}'`))
-      assert.equal(await evaluate(`document.querySelector('#quote-form').getBoundingClientRect().top < innerHeight / 2`), true)
-    }
   }
   await evaluate(`document.querySelector('#name').value = 'Khách tư vấn'; document.querySelector('#email').value = 'khach@example.test'; document.querySelector('#message').value = 'Tôi muốn trao đổi nhu cầu của nhóm.'`)
-  for (const [group, text] of [['automation', 'Tự động hóa · Google Sheets & AppSheet'], ['website', 'Website · Cần tư vấn chọn gói']]) {
-    await evaluate(`document.querySelector('.service-group-cta [data-select-plan="${group}"]').click(); document.querySelector('#quote-form button[type="submit"]').click()`)
+  for (const [group, text] of [['automation', 'Tiện ích Sheets · Apps Script & AppSheet'], ['website', 'Website · Cần tư vấn chọn gói']]) {
+    await evaluate(`document.querySelector('#plan').value = '${group}'; document.querySelector('${primary}').click(); document.querySelector('#quote-form button[type="submit"]').click()`)
     assert.equal(await evaluate(`document.querySelector('#quote-dialog').open`), true)
     assert.equal(await evaluate(`document.querySelector('#quote-summary').value.includes(${JSON.stringify(text)})`), true)
     assert.equal(await evaluate(`document.querySelector('#message').value`), 'Tôi muốn trao đổi nhu cầu của nhóm.')
@@ -65,5 +59,5 @@ export async function testCtas({ send, evaluate, screenshot }) {
   await evaluate(`document.querySelector('#dich-vu').scrollIntoView({ behavior:'instant' })`)
   await screenshot('/tmp/corebrisk-service-groups-desktop.png')
   await evaluate('window.scrollTo(0,0)')
-  console.log('PASS: Hero and group CTAs, mobile touch targets, service preselection, preserved input, summary content and keyboard navigation.')
+  console.log('PASS: Hero CTA and service links, mobile touch targets, preserved input, summary content and keyboard navigation.')
 }

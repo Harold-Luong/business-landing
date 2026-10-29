@@ -308,3 +308,18 @@
         flex-wrap: wrap;
     }
 }
+
+.service-samples {
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: 24px;
+}
+.detail-intro-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px 24px;
+}
+.detail-intro-actions .text-link {
+    min-height: 44px;
+    font-size: 13px;
+}

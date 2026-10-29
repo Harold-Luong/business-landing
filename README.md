@@ -1,8 +1,12 @@
 # CoreBrisk — Google Sheets, AppSheet & thiết kế website
 
+Đặc tả UI, nội dung, hành vi, SEO và kế hoạch chuyển sang Nuxt/Vue 3: [NUXT_VUE3_DESIGN.md](NUXT_VUE3_DESIGN.md). Đây là tài liệu chuẩn bị migration; mã nguồn hiện tại vẫn dùng Vite. Thương hiệu đích đã chốt là **WebSheet**, tên miền **websheet.shop** đã mua theo xác nhận của người dùng (DNS/HTTPS và triển khai chưa xác nhận); mã nguồn hiện còn tên CoreBrisk. Phạm vi vẫn là website tĩnh giới thiệu dịch vụ, chưa có API bán hàng.
+
 Project **độc lập** dùng Vite + HTML + CSS + JavaScript. Có `package.json`, lockfile và quy trình build riêng; có thể chuyển cả thư mục này sang repository khác. Không cần Vue hoặc các file của project cha.
 
 Nội dung chính được viết sẵn trong HTML, có thể đọc khi tắt JavaScript. JavaScript bổ sung menu di động và tiện ích tạo yêu cầu tư vấn. Project demo An Studio có thêm bộ lọc và xem chi tiết công trình. Orbit mở trực tiếp ứng dụng quản lý công việc với tổng quan, dự án và thành viên. Không có backend, CMS hay dịch vụ gửi email trong project này.
+
+Hướng dẫn cho AI triển khai hệ thống mới: [AI_CODING_GUIDE.md](AI_CODING_GUIDE.md), gồm cấu trúc thư mục, quy tắc code, màu sắc, font, responsive và checklist kiểm tra.
 
 ## Chạy local
 
@@ -65,21 +69,27 @@ Hosting cần phục vụ các thư mục con bằng `index.html` tương ứng,
 
 ## Báo giá Google Sheets & ứng dụng nội bộ
 
-Nhóm báo giá tại `/#bang-gia-google` gồm Google Apps Script (từ 2,9 triệu), AppSheet (từ 7,9 triệu) và tiện ích Google Sheets dùng nội bộ (từ 3,9 triệu/dự án). Đây là giá tham khảo cho phạm vi cơ bản ghi trên từng thẻ; chi phí bản quyền, dịch vụ bên thứ ba và yêu cầu mở rộng được tách riêng.
+Nhóm báo giá tại `/#bang-gia-google` gồm Google Apps Script (từ 2,9 triệu/dự án) và AppSheet (từ 7,9 triệu/dự án). Đây là chi phí thiết kế và triển khai theo yêu cầu riêng của khách hàng, không phải giá mua mẫu làm sẵn. Mẫu làm sẵn có giá thấp hơn và sẽ có bảng giá riêng theo từng sản phẩm. Demo hiện tại chỉ minh họa giao diện. Chi phí bản quyền, dịch vụ bên thứ ba và yêu cầu mở rộng được tách riêng.
 
 Nút tư vấn chọn sẵn dịch vụ trong form. Bản yêu cầu dùng tiêu đề chung cho dự án và tải xuống dưới tên `yeu-cau-tu-van-du-an.txt`. Khi đổi giá, cập nhật bảng giá và option trong `index.html`, các trang `dich-vu/*/index.html` (gồm trang tổng quan Google Automation), metadata trong `src/seo.mjs` và kỳ vọng tương ứng trong `tests/browser.mjs`.
 
 ## Bảng giá và so sánh gói
 
+Trang chủ giữ hai thẻ **Một số mẫu tham khảo**, dẫn đến `/dich-vu/thiet-ke-website/#mau-giao-dien` (Aster, An Studio, Orbit) và `/dich-vu/google-apps-script/#mau-giao-dien` (SheetFlow). Các nút chọn mẫu trên trang dịch vụ quay về form trang chủ qua query `concept` và `plan`.
+
+Trang Google Apps Script có khung Google Sheets **SheetFlow** với bảng đơn hàng và số liệu minh họa bằng HTML/CSS. Đây là preview tĩnh, chưa kết nối Google Sheets. Đặt `SHEETS_DEMO_URL` thành URL HTTPS của demo bên ngoài rồi build lại để hiện nút **Xem demo Sheets**; để trống sẽ hiện **Demo đang chuẩn bị**. Nút **Trao đổi từ mẫu này** chọn Apps Script và điền tên mẫu vào form; phần ghi chú giải thích rõ đây là minh họa dịch vụ thiết kế riêng.
+
 Hai nhóm **Google Automation** và **Website & web app** có liên kết chuyển nhanh ngay đầu bảng giá; Google Automation vẫn đứng trước. Thẻ Automation mặc định chỉ hiện giá, phạm vi chính, tiến độ và CTA. Bảng Website so sánh Launch / Business / Custom theo phạm vi, CMS, tiến độ và bảo hành, làm nổi bật cột Business được đề xuất.
 
 Mỗi gói có **Xem chi tiết** bằng `details/summary` để mở/đóng tính năng ngay tại chỗ, dùng được bằng bàn phím và khi tắt JavaScript. CTA chọn sẵn gói rồi dẫn đến `#quote-form`. Nội dung tính năng trong phần mở rộng cần đồng bộ với trang dịch vụ khi thay đổi phạm vi.
 
-Trên mobile, bảng Website cuộn ngang bên trong khung, giữ cố định cột tiêu chí và chừa khoảng cuộn để nút đang được focus không bị che. Bảng có hướng dẫn cuộn, tiêu đề hàng/cột và tên vùng cho trình đọc màn hình. CSS bảng giá cùng breakpoint nằm trong `src/styles/pricing.css`. `tests/pricing.mjs` kiểm tra mở/đóng chi tiết, bàn phím, chế độ không JavaScript, cuộn mobile và chọn gói ở sáu độ rộng.
+Bảng Website gồm ba cột Launch, Business và Custom; tên tiêu chí nằm trong từng ô. Trên mobile, bảng cuộn ngang bên trong khung. Bảng có hướng dẫn cuộn, tiêu đề cột và tên vùng cho trình đọc màn hình. CSS bảng giá cùng breakpoint nằm trong `src/styles/pricing.css`. `tests/pricing.mjs` kiểm tra mở/đóng chi tiết, bàn phím, chế độ không JavaScript, cuộn mobile và chọn gói ở sáu độ rộng.
+
+> **Kiến trúc hệ thống Nuxt mới đã chốt:** chỉ nhận URL demo ngoài, không chứa mã demo hoặc build/copy demo cùng landing. Các hướng dẫn đóng kèm bên dưới mô tả project Vite hiện tại. Xem mục 9.3 trong [tài liệu thiết kế](NUXT_VUE3_DESIGN.md#93-quyết-định-đích-chỉ-nhận-url-demo-ngoài).
 
 ## Demo An Studio
 
-Mã nguồn project riêng tại [`demos/an-studio/`](demos/an-studio/README.md). Khi chạy `npm run dev`, mở **http://localhost:5174/demos/an-studio/** hoặc bấm **Xem demo** trên thẻ An Studio. Nút **Chọn mẫu này** vẫn có trên landing page.
+Mã nguồn project riêng tại [`demos/an-studio/`](demos/an-studio/README.md). Khi chạy `npm run dev`, mở **http://localhost:5174/demos/an-studio/** hoặc bấm **Xem demo** trên thẻ An Studio. Nút **Chọn mẫu này** nằm trên trang dịch vụ Thiết kế website và dẫn về form trang chủ.
 
 `npm run build` tự đóng kèm demo vào `dist/demos/an-studio/`; deploy toàn bộ `dist/` để link hoạt động. Demo luôn `noindex` và không có trong sitemap của CoreBrisk.
 
@@ -129,7 +139,7 @@ Giá trị trên chỉ là ví dụ. `.env` không được commit. Thông tin b
 
 ### Hành vi form tư vấn
 
-CTA chính ở Hero là **Nhận tư vấn miễn phí**, dẫn thẳng tới `#quote-form`; CTA phụ **Xem dự án mẫu** dẫn tới `#giao-dien`. Cuối hai nhóm dịch vụ có CTA tư vấn miễn phí chọn sẵn `automation` hoặc `website` trong form. Đây là lựa chọn nhóm nhu cầu, độc lập với các gói chi tiết. CTA Hero giữ dịch vụ đã chọn và dữ liệu đã nhập. Trên mobile, nút chính toàn chiều ngang, cao tối thiểu 52px; CTA phụ có vùng bấm tối thiểu 44px.
+CTA chính ở Hero là **Trao đổi dự án**, dẫn thẳng tới `#quote-form`; CTA phụ **Xem dự án mẫu** dẫn tới `#giao-dien`. Hai nhóm dịch vụ chỉ giữ liên kết **Khám phá dịch vụ**. Các mẫu có liên kết **Chọn mẫu này**, bảng giá website có nút **Chọn gói này**, còn Apps Script/AppSheet dùng **Trao đổi yêu cầu** để điền sẵn dịch vụ trong form. Header dùng **Liên hệ**; thông tin tư vấn ban đầu miễn phí chỉ xuất hiện dưới CTA Hero. CTA Hero giữ dịch vụ đã chọn và dữ liệu đã nhập. Trên mobile, nút chính toàn chiều ngang, cao tối thiểu 52px; CTA phụ có vùng bấm tối thiểu 44px.
 
 Nút **Tạo yêu cầu tư vấn** chỉ tạo bản mô tả trên thiết bị. Dữ liệu không được gửi qua mạng, không lưu vào localStorage và không tự mở ứng dụng bên ngoài.
 
@@ -161,6 +171,10 @@ npm run build
 Ảnh sinh ở `public/social-card.png`. Script tạo ảnh dùng Chrome và cổng localhost 5187. Ảnh đã được tạo sẵn, không cần Chrome trên máy chủ triển khai.
 
 ## SEO khi triển khai
+
+Tên website `CoreBrisk` được khai báo một lần qua schema `WebSite` ở trang chủ và `og:site_name` trên các trang. URL trong schema dùng `SITE_URL` giống canonical. Logo doanh nghiệp dùng `/logo.png` (512 × 512); favicon dùng `/favicon.png` (192 × 192), cùng biểu tượng với `public/favicon.svg`. Khi đổi biểu tượng SVG, chạy `npm run generate:icons` (cần Chrome), rồi commit các PNG trong `public/`. Cloudflare chỉ cần build và phục vụ các file này, không cần chạy Chrome.
+
+Sau triển khai, kiểm tra `/favicon.png`, `/logo.png` trả HTTP 200 rồi yêu cầu lập chỉ mục lại trang chủ trong Google Search Console. Tên website và favicon trên Google do hệ thống của Google lựa chọn, có thể mất vài ngày đến vài tuần để cập nhật; schema không đảm bảo hiển thị ngay.
 
 1. Thay nội dung mẫu, thương hiệu, giá, phạm vi dịch vụ và email.
 2. Cấu hình `SITE_URL` bằng tên miền thật và build lại; kiểm tra trang chủ cùng năm trang dịch vụ không còn `noindex`, canonical đúng từng URL.
@@ -236,7 +250,7 @@ Hai nhóm khách hàng khác nhau cùng một hành trình
 Tạo CTA riêng cho Website và Tự động hóa
 P1
 CTA đầu trang tập trung vào bảng giá và demo
-Thử CTA chính “Nhận tư vấn miễn phí”
+Thử CTA chính “Trao đổi dự án”
 P2
 Các gói dịch vụ có rất nhiều thông tin
 Dùng bản so sánh ngắn, mở rộng chi tiết khi cần

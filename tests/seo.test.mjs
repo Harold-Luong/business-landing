@@ -63,6 +63,24 @@ test('real production builds contain crawlable content and consistent SEO assets
       assert(!html.includes('<!-- SEO_HEAD -->'))
       assert(!html.includes('fonts.googleapis.com'))
       assert.match(html, /Google Sheets, AppSheet &amp; thiết kế website/)
+      assert.equal((html.match(/property="og:site_name"/g) || []).length, 1)
+      assert.match(html, /rel="icon" type="image\/png" sizes="192x192" href="\/favicon.png"/)
+      for (const [file, size] of [['favicon.png', 192], ['apple-touch-icon.png', 180], ['logo.png', 512]]) {
+        const png = await readFile(join(output, file))
+        assert.equal(png.subarray(0, 8).toString('hex'), '89504e470d0a1a0a')
+        assert.equal(png.readUInt32BE(16), size)
+        assert.equal(png.readUInt32BE(20), size)
+      }
+      const homeSchemas = [...html.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/gs)].map((match) => JSON.parse(match[1]))
+      const websites = homeSchemas.filter((schema) => schema['@type'] === 'WebSite')
+      assert.equal(websites.length, siteUrl ? 1 : 0)
+      if (siteUrl) {
+        assert.equal(websites[0].name, 'CoreBrisk')
+        assert.equal(websites[0].url, siteUrl, 'Site name must use the configured canonical host')
+        const business = homeSchemas.find((schema) => schema['@type'] === 'ProfessionalService')
+        assert.equal(websites[0].publisher['@id'], business['@id'])
+        assert.equal(business.logo.url, `${siteUrl}logo.png`)
+      }
       assert(!html.includes('/aster-preview.png'))
       for (const width of [480, 960]) {
         const image = await readFile(join(output, `aster-preview-${width}.webp`))
@@ -76,6 +94,8 @@ test('real production builds contain crawlable content and consistent SEO assets
         const detail = await readFile(join(output, page.path.slice(1), 'index.html'), 'utf8')
         assert.equal((detail.match(/<h1[ >]/g) || []).length, 1)
         assert(!detail.includes('<!-- SEO_HEAD -->'))
+        assert.equal((detail.match(/property="og:site_name"/g) || []).length, 1)
+        assert.match(detail, /rel="icon" type="image\/png" sizes="192x192" href="\/favicon.png"/)
         titles.add(detail.match(/<title>(.*?)<\/title>/s)[1])
         descriptions.add(detail.match(/name="description" content="([^"]+)"/)[1])
         assert(detail.includes(`href="/?plan=${page.plan}#lien-he"`))
@@ -101,8 +121,20 @@ test('real production builds contain crawlable content and consistent SEO assets
       }
       assert.equal(titles.size, servicePages.length + 1, 'Every page needs a distinct title')
       assert.equal(descriptions.size, servicePages.length + 1, 'Every page needs a distinct description')
-      assert.match(html, /href="\/demos\/an-studio\/"\s+target="_blank"\s+rel="noopener"/)
-      assert(!html.includes('<!-- AN_STUDIO_DEMO_URL -->'))
+      const websiteSamples = await readFile(join(output, 'dich-vu/thiet-ke-website/index.html'), 'utf8')
+      const sheetsSamples = await readFile(join(output, 'dich-vu/google-apps-script/index.html'), 'utf8')
+      for (const path of ['thiet-ke-website', 'google-apps-script']) {
+        assert(html.includes(`href="/dich-vu/${path}/#mau-giao-dien"`))
+      }
+      assert.equal((html.match(/class="work-card"/g) || []).length, 2)
+      assert(!html.includes('sheet-demo-card'))
+      assert(websiteSamples.includes('id="mau-giao-dien"'))
+      assert(sheetsSamples.includes('id="mau-giao-dien"'))
+      assert(sheetsSamples.includes('sheet-demo-card'))
+      assert(!sheetsSamples.includes('<!-- SHEETS_DEMO_LINK -->'))
+      assert(sheetsSamples.includes('/?concept=sheetflow&amp;plan=apps-script#quote-form'))
+      assert.match(websiteSamples, /href="\/demos\/an-studio\/"\s+target="_blank"\s+rel="noopener"/)
+      assert(!websiteSamples.includes('<!-- AN_STUDIO_DEMO_URL -->'))
       const demo = await readFile(join(output, 'demos/an-studio/index.html'), 'utf8')
       assert.match(demo, /name="robots" content="noindex, follow"/)
       assert.match(demo, /href="\/\?concept=an-studio#lien-he"/)
@@ -110,8 +142,8 @@ test('real production builds contain crawlable content and consistent SEO assets
       for (const [, path] of demo.matchAll(/(?:src|href)="\.\/([^"]+)"/g)) {
         assert((await readFile(join(output, 'demos/an-studio', path))).length > 0, `Missing demo asset: ${path}`)
       }
-      assert.match(html, /href="\/demos\/orbit\/"\s+target="_blank"\s+rel="noopener"/)
-      assert(!html.includes('<!-- ORBIT_DEMO_URL -->'))
+      assert.match(websiteSamples, /href="\/demos\/orbit\/"\s+target="_blank"\s+rel="noopener"/)
+      assert(!websiteSamples.includes('<!-- ORBIT_DEMO_URL -->'))
       const orbit = await readFile(join(output, 'demos/orbit/index.html'), 'utf8')
       assert.match(orbit, /name="robots" content="noindex, nofollow"/)
       assert.match(orbit, /href="\/\?concept=orbit#lien-he"/)
@@ -127,8 +159,8 @@ test('real production builds contain crawlable content and consistent SEO assets
       for (const [, path] of app.matchAll(/(?:src|href)="\.\/([^"]+)"/g)) {
         assert((await readFile(join(output, 'demos/orbit', path))).length > 0, `Missing app asset: ${path}`)
       }
-      assert.match(html, /href="\/demos\/aster\/"\s+target="_blank"\s+rel="noopener"/)
-      assert(!html.includes('<!-- ASTER_DEMO_URL -->'))
+      assert.match(websiteSamples, /href="\/demos\/aster\/"\s+target="_blank"\s+rel="noopener"/)
+      assert(!websiteSamples.includes('<!-- ASTER_DEMO_URL -->'))
       const aster = await readFile(join(output, 'demos/aster/index.html'), 'utf8')
       assert.match(aster, /name="robots" content="noindex, nofollow"/)
       assert.match(aster, /href="\/\?concept=aster#lien-he"/)

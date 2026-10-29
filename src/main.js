@@ -93,9 +93,10 @@ const selectedConcept = new Map([
     ['aster', 'Aster S5 — Landing page ô tô'],
     ['an-studio', 'An Studio — Kiến trúc & nội thất'],
     ['orbit', 'Orbit — Công nghệ & SaaS'],
+    ['sheetflow', 'SheetFlow — Quản lý đơn hàng trên Google Sheets'],
 ]).get(new URLSearchParams(location.search).get('concept'))
 if (selectedConcept) {
-    const conceptPlan = new Map([['aster', 'launch'], ['an-studio', 'business'], ['orbit', 'custom']]).get(new URLSearchParams(location.search).get('concept'))
+    const conceptPlan = new Map([['aster', 'launch'], ['an-studio', 'business'], ['orbit', 'custom'], ['sheetflow', 'apps-script']]).get(new URLSearchParams(location.search).get('concept'))
     if (conceptPlan) form.elements.plan.value = conceptPlan
     const message = form.elements.message
     const concept = `Tôi quan tâm đến hướng thiết kế ${selectedConcept}.`

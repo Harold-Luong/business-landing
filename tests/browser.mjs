@@ -52,10 +52,13 @@ try {
     assert.equal(await evaluate(`document.activeElement.className`), 'menu-toggle')
     assert.equal(await evaluate(`document.querySelector('.menu-toggle').getAttribute('aria-expanded')`), 'false')
     await click('.price-card.featured [data-select-plan]')
-    assert.equal(await evaluate(`document.querySelector('#plan').options.length`), 9)
+    assert.equal(await evaluate(`document.querySelector('#plan').options.length`), 8)
     assert.equal(await evaluate(`document.querySelector('#budget').options.length`), 5)
     assert.equal(await evaluate(`document.querySelector('#plan').value`), 'business')
+    await click('.home-samples a[href="/dich-vu/thiet-ke-website/#mau-giao-dien"]')
+    await poll(() => evaluate(`document.readyState === 'complete' && document.querySelector('.architecture-preview')`))
     await click('[data-concept="An Studio — Kiến trúc & nội thất"]')
+    await poll(() => evaluate(`document.querySelector('#message')?.value.includes('An Studio')`))
     assert.match(await evaluate(`document.querySelector('#message').value`), /An Studio/)
     await set('#name', 'Nguyễn Minh Anh')
     await set('#email', 'invalid-email')
@@ -91,7 +94,6 @@ try {
     for (const [plan, label] of [
       ['apps-script', 'Google Apps Script · từ 2,9 triệu'],
       ['appsheet', 'AppSheet · từ 7,9 triệu'],
-      ['sheets-extension', 'Tiện ích Google Sheets · từ 3,9 triệu'],
     ]) {
       await click(`#bang-gia-google [data-select-plan="${plan}"]`)
       assert.equal(await evaluate(`document.querySelector('#plan').value`), plan)
@@ -111,6 +113,8 @@ try {
     assert.equal(await evaluate(`document.querySelector('#quote-form button[type="submit"]').disabled`), true)
 
     // Follow the real showcase URL, then return from the demo with its concept selected.
+    await send('Page.navigate', { url: 'http://127.0.0.1:4187/dich-vu/thiet-ke-website/#mau-giao-dien' })
+    await poll(() => evaluate(`document.readyState === 'complete' && document.querySelector('.architecture-preview')`))
     const demoUrl = await evaluate(`document.querySelector('.architecture-preview').href`)
     assert.equal(demoUrl, 'http://127.0.0.1:4187/demos/an-studio/')
     await send('Page.navigate', { url: demoUrl })
@@ -161,7 +165,7 @@ try {
     assert.equal(await evaluate(`document.querySelector('.project-stories').hidden`), false)
     assert.equal(await evaluate(`getComputedStyle(document.querySelector('#navigation')).display !== 'none'`), true)
     assert.equal(await evaluate(`document.querySelectorAll('.project-stories details').length`), 3)
-    await send('Page.navigate', { url: 'http://127.0.0.1:4187/' })
+    await send('Page.navigate', { url: 'http://127.0.0.1:4187/dich-vu/thiet-ke-website/#mau-giao-dien' })
     await poll(() => evaluate(`document.readyState === 'complete' && document.querySelector('.saas-preview')`))
     await testOrbitApp({ send, evaluate, screenshot })
     await testAster({ send, evaluate, screenshot, downloads })

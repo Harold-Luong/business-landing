@@ -49,6 +49,26 @@
     margin-bottom: 24px;
 }
 
+.custom-service-note {
+    margin-bottom: 24px;
+    padding: 20px 24px;
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    background: #edf5e5;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.custom-service-note strong {
+    color: var(--ink);
+    font-size: 15px;
+}
+
+.custom-service-note p {
+    margin-top: 8px;
+    color: var(--muted);
+}
+
 .pricing-group-heading .eyebrow {
     margin-bottom: 10px;
 }
@@ -255,10 +275,6 @@
     line-height: 1.7;
 }
 
-.criteria-column {
-    width: 22%;
-}
-
 .comparison-table th,
 .comparison-table td {
     padding: 18px 22px;
@@ -283,8 +299,12 @@
     border-top: 1px solid var(--line);
 }
 
-.comparison-table .comparison-label {
-    vertical-align: bottom;
+.comparison-criterion {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--ink);
+    font-size: 12px;
+    font-weight: 600;
 }
 
 .comparison-plan {
@@ -349,22 +369,11 @@
         min-width: 624px;
     }
     .comparison-scroll {
-        scroll-padding-inline: 108px 12px;
-    }
-    .criteria-column {
-        width: 96px;
+        scroll-padding-inline: 12px;
     }
     .comparison-table th,
     .comparison-table td {
         padding: 16px 12px;
-    }
-    .comparison-table tr > th:first-child {
-        position: sticky;
-        left: 0;
-        z-index: 1;
-        background: #f5f8f0;
-        border-right: 1px solid #d5dfcf;
-        font-size: 12px;
     }
     .comparison-plan {
         padding: 0;

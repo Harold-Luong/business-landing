@@ -69,6 +69,13 @@
     min-height: 44px;
 }
 
+.hero-cta-note {
+    margin-top: 12px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--muted);
+}
+
 .hero-checks {
     display: flex;
     gap: 22px;

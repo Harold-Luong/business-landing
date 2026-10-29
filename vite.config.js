@@ -4,6 +4,7 @@ import { normalizeSiteUrl, seoHead, robots, sitemap, servicePages, pageForPath }
 import { asterDemo } from './scripts/aster-plugin.mjs'
 import { orbitDemo } from './scripts/orbit-plugin.mjs'
 import { anStudioDemo } from './scripts/an-studio-plugin.mjs'
+import { sheetsDemo } from './scripts/sheets-plugin.mjs'
 
 export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '')
@@ -15,7 +16,7 @@ export default defineConfig(({ mode }) => {
                     .map((path) => fileURLToPath(new URL(path, import.meta.url))),
             },
         },
-        plugins: [asterDemo(env.ASTER_DEMO_URL), anStudioDemo(env.AN_STUDIO_DEMO_URL), orbitDemo(env.ORBIT_DEMO_URL), {
+        plugins: [asterDemo(env.ASTER_DEMO_URL), anStudioDemo(env.AN_STUDIO_DEMO_URL), orbitDemo(env.ORBIT_DEMO_URL), sheetsDemo(env.SHEETS_DEMO_URL), {
             name: 'static-seo',
             transformIndexHtml(html, context) {
                 return html.replace('<!-- SEO_HEAD -->', seoHead(siteUrl, pageForPath(context.path)))

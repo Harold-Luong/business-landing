@@ -6,28 +6,28 @@ export const servicePages = [
         path: '/dich-vu/google-automation/',
         name: 'Google Automation',
         title: 'Google Automation: tiện ích Sheets với Apps Script & AppSheet | CoreBrisk',
-        description: 'Chọn giải pháp tiện ích Google Sheets với Apps Script hoặc AppSheet. So sánh nhu cầu phù hợp, giá khởi điểm và xem chi tiết từng dịch vụ.',
+        description: 'Thiết kế tiện ích Google Sheets theo yêu cầu bằng Apps Script hoặc AppSheet. So sánh giải pháp và chi phí triển khai riêng theo quy trình doanh nghiệp.',
         plan: 'automation',
     },
     {
         path: '/dich-vu/google-apps-script/',
         name: 'Google Apps Script',
         title: 'Lập trình Google Apps Script, tự động hóa Sheets | CoreBrisk',
-        description: 'Tự động hóa Google Sheets bằng Apps Script: tổng hợp dữ liệu, tạo báo cáo và nhắc việc. Xem phạm vi, quy trình bàn giao và giá tham khảo từ 2,9 triệu.',
+        description: 'Lập trình Apps Script theo yêu cầu để tự động hóa Google Sheets, báo cáo và nhắc việc. Chi phí thiết kế riêng từ 2,9 triệu/dự án, tùy phạm vi triển khai.',
         plan: 'apps-script',
     },
     {
         path: '/dich-vu/appsheet/',
         name: 'Ứng dụng AppSheet',
         title: 'Thiết kế ứng dụng AppSheet cho doanh nghiệp | CoreBrisk',
-        description: 'Xây ứng dụng AppSheet quản lý đơn hàng, kho và công việc từ Google Sheets. Tìm hiểu phân quyền, bàn giao và chi phí triển khai tham khảo từ 7,9 triệu.',
+        description: 'Thiết kế AppSheet theo yêu cầu để quản lý đơn hàng, kho và công việc từ Google Sheets. Chi phí triển khai riêng từ 7,9 triệu/dự án, tùy phạm vi.',
         plan: 'appsheet',
     },
     {
         path: '/dich-vu/tien-ich-google-sheets/',
         name: 'Tiện ích Google Sheets',
         title: 'Tiện ích Google Sheets: chọn Apps Script hay AppSheet | CoreBrisk',
-        description: 'Tìm hiểu nhóm tiện ích Google Sheets: tự động hóa bằng Apps Script hoặc xây ứng dụng AppSheet. Chọn giải pháp và phạm vi phù hợp với quy trình của bạn.',
+        description: 'Tiện ích Google Sheets được thiết kế theo yêu cầu bằng Apps Script hoặc AppSheet. Tìm hiểu giải pháp và phạm vi triển khai riêng theo quy trình của bạn.',
         plan: 'automation',
     },
     {
@@ -65,7 +65,10 @@ export function seoHead(siteUrl, page) {
         ...(siteUrl ? { '@id': `${siteUrl}#business` } : {}),
         name: 'CoreBrisk',
         description,
-        ...(siteUrl ? { url: siteUrl } : {}),
+        ...(siteUrl ? {
+            url: siteUrl,
+            logo: { '@type': 'ImageObject', url: `${siteUrl}logo.png`, width: 512, height: 512 },
+        } : {}),
         areaServed: { '@type': 'Country', name: 'Việt Nam' },
         knowsAbout: ['Thiết kế website doanh nghiệp', 'Lập trình web', 'Thiết kế landing page', 'Google Apps Script', 'AppSheet', 'Tiện ích Google Sheets'],
     }
@@ -87,9 +90,21 @@ export function seoHead(siteUrl, page) {
             { '@type': 'ListItem', position: 2, name: page.name, item: pageUrl },
         ],
     } : null
+    const website = !page && siteUrl ? {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        '@id': `${siteUrl}#website`,
+        name: 'CoreBrisk',
+        alternateName: 'CoreBrisk Digital Studio',
+        url: siteUrl,
+        inLanguage: 'vi-VN',
+        publisher: { '@id': `${siteUrl}#business` },
+    } : null
     const jsonLd = (data) => `<script type="application/ld+json">${JSON.stringify(data).replaceAll('<', '\\u003c')}</script>`
     return `
     <title>${escapeHtml(pageTitle)}</title>
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <meta name="description" content="${escapeHtml(pageDescription)}">
     <meta name="robots" content="${siteUrl ? 'index, follow, max-image-preview:large' : 'noindex, follow'}">
     <meta property="og:type" content="website">
@@ -108,6 +123,7 @@ export function seoHead(siteUrl, page) {
     <meta property="og:image:alt" content="CoreBrisk — Google Sheets, AppSheet và thiết kế website.">
     <meta name="twitter:image" content="${escapeHtml(siteUrl)}social-card.png">` : ''}
     ${jsonLd(schema)}
+    ${website ? jsonLd(website) : ''}
     ${breadcrumb ? jsonLd(breadcrumb) : ''}`
 }
 

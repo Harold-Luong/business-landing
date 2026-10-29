@@ -9,6 +9,7 @@
     "preview": "vite preview --host 127.0.0.1 --port 4174",
     "test": "node tests/seo.test.mjs",
     "generate:social": "node scripts/social-card.mjs",
+    "generate:icons": "node scripts/icons.mjs",
     "test:browser": "npm run build && node tests/browser.mjs"
   },
   "devDependencies": {
