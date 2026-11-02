@@ -10,7 +10,7 @@ const emailHref = emailLink(email)
                 <div v-reveal class="contact-copy">
                     <p class="eyebrow">LIÊN HỆ &amp; TƯ VẤN</p>
                     <h2>Mô tả dự án<br>và tính năng<br><span>bạn cần.</span><span class="contact-spark" aria-hidden="true">✳</span></h2>
-                    <p>Liên hệ trực tiếp qua email, Zalo hoặc hotline. Bạn cũng có thể tạo bản yêu cầu bằng form bên cạnh để chia sẻ thông tin dự án.</p>
+                    <p>Liên hệ qua email, Zalo hoặc hotline. Bạn cũng có thể gửi yêu cầu tư vấn trực tiếp bằng form bên cạnh.</p>
                     <address class="contact-channels" aria-label="Kênh liên hệ WebSheet">
                         <a v-if="emailHref" :href="emailHref">
                             <span class="contact-channel-label">Email</span>

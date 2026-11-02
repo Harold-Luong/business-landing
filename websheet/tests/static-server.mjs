@@ -2,10 +2,11 @@ import { createServer } from 'node:http'
 import { readFile, stat } from 'node:fs/promises'
 import { resolve, extname, sep } from 'node:path'
 const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.png': 'image/png', '.svg': 'image/svg+xml', '.webp': 'image/webp', '.woff2': 'font/woff2', '.txt': 'text/plain', '.xml': 'application/xml' }
-export async function startServer(directory = process.env.WEBSHEET_OUTPUT_DIR || '.output/production/public', port = 0) {
+export async function startServer(directory = process.env.WEBSHEET_OUTPUT_DIR || '.output/production/public', port = 0, handleRequest) {
   const root = resolve(directory)
   const server = createServer(async (req, res) => {
     try {
+      if (handleRequest && await handleRequest(req, res)) return
       const url = new URL(req.url, 'http://localhost')
       let file = resolve(root, '.' + decodeURIComponent(url.pathname))
       if (file !== root && !file.startsWith(root + sep)) throw new Error('Invalid path')

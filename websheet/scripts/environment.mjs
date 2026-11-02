@@ -45,6 +45,7 @@ if (action === 'test:output') testOutput()
 if (action === 'test:browser') run(resolve(root, 'tests/browser.mjs'))
 if (action === 'preview') run(resolve(root, 'scripts/preview.mjs'))
 if (action === 'deploy') {
+    run(resolve(root, 'tests/mail.mjs'))
     build()
     testOutput()
     run(resolve(dirname(require.resolve('wrangler/package.json')), 'bin/wrangler.js'), ['deploy', '--env', environment, ...flags])

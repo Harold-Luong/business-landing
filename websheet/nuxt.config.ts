@@ -10,7 +10,8 @@ if (!['dev', 'production'].includes(environment)) throw new Error('Invalid WEBSH
 const outputDir = resolve('.output', environment)
 
 export default defineNuxtConfig({
-  buildDir: `.nuxt/${environment}`,
+  // Keep Nuxt's default .nuxt directory aligned with tsconfig.json references.
+  // Only deployable Nitro output is separated by environment.
   builder: 'vite',
   debug: false,
   compatibilityDate: '2025-07-15',

@@ -24,6 +24,8 @@ npm run preview
 
 `build` và `generate` là alias cho `build:production`, xuất HTML tĩnh vào `.output/production/public/`. Dev xuất riêng vào `.output/dev/public/`; build môi trường này không xóa output của môi trường kia. `preview`/`preview:dev` phục vụ output tương ứng tại cổng 4174, gồm trang 404. `test:browser` cần Google Chrome tại `/usr/bin/google-chrome` hoặc biến `CHROME_BIN`; test tự mở server local trên cổng trống, chụp ảnh vào `/tmp/websheet-preview/`.
 
+Nuxt dùng thư mục sinh mã/types mặc định `.nuxt/`, khớp với các references trong `tsconfig.json`. Không đặt `buildDir` theo môi trường vì sẽ làm build trên CI thiếu `.nuxt/tsconfig.app.json`. Chạy các lệnh Nuxt lần lượt trong cùng checkout; chỉ output deploy `.output/dev/` và `.output/production/` được tách riêng.
+
 ## Cấu hình
 
 Copy `.env.example` thành `.env` để chạy local bằng `npm run dev`. Các lệnh build/test/deploy dùng `.env.development` cho dev và `.env.production` cho production; cả hai file đã commit và chỉ chứa cấu hình public. Script `scripts/environment.mjs` cố định URL theo môi trường, kể cả khi CI có biến `NUXT_PUBLIC_SITE_URL` cũ. Email và URL demo có thể được truyền riêng từ shell/CI cho từng môi trường; các lệnh này không tự đọc `.env` local. Không thêm secret vào file đã commit.
@@ -41,7 +43,7 @@ URL demo trống hiển thị “Demo đang chuẩn bị”; thẻ mẫu và CTA
 
 SEO production được cấu hình cho `https://websheet.shop/`: HTML cho phép index, canonical và sitemap dùng domain này. `.env.example` dành cho local nên để trống `NUXT_PUBLIC_SITE_URL` để HTML có `noindex`. File `public/robots.txt` chỉ là bản dùng cho local; khi build, Nuxt sinh lại robots và sitemap theo môi trường. Thay đổi metadata trong `shared/site.ts` cần build và deploy production mới xuất hiện trên website.
 
-Thông tin liên hệ đã được xác nhận: email `ductrong.luongnguyen@gmail.com`, Zalo `0975 6666 14` (`https://zalo.me/0975666614`), hotline `0947787904`. Dữ liệu chung ở `shared/contact.ts`; email mặc định có trong cả hai môi trường và `.env.example`. Biến `NUXT_PUBLIC_CONTACT_EMAIL` vẫn có thể ghi đè (chuỗi rỗng ẩn link email). Khu vực Liên hệ có link email/Zalo/gọi điện; dialog mở ứng dụng email kèm bản yêu cầu, người dùng tự xác nhận gửi. Không tự gửi tin nhắn hoặc gọi điện.
+Thông tin liên hệ đã được xác nhận: email `ductrong.luongnguyen@gmail.com`, Zalo `0975 6666 14` (`https://zalo.me/0975666614`), hotline `0947787904`. Dữ liệu chung ở `shared/contact.ts`; email mặc định có trong cả hai môi trường và `.env.example`. Biến `NUXT_PUBLIC_CONTACT_EMAIL` vẫn có thể ghi đè (chuỗi rỗng ẩn link email). Form có bước xem lại rồi gửi trực tiếp qua Cloudflare Worker + Resend; cần cấu hình secrets theo [hướng dẫn email](EMAIL_SETUP.md). Link mở ứng dụng email, sao chép và tải TXT vẫn dùng được.
 
 Để build và kiểm tra dev:
 
@@ -59,8 +61,8 @@ Dev có `noindex, follow` trong HTML và header `X-Robots-Tag` qua file `_header
 - Nội dung chung (quy trình, liên hệ) ở landing; trang dịch vụ giữ giải pháp, phạm vi, demo và FAQ chuyên biệt. Website có một khu vực so sánh gói, gallery không lặp giá. Apps Script/AppSheet giữ panel giá thiết kế riêng. CTA cuối trang được rút gọn và chọn sẵn dịch vụ trong form.
 - Hai thẻ chọn dịch vụ có preview HTML/CSS An Studio và SheetFlow ngay trong thẻ; không có section mẫu riêng trên trang chủ. Gallery đầy đủ nằm ở trang dịch vụ. Link cũ `/#giao-dien` đưa về nhóm dịch vụ.
 - Năm gói giá, lấy giá/nhãn/features từ registry; giá Google là thiết kế riêng theo yêu cầu.
-- Form có validation; query chọn plan/concept, giữ draft trong bộ nhớ khi chuyển trang, không lưu localStorage.
-- Dialog tạo bản yêu cầu, sao chép, tải TXT UTF-8 BOM và `mailto:` có điều kiện. **Không gọi API, không tự gửi email hoặc nhận đơn hàng.**
+- Form có validation ở client và API; query chọn plan/concept, giữ draft trong bộ nhớ khi chuyển trang, không lưu localStorage.
+- Dialog cho xem lại và gửi yêu cầu qua `POST /api/quote`, báo lỗi/thành công, chống bấm gửi trùng; giữ chức năng sao chép, tải TXT UTF-8 BOM và `mailto:`. Worker gửi qua Resend đến hộp thư cố định, có rate limit và honeypot. Chưa lưu yêu cầu vào database.
 - Head riêng theo trang, JSON-LD, canonical/robots/sitemap theo cùng cấu hình site URL. Giữ token Search Console cũ để đối chiếu; cần xác minh property domain mới riêng.
 - Font Be Vietnam Pro local, ảnh preview tối ưu và nhận diện WebSheet.
 - Hiệu ứng cuộn dùng `v-reveal` + một Intersection Observer chung: fade/slide nhẹ từng block, chạy một lần; giữ nội dung đầu màn hình, no-JS, reduced motion, focus bàn phím và bản in luôn đọc được. Không thêm thư viện animation.
@@ -75,6 +77,7 @@ Biểu tượng chữ W và ảnh chia sẻ là phương án nhận diện tạm
 - `app/composables/`: head, active section, draft/query và URL demo.
 - `app/assets/css/`: CSS/font đã chuyển vào project này.
 - `shared/site.ts`: metadata và route registry; `shared/config.ts`: validate URL, robots/sitemap.
+- `worker/index.mjs`: API gửi email trên Cloudflare; secrets không đưa vào Nuxt public config hoặc static output.
 - `nuxt.config.ts`: Vite builder, prerender và xuất robots/sitemap sau generate.
 - `tests/`: kiểm thử HTML/assets/SEO và trình duyệt; không kiểm thử ứng dụng nội bộ của demo.
 
@@ -96,7 +99,7 @@ Hai environment Wrangler dùng `404-page` và được chọn tường minh; l�
 | Deploy | `npm run deploy:dev` | `npm run deploy:production` |
 | Google index | Tắt | Bật |
 
-Wrangler được cài trong project này. Đăng nhập bằng `npx wrangler login`, hoặc cung cấp `CLOUDFLARE_API_TOKEN` và `CLOUDFLARE_ACCOUNT_ID` trong secret CI. `deploy:dev`/`deploy:production` tự build, kiểm thử output rồi mới upload; thêm `-- --dry-run` để kiểm tra đóng gói mà không deploy.
+Wrangler được cài trong project này. Đăng nhập bằng `npx wrangler login`, hoặc cung cấp `CLOUDFLARE_API_TOKEN` và `CLOUDFLARE_ACCOUNT_ID` trong secret CI. `deploy:dev`/`deploy:production` kiểm thử API mail, build, kiểm thử output rồi mới upload; thêm `-- --dry-run` để kiểm tra đóng gói mà không deploy. Worker và static assets được deploy cùng nhau; chỉ `/api` và `/api/*` bắt buộc chạy Worker trước.
 
 Cloudflare Git Builds: tạo hai Worker, chọn root directory `websheet`. Nhánh `dev` dùng build `npm run build:dev`, deploy `npm run deploy:dev`; nhánh production (ví dụ `main`) dùng build `npm run build:production`, deploy `npm run deploy:production`. Các lệnh deploy sẽ build/kiểm tra lại để tránh dùng output của môi trường khác. Repo không tự tạo nhánh, liên kết Git hoặc thiết lập trigger trên dashboard.
 

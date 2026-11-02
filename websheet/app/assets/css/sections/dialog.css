@@ -90,3 +90,12 @@ body:has(dialog[open]) {
     overflow: hidden;
 }
 
+#send-status, #send-error {
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 12px;
+}
+
+#send-error {
+    color: #9a2d20;
+}

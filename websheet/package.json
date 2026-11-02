@@ -16,6 +16,8 @@
     "typecheck": "nuxt typecheck",
     "test:output": "node scripts/environment.mjs production test:output",
     "test:output:dev": "node scripts/environment.mjs dev test:output",
+    "test:mail": "node --test tests/mail.mjs",
+    "preview:worker:dev": "wrangler dev --env dev --local",
     "test:browser": "node scripts/environment.mjs production test:browser",
     "test:browser:dev": "node scripts/environment.mjs dev test:browser",
     "generate:brand": "node scripts/brand-assets.mjs"

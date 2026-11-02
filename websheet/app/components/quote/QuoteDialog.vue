@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { emailLink } from '~~/shared/contact'
-const props = defineProps<{ summary: string, name: string }>()
+const props = defineProps<{ summary: string, name: string, sending: boolean, sent: boolean, sendError: string }>()
+const emit = defineEmits<{ send: [] }>()
 const dialog = ref<HTMLDialogElement | null>(null)
 const textarea = ref<HTMLTextAreaElement | null>(null)
 const status = ref('')
@@ -37,22 +38,29 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-    <dialog ref="dialog" @click="onBackdrop" id="quote-dialog" aria-labelledby="quote-title">
+    <dialog ref="dialog" @click="onBackdrop" id="quote-dialog" aria-labelledby="quote-title" :aria-busy="sending">
         <div class="dialog-top">
             <p class="eyebrow">BẢN YÊU CẦU CỦA BẠN</p><button class="dialog-close" @click="dialog?.close()"
                 type="button" aria-label="Đóng bản yêu cầu">×</button>
         </div>
         <h2 id="quote-title">Bản yêu cầu tư vấn</h2>
-        <p>Bản yêu cầu đã được tạo, <strong>chưa được gửi</strong>. Sao chép nội dung để chia sẻ với đơn vị tư vấn.</p>
+        <p v-if="!sent">Kiểm tra nội dung bên dưới rồi nhấn <strong>Gửi yêu cầu</strong> để gửi trực tiếp cho WebSheet.</p>
+        <p v-else>Yêu cầu đã được chuyển đến dịch vụ email để gửi cho WebSheet. Cảm ơn bạn đã liên hệ.</p>
         <label class="sr-only" for="quote-summary">Nội dung yêu cầu</label><textarea id="quote-summary" ref="textarea"
             :value="summary" rows="10" readonly></textarea>
-        <div class="dialog-actions"><button class="button button-dark" type="button" id="copy-quote" @click="copy">Sao
+        <div class="dialog-actions">
+            <button class="button button-dark" type="button" id="send-quote" :disabled="sending || sent" @click="emit('send')">
+                {{ sending ? 'Đang gửi…' : sent ? 'Đã gửi yêu cầu' : 'Gửi yêu cầu' }}
+            </button>
+            <button class="button button-outline" type="button" id="copy-quote" @click="copy">Sao
                 chép yêu cầu
                 <span aria-hidden="true">↗</span></button><a class="button button-outline" id="email-quote"
                 v-if="emailHref" :href="emailHref">Mở
                 ứng dụng email</a><button class="text-link" id="download-quote" @click="download" type="button">Tải file
                 .txt ↓</button>
         </div>
+        <p id="send-status" role="status" aria-live="polite">{{ sending ? 'Đang gửi yêu cầu…' : sent ? 'Yêu cầu đã được chuyển đến dịch vụ email.' : '' }}</p>
+        <p v-if="sendError" id="send-error" role="alert">{{ sendError }}</p>
         <p id="copy-status" role="status" aria-live="polite">{{ status }}</p>
     </dialog>
 </template>

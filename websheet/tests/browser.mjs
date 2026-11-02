@@ -3,7 +3,19 @@ import { mkdir, readFile, readdir, rm } from 'node:fs/promises'
 import { withBrowser, poll, delay } from './browser-helper.mjs'
 import { startServer } from './static-server.mjs'
 import { routes } from '../shared/site.ts'
-const server = await startServer()
+const mailRequests = []
+const server = await startServer(undefined, 0, async (req, res) => {
+  if (req.url !== '/api/quote') return false
+  assert.equal(req.method, 'POST')
+  let body = ''
+  for await (const chunk of req) body += chunk
+  mailRequests.push(JSON.parse(body))
+  await delay(250)
+  const success = mailRequests.length > 1
+  res.writeHead(success ? 200 : 502, { 'Content-Type': 'application/json' })
+  res.end(JSON.stringify(success ? { ok: true } : { error: 'Provider unavailable' }))
+  return true
+})
 const shots = '/tmp/websheet-preview'
 await mkdir(shots, { recursive: true })
 await rm(`${shots}/yeu-cau-tu-van-du-an.txt`, { force: true })
@@ -117,6 +129,20 @@ try {
     const txt = await readFile(`${shots}/yeu-cau-tu-van-du-an.txt`)
     assert.equal(txt.subarray(0,3).toString('hex'), 'efbbbf')
     assert.ok(txt.toString().includes('Nguyễn Minh Anh'))
+    // No email is sent while opening/reviewing/copying the draft.
+    assert.equal(mailRequests.length, 0)
+    await evaluate("document.querySelector('#send-quote').click(); document.querySelector('#send-quote').click()")
+    await poll(() => evaluate("document.querySelector('#send-quote').disabled"))
+    await poll(() => evaluate("document.querySelector('#send-error')?.textContent.includes('Chưa xác nhận')"))
+    assert.equal(mailRequests.length, 1, 'Ignore duplicate clicks while sending')
+    assert.ok(await evaluate("document.querySelector('#quote-summary').value.includes('Nguyễn Minh Anh')"))
+    assert.equal(await evaluate("document.querySelector('#send-quote').disabled"), false)
+    await evaluate("document.querySelector('#send-quote').click()")
+    await poll(() => evaluate("document.querySelector('#send-status').textContent.includes('đã được chuyển')"))
+    assert.equal(mailRequests.length, 2)
+    assert.deepEqual(mailRequests[0], mailRequests[1], 'Retries preserve the payload and idempotency key')
+    assert.equal(mailRequests[1].email, 'anh@example.test')
+    assert.equal(await evaluate("document.querySelector('#send-quote').disabled"), true)
     await evaluate("document.querySelector('#quote-summary').focus()")
     await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 })
     await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 })
