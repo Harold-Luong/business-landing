@@ -1,9 +1,4 @@
 User-agent: *
 Allow: /
-<<<<<<< Updated upstream
-# Preview: HTML contains noindex.
-Sitemap: https://websheet.ductrong-luongnguyen.workers.dev/sitemap.xml
-=======
 
 # Local development. Build generates this file for the selected environment.
->>>>>>> Stashed changes

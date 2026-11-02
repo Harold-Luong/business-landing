@@ -39,7 +39,7 @@ Copy `.env.example` thành `.env` để chạy local bằng `npm run dev`. Các 
 
 URL demo trống hiển thị “Demo đang chuẩn bị”; thẻ mẫu và CTA tư vấn vẫn hoạt động. URL sai làm build thất bại. Không có fallback `/demos/`, không copy source hoặc build demo cùng landing. Thay biến cần generate lại vì đây là SSG.
 
-SEO production đã cấu hình cho `websheet.shop`. Lần kiểm tra ngày 30/10/2026, domain vẫn phục vụ trang giữ chỗ Hostinger; cần gắn domain vào deployment WebSheet trước khi đưa bản production vào sử dụng. URL demo thật chưa được cung cấp.
+SEO production được cấu hình cho `https://websheet.shop/`: HTML cho phép index, canonical và sitemap dùng domain này. `.env.example` dành cho local nên để trống `NUXT_PUBLIC_SITE_URL` để HTML có `noindex`. File `public/robots.txt` chỉ là bản dùng cho local; khi build, Nuxt sinh lại robots và sitemap theo môi trường. Thay đổi metadata trong `shared/site.ts` cần build và deploy production mới xuất hiện trên website.
 
 Thông tin liên hệ đã được xác nhận: email `ductrong.luongnguyen@gmail.com`, Zalo `0975 6666 14` (`https://zalo.me/0975666614`), hotline `0947787904`. Dữ liệu chung ở `shared/contact.ts`; email mặc định có trong cả hai môi trường và `.env.example`. Biến `NUXT_PUBLIC_CONTACT_EMAIL` vẫn có thể ghi đè (chuỗi rỗng ẩn link email). Khu vực Liên hệ có link email/Zalo/gọi điện; dialog mở ứng dụng email kèm bản yêu cầu, người dùng tự xác nhận gửi. Không tự gửi tin nhắn hoặc gọi điện.
 

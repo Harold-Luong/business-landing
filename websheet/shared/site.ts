@@ -1,6 +1,6 @@
 export const homeMeta = {
-  "title": "Google Sheets, AppSheet & thiết kế website | WebSheet",
-  "description": "WebSheet thiết kế website và xây tiện ích Google Sheets bằng Apps Script, AppSheet. Xem phạm vi dịch vụ, quy trình và báo giá tham khảo theo dự án."
+    title: 'WebSheet | Google Sheets, AppSheet & Thiết kế Website',
+    description: 'WebSheet thiết kế website và xây tiện ích Google Sheets bằng Apps Script, AppSheet. Xem phạm vi dịch vụ, quy trình và báo giá tham khảo theo dự án.'
 }
 export const serviceMeta = [
   {

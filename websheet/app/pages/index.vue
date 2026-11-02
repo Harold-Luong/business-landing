@@ -1,13 +1,13 @@
 <script setup lang="ts">
-useSiteSeo()
+useSiteSeo();
 </script>
 <template>
-    <main id="noi-dung">
-        <HeroSection />
-        <ServiceGroups />
-        <PricingSection />
-        <ProcessSection />
-        <HomeFaq />
-        <QuoteSection />
-    </main>
+  <main id="noi-dung">
+    <HeroSection />
+    <ServiceGroups />
+    <PricingSection />
+    <ProcessSection />
+    <HomeFaq />
+    <QuoteSection />
+  </main>
 </template>
