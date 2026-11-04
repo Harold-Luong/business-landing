@@ -10,7 +10,7 @@ if (!['dev', 'production'].includes(environment)) throw new Error('Invalid WEBSH
 const outputDir = resolve('.output', environment)
 
 export default defineNuxtConfig({
-  buildDir: `.nuxt/${environment}`,
+  // Use .nuxt so the generated types match tsconfig.json on a clean CI build.
   builder: 'vite',
   debug: false,
   compatibilityDate: '2025-07-15',
@@ -20,6 +20,12 @@ export default defineNuxtConfig({
   components: [{ path: '~/components', pathPrefix: false }],
   css: ['~/assets/css/main.css'],
   runtimeConfig: { public: config },
+  hooks: {
+    'pages:extend'(pages) {
+      const englishPages = pages.map(page => ({ ...page, name: `${page.name}-en`, path: `/en${page.path === '/' ? '/' : page.path}` }))
+      pages.push(...englishPages)
+    },
+  },
   app: {
     head: {
       htmlAttrs: { lang: 'vi' },

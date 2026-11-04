@@ -6,9 +6,9 @@ import { homeFaqs } from '~/data/home'
 <section class="section faq" id="cau-hoi">
             <div class="container faq-grid">
                 <div v-reveal>
-                    <p class="eyebrow">04 / GIẢI ĐÁP THẮC MẮC</p>
-                    <h2>Câu hỏi<br>thường gặp.</h2>
-                    <p>Hiểu dịch vụ, chọn giải pháp phù hợp<br>và nắm rõ chi phí trước khi bắt đầu.</p><NuxtLink class="text-link" to="#lien-he">Trao đổi thêm <span aria-hidden="true">↗</span></NuxtLink>
+                    <p class="eyebrow">{{ $t("homeFaq.eyebrow") }}</p>
+                    <h2>{{ $t("homeFaq.frequentlyAsked") }}<br>{{ $t("homeFaq.questions") }}</h2>
+                    <p>{{ $t("homeFaq.understandTheServicesChooseTheRightSolution") }}<br>{{ $t("homeFaq.andKnowTheCostsBeforeYouStart") }}</p><NuxtLink class="text-link" :to="$localePath('#lien-he')">{{ $t("homeFaq.letSTalk") }} <span aria-hidden="true">↗</span></NuxtLink>
                 </div>
                 <FaqList :items="homeFaqs" first-open></FaqList>
             </div>

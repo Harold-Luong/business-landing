@@ -6,19 +6,16 @@ const year = useState('copyright-year', () => new Date().getFullYear())
     <footer class="site-footer">
         <div class="container">
             <div class="footer-main">
-                <BrandMark to="#"></BrandMark>
-                <p>Thiết kế website.<br>Lập trình theo yêu cầu.</p>
+                <BrandMark :to="$localePath('#')"></BrandMark>
+                <p>{{ $t("hero.title") }}<br>{{ $t("footer.customDevelopment") }}</p>
                 <div>
-                    <NuxtLink to="#dich-vu">Dịch vụ</NuxtLink>
-                    <NuxtLink to="#bang-gia">Bảng giá</NuxtLink>
-                    <NuxtLink to="#cau-hoi">Câu hỏi thường
-                        gặp</NuxtLink>
+                    <NuxtLink :to="$localePath('#dich-vu')">{{ $t("nav.services") }}</NuxtLink>
+                    <NuxtLink :to="$localePath('#bang-gia')">{{ $t("footer.pricing") }}</NuxtLink>
+                    <NuxtLink :to="$localePath('#cau-hoi')">{{ $t("footer.frequentlyAskedQuestions") }}</NuxtLink>
                 </div>
-                <NuxtLink class="footer-top" to="#" aria-label="Về đầu trang">↑</NuxtLink>
+                <NuxtLink class="footer-top" :to="$localePath('#')" :aria-label="$t('footer.backToTop')">↑</NuxtLink>
             </div>
-            <div class="footer-bottom"><span>© <span id="year">{{ year }}</span> WebSheet.</span><span>Thiết kế · Lập
-                    trình ·
-                    Bảo trì website</span></div>
+            <div class="footer-bottom"><span>© <span id="year">{{ year }}</span> WebSheet.</span><span>{{ $t("footer.designDevelopmentWebsiteMaintenance") }}</span></div>
         </div>
     </footer>
 </template>

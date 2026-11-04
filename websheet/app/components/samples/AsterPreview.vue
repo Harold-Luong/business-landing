@@ -1,6 +1,6 @@
 <template>
     <div class="work-preview car-preview" role="img"
-        aria-label="Minh họa HTML và CSS cho landing page xe Aster S5 giả định.">
+        :aria-label="$t('preview.aster.htmlAndCssIllustrationForAFictional')">
         <div class="preview-top"><strong>ASTER</strong><span>AUTO / S5 &nbsp; ↗</span></div>
         <div class="preview-title">Aster S5</div>
         <div class="aster-stage" aria-hidden="true">
@@ -16,7 +16,7 @@
                 <span class="aster-wheel aster-wheel-back" />
             </div>
         </div>
-        <span class="preview-index">CONCEPT / 01 · XE MINH HỌA</span>
+        <span class="preview-index">{{ $t("preview.aster.concept01FictionalVehicle") }}</span>
         <span class="preview-arrow" aria-hidden="true">↗</span>
     </div>
 </template>

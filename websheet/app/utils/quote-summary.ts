@@ -1,11 +1,13 @@
 import type { QuoteDraft } from '~/types/content'
 import { quoteOptions } from '~/data/plans'
-export function quoteSummary(draft: QuoteDraft) {
+import { translate, type Locale } from '~~/shared/i18n'
+export function quoteSummary(draft: QuoteDraft, locale: Locale = 'vi') {
+  const t = (value: string) => translate(value, locale)
   return [
-    'YÊU CẦU TƯ VẤN DỰ ÁN — WebSheet', '',
-    `Họ tên: ${draft.name.trim()}`, `Doanh nghiệp: ${draft.company.trim() || 'Chưa cung cấp'}`,
-    `Email: ${draft.email.trim()}`, `Gói quan tâm: ${quoteOptions.find(option => option.id === draft.plan)?.label || 'Cần tư vấn thêm'}`,
-    `Ngân sách: ${draft.budget}`, '', 'Mô tả dự án:', draft.message.trim(), '',
-    'Mong nhận được tư vấn phạm vi, tiến độ và báo giá chính thức.',
+    t('quote.summary.title'), '',
+    `${t('quote.fields.name')}: ${draft.name.trim()}`, `${t('quote.fields.company')}: ${draft.company.trim() || t('quote.notProvided')}`,
+    `Email: ${draft.email.trim()}`, `${t('quote.fields.plan')}: ${t(quoteOptions.find(option => option.id === draft.plan)?.label || 'quote.plans.unsure')}`,
+    `${t('quote.fields.budget')}: ${t(draft.budget)}`, '', t('quote.summary.description'), draft.message.trim(), '',
+    t('quote.summary.closing'),
   ].join('\n')
 }

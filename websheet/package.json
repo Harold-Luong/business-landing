@@ -14,6 +14,7 @@
     "deploy:production": "node scripts/environment.mjs production deploy",
     "postinstall": "nuxt prepare",
     "typecheck": "nuxt typecheck",
+    "test:i18n": "node tests/i18n.mjs",
     "test:output": "node scripts/environment.mjs production test:output",
     "test:output:dev": "node scripts/environment.mjs dev test:output",
     "test:browser": "node scripts/environment.mjs production test:browser",
