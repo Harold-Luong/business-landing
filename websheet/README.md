@@ -1,5 +1,7 @@
 # WebSheet — Nuxt / Vue 3
 
+Trên nhánh `master`, form tư vấn tạm thời không được render; phần liên hệ chỉ hiển thị Email, Zalo và Hotline. Các nút tư vấn dẫn đến `#lien-he`, liên kết cũ `#quote-form` vẫn cuộn đến phần liên hệ khi JavaScript hoạt động. Mã `QuoteForm.vue` và `QuoteDialog.vue` được giữ để khôi phục sau.
+
 Website tĩnh giới thiệu dịch vụ thiết kế website, Google Sheets, Apps Script và AppSheet. Đã dựng trang chủ và năm trang dịch vụ bằng Nuxt 4 + Vue 3 + Vite + TypeScript, giữ giao diện và nội dung theo [đặc tả](NUXT_VUE3_DESIGN.md) và [hướng dẫn code](AI_CODING_GUIDE.md).
 
 ## Chạy local
@@ -41,7 +43,7 @@ URL demo trống hiển thị “Demo đang chuẩn bị”; thẻ mẫu và CTA
 
 SEO production được cấu hình cho `https://websheet.shop/`: HTML cho phép index, canonical và sitemap dùng domain này. `.env.example` dành cho local nên để trống `NUXT_PUBLIC_SITE_URL` để HTML có `noindex`. File `public/robots.txt` chỉ là bản dùng cho local; khi build, Nuxt sinh lại robots và sitemap theo môi trường. Thay đổi metadata trong `shared/site.ts` cần build và deploy production mới xuất hiện trên website.
 
-Thông tin liên hệ đã được xác nhận: email `ductrong.luongnguyen@gmail.com`, Zalo `0975 6666 14` (`https://zalo.me/0975666614`), hotline `0947787904`. Dữ liệu chung ở `shared/contact.ts`; email mặc định có trong cả hai môi trường và `.env.example`. Biến `NUXT_PUBLIC_CONTACT_EMAIL` vẫn có thể ghi đè (chuỗi rỗng ẩn link email). Khu vực Liên hệ có link email/Zalo/gọi điện; dialog mở ứng dụng email kèm bản yêu cầu, người dùng tự xác nhận gửi. Không tự gửi tin nhắn hoặc gọi điện.
+Thông tin liên hệ đã được xác nhận: email `ductrong.luongnguyen@gmail.com`, Zalo `0975 6666 14` (`https://zalo.me/0975666614`), hotline `0947787904`. Dữ liệu chung ở `shared/contact.ts`; email mặc định có trong cả hai môi trường và `.env.example`. Biến `NUXT_PUBLIC_CONTACT_EMAIL` vẫn có thể ghi đè (chuỗi rỗng ẩn link email). Khu vực Liên hệ có link email/Zalo/gọi điện; link email mở ứng dụng email của người dùng. Không tự gửi tin nhắn hoặc gọi điện.
 
 Để build và kiểm tra dev:
 
@@ -56,11 +58,11 @@ Dev có `noindex, follow` trong HTML và header `X-Robots-Tag` qua file `_header
 ## Các phần đã dựng
 
 - Sáu route public, hai layout dùng chung `SiteHeader` và menu mobile. Menu dịch vụ dẫn về các section trang chủ, đánh dấu Dịch vụ; homepage đánh dấu section đang xem.
-- Nội dung chung (quy trình, liên hệ) ở landing; trang dịch vụ giữ giải pháp, phạm vi, demo và FAQ chuyên biệt. Website có một khu vực so sánh gói, gallery không lặp giá. Apps Script/AppSheet giữ panel giá thiết kế riêng. CTA cuối trang được rút gọn và chọn sẵn dịch vụ trong form.
+- Nội dung chung (quy trình, liên hệ) ở landing; trang dịch vụ giữ giải pháp, phạm vi, demo và FAQ chuyên biệt. Website có một khu vực so sánh gói, gallery không lặp giá. Apps Script/AppSheet giữ panel giá thiết kế riêng. CTA cuối trang dẫn về thông tin liên hệ trực tiếp.
 - Hai thẻ chọn dịch vụ có preview HTML/CSS An Studio và SheetFlow ngay trong thẻ; không có section mẫu riêng trên trang chủ. Gallery đầy đủ nằm ở trang dịch vụ. Link cũ `/#giao-dien` đưa về nhóm dịch vụ.
 - Năm gói giá, lấy giá/nhãn/features từ registry; giá Google là thiết kế riêng theo yêu cầu.
-- Form có validation; query chọn plan/concept, giữ draft trong bộ nhớ khi chuyển trang, không lưu localStorage.
-- Dialog tạo bản yêu cầu, sao chép, tải TXT UTF-8 BOM và `mailto:` có điều kiện. **Không gọi API, không tự gửi email hoặc nhận đơn hàng.**
+- Mã form đang tạm ẩn có validation; query chọn plan/concept, giữ draft trong bộ nhớ khi chuyển trang, không lưu localStorage.
+- Mã dialog đang tạm ẩn hỗ trợ tạo bản yêu cầu, sao chép, tải TXT UTF-8 BOM và `mailto:` có điều kiện. **Không gọi API, không tự gửi email hoặc nhận đơn hàng.**
 - Head riêng theo trang, JSON-LD, canonical/robots/sitemap theo cùng cấu hình site URL. Giữ token Search Console cũ để đối chiếu; cần xác minh property domain mới riêng.
 - Font Be Vietnam Pro local, ảnh preview tối ưu và nhận diện WebSheet.
 - Hiệu ứng cuộn dùng `v-reveal` + một Intersection Observer chung: fade/slide nhẹ từng block, chạy một lần; giữ nội dung đầu màn hình, no-JS, reduced motion, focus bàn phím và bản in luôn đọc được. Không thêm thư viện animation.

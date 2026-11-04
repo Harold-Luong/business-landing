@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { websitePlans, priceMillions } from '~/data/plans'
-const { selectPlan } = useQuoteSelection()
 const rows = [
     { key: 'scope', label: 'Phạm vi' }, { key: 'management', label: 'Quản trị nội dung' },
     { key: 'delivery', label: 'Thời gian dự kiến' }, { key: 'warranty', label: 'Bảo hành lỗi' },
@@ -34,8 +33,7 @@ const rows = [
                                 <div class="price"><span>Từ</span><strong>{{ priceMillions(plan.startingPriceVnd)
                                         }}<span> triệu</span></strong><small>VNĐ / dự án</small></div>
                                 <NuxtLink class="button" :class="plan.recommended ? 'button-dark' : 'button-outline'"
-                                    to="#quote-form" :aria-label="`Chọn gói này: ${plan.name}`"
-                                    @click="selectPlan(plan.id)">Chọn gói này <span aria-hidden="true">↗</span>
+                                    to="#lien-he" :aria-label="`Chọn gói này: ${plan.name}`">Chọn gói này <span aria-hidden="true">↗</span>
                                 </NuxtLink>
                             </div>
                         </th>

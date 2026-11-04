@@ -9,7 +9,7 @@
                     Google Sheets,
                     xây tiện ích và ứng dụng quản lý bằng Apps Script hoặc AppSheet.</p>
                 <div class="hero-actions">
-                    <NuxtLink class="button button-dark" to="#quote-form">Trao đổi dự án
+                    <NuxtLink class="button button-dark" to="#lien-he">Trao đổi dự án
                         <span aria-hidden="true">↗</span>
                     </NuxtLink>
                 </div>

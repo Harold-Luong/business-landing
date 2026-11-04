@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { googlePlans, priceMillions } from '~/data/plans'
-const { selectPlan } = useQuoteSelection()
 </script>
 <template>
     <section id="bang-gia-google" class="automation-pricing" aria-labelledby="google-pricing-title">
@@ -23,8 +22,7 @@ const { selectPlan } = useQuoteSelection()
                             triệu</span></strong><small>VNĐ / dự án</small></div>
                 <p class="plan-scope">{{ plan.scope }}</p>
                 <p class="delivery">Dự kiến {{ plan.delivery }}</p>
-                <NuxtLink class="button button-outline" to="#quote-form" :aria-label="`Trao đổi yêu cầu ${plan.name}`"
-                    @click="selectPlan(plan.id)">Trao đổi yêu cầu <span aria-hidden="true">↗</span></NuxtLink>
+                <NuxtLink class="button button-outline" to="#lien-he" :aria-label="`Trao đổi yêu cầu ${plan.name}`">Trao đổi yêu cầu <span aria-hidden="true">↗</span></NuxtLink>
                 <details class="plan-details">
                     <summary>Xem chi tiết<span class="sr-only"> {{ plan.name }}</span></summary>
                     <ul class="feature-list">

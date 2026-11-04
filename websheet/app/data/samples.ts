@@ -5,4 +5,4 @@ export const samples: { id: SampleId, name: string, description: string, plan: S
   { id: 'orbit', name: 'Orbit', description: 'Công nghệ & SaaS', plan: 'custom' },
   { id: 'sheetflow', name: 'SheetFlow', description: 'Quản lý đơn hàng trên Google Sheets', plan: 'apps-script' },
 ]
-export const sampleQuoteHref = (sample: typeof samples[number]) => `/?concept=${sample.id}&plan=${sample.plan}#quote-form`
+export const sampleQuoteHref = (sample: typeof samples[number]) => `/?concept=${sample.id}&plan=${sample.plan}#lien-he`

@@ -110,7 +110,7 @@
           <DemoLink sample-id="sheetflow" label="Xem demo Sheets"></DemoLink>
           <NuxtLink
             class="text-link"
-            to="/?concept=sheetflow&amp;plan=apps-script#quote-form"
+            to="/?concept=sheetflow&amp;plan=apps-script#lien-he"
             >Trao đổi từ mẫu này <span aria-hidden="true">→</span></NuxtLink
           >
         </div>
