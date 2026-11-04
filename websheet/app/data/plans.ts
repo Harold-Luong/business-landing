@@ -5,112 +5,112 @@ export const plans: ServicePlan[] = [
     "name": "Google Apps Script",
     "category": "google",
     "startingPriceVnd": 900000,
-    "formLabel": "Google Apps Script · từ 0,9 triệu · Theo yêu cầu",
-    "kicker": "LẬP TRÌNH THEO YÊU CẦU",
+    "formLabel": "plans.googleAppsScriptFromVnd09",
+    "kicker": "plans.customDevelopment",
     "features": [
-      "01 quy trình tự động hóa trên tối đa 2 file Google Sheets.",
-      "Làm sạch, đối soát hoặc tổng hợp dữ liệu theo quy tắc đã chốt.",
-      "Chạy theo lịch hoặc từ nút bấm, kèm ghi nhận kết quả và lỗi cơ bản.",
-      "Bàn giao mã nguồn, cấu hình và hướng dẫn; bảo hành lỗi trong phạm vi 1 tháng."
+      "appsScript.oneAutomatedWorkflowAcrossUpTo2",
+      "appsScript.cleanReconcileOrConsolidateDataUsingAgreed",
+      "appsScript.runOnAScheduleOrFromA",
+      "appsScript.sourceCodeConfigurationAndInstructions1Month"
     ],
     "detailHref": "/dich-vu/google-apps-script/#pham-vi",
     "recommended": false,
-    "scope": "01 quy trình · tối đa 2 file Sheets",
-    "delivery": "3–5 ngày làm việc",
-    "warranty": "1 tháng"
+    "scope": "plans.oneWorkflowUpTo2SheetsFiles",
+    "delivery": "plans.delivery.threeToFiveDays",
+    "warranty": "plans.warranty.oneMonth"
   },
   {
     "id": "appsheet",
     "name": "AppSheet",
     "category": "google",
     "startingPriceVnd": 3900000,
-    "formLabel": "AppSheet · từ 7,9 triệu · Theo yêu cầu",
-    "kicker": "ỨNG DỤNG THEO YÊU CẦU",
+    "formLabel": "plans.appsheetFromVnd79MillionCustom",
+    "kicker": "plans.customApps",
     "features": [
-      "01 ứng dụng với tối đa 5 bảng dữ liệu Google Sheets.",
-      "Tối đa 5 màn hình nhập liệu, danh sách hoặc báo cáo.",
-      "Tối đa 2 vai trò người dùng và 01 luồng thông báo hoặc phê duyệt cơ bản.",
-      "Bàn giao cấu hình, hướng dẫn quản trị; bảo hành lỗi trong phạm vi 1 tháng."
+      "appsheet.oneAppWithUpTo5Google",
+      "appsheet.upTo5ScreensForDataEntry",
+      "appsheet.upTo2UserRolesAndOne",
+      "appsheet.configurationHandoverAndAdminGuidance1Month"
     ],
     "detailHref": "/dich-vu/appsheet/#pham-vi",
     "recommended": false,
-    "scope": "Tối đa 5 bảng dữ liệu và 5 màn hình",
-    "delivery": "7–12 ngày làm việc",
-    "warranty": "1 tháng"
+    "scope": "plans.upTo5DataTablesAnd5",
+    "delivery": "plans.delivery.sevenToTwelveDays",
+    "warranty": "plans.warranty.oneMonth"
   },
   {
     "id": "launch",
     "name": "Launch",
     "category": "website",
     "startingPriceVnd": 4900000,
-    "formLabel": "Launch · từ 6,9 triệu",
-    "kicker": "MỘT TRANG",
+    "formLabel": "plans.launchFromVnd69Million",
+    "kicker": "plans.singlePage",
     "features": [
-      "01 landing page, tối đa 8 section",
-      "Thiết kế theo nhận diện thương hiệu",
-      "Tương thích điện thoại, tablet, desktop",
-      "SEO kỹ thuật cơ bản",
-      "Tích hợp form, Zalo hoặc hotline",
-      "Bàn giao mã nguồn & hướng dẫn",
-      "Bảo hành lỗi trong phạm vi: 3 tháng"
+      "plans.oneLandingPageUpTo8Sections",
+      "plans.designAlignedWithYourBrand",
+      "plans.responsiveOnMobileTabletAndDesktop",
+      "plans.basicTechnicalSeo",
+      "plans.formZaloOrPhoneContactIntegration",
+      "plans.sourceCodeUsageGuidance",
+      "plans.bugFixWarrantyWithinScope3Months"
     ],
     "detailHref": "/dich-vu/thiet-ke-website/#goi-launch",
     "recommended": false,
-    "scope": "01 trang đích Tối đa 8 section",
-    "management": "Trang tĩnh CMS báo giá riêng",
-    "delivery": "5–7 ngày làm việc",
-    "warranty": "3 tháng"
+    "scope": "plans.oneLandingPageUpTo8Sections2",
+    "management": "plans.staticPageCmsQuotedSeparately",
+    "delivery": "plans.delivery.fiveToSevenDays",
+    "warranty": "plans.warranty.threeMonths"
   },
   {
     "id": "business",
     "name": "Business",
     "category": "website",
     "startingPriceVnd": 14900000,
-    "formLabel": "Business · từ 14,9 triệu",
-    "kicker": "ĐỀ XUẤT",
+    "formLabel": "plans.businessFromVnd149Million",
+    "kicker": "plans.recommended",
     "features": [
-      "Bao gồm các hạng mục của gói Launch",
-      "Tối đa 10 trang nội dung",
-      "CMS quản trị bài viết, dịch vụ, dự án",
-      "Blog với cấu trúc hỗ trợ SEO",
-      "Thiết lập đo lường theo yêu cầu",
-      "Hướng dẫn quản trị trực tiếp",
-      "Bảo hành lỗi trong phạm vi: 6 tháng"
+      "plans.includesTheLaunchPlanDeliverables",
+      "plans.upTo10ContentPages",
+      "plans.cmsForArticlesServicesAndProjects",
+      "plans.blogWithAnSeoFriendlyStructure",
+      "plans.analyticsSetupOnRequest",
+      "plans.liveAdminTraining",
+      "plans.bugFixWarrantyWithinScope6Months"
     ],
     "detailHref": "/dich-vu/thiet-ke-website/#goi-business",
     "recommended": true,
-    "scope": "Website doanh nghiệp Tối đa 10 trang",
-    "management": "Có CMS & blog",
-    "delivery": "15–20 ngày làm việc",
-    "warranty": "6 tháng"
+    "scope": "plans.businessWebsiteUpTo10Pages",
+    "management": "plans.cmsBlogIncluded",
+    "delivery": "plans.delivery.fifteenToTwentyDays",
+    "warranty": "plans.warranty.sixMonths"
   },
   {
     "id": "custom",
     "name": "Custom",
     "category": "website",
     "startingPriceVnd": 29900000,
-    "formLabel": "Custom · từ 29,9 triệu",
-    "kicker": "THEO YÊU CẦU",
+    "formLabel": "plans.customFromVnd299Million",
+    "kicker": "plans.customBuilt",
     "features": [
-      "Khảo sát & phân tích yêu cầu",
-      "Thiết kế UI/UX theo nghiệp vụ",
-      "Tài khoản & phân quyền người dùng",
-      "Tích hợp API, CRM theo thỏa thuận",
-      "Kiến trúc hỗ trợ nâng cấp về sau",
-      "Tài liệu kỹ thuật & bàn giao mã nguồn",
-      "Bảo hành theo hợp đồng dự án"
+      "plans.discoveryRequirementsAnalysis",
+      "plans.uiUxDesignedForYourWorkflows",
+      "plans.userAccountsAccessPermissions",
+      "plans.apiAndCrmIntegrationsAsAgreed",
+      "plans.architectureDesignedForFutureUpgrades",
+      "plans.technicalDocumentationSourceCodeHandover",
+      "plans.warrantyAsSpecifiedInTheProjectContract"
     ],
     "detailHref": "/dich-vu/thiet-ke-website/#goi-custom",
     "recommended": false,
-    "scope": "Website / web app Theo nghiệp vụ",
-    "management": "Theo yêu cầu",
-    "delivery": "Theo phạm vi dự án",
-    "warranty": "Theo hợp đồng"
+    "scope": "plans.websiteWebAppBuiltForYourBusiness",
+    "management": "plans.onRequest",
+    "delivery": "plans.basedOnProjectScope",
+    "warranty": "plans.asAgreedInTheContract"
   }
 ]
 export const googlePlans = plans.filter(p => p.category === 'google')
 export const websitePlans = plans.filter(p => p.category === 'website')
 export const planById = Object.fromEntries(plans.map(p => [p.id, p])) as Record<ServicePlan['id'], ServicePlan>
 export const priceMillions = (price: number) => new Intl.NumberFormat('vi-VN', { maximumFractionDigits: 1 }).format(price / 1000000)
-export const quoteOptions = [{ id: 'unsure', label: 'Cần tư vấn thêm' }, { id: 'automation', label: 'Tiện ích Sheets · Apps Script & AppSheet' }, { id: 'website', label: 'Website · Cần tư vấn chọn gói' }, ...['launch', 'business', 'custom', 'apps-script', 'appsheet'].map(id => ({ id, label: plans.find(p => p.id === id)!.formLabel }))]
-export const budgets = ['Chưa xác định', 'Dưới 10 triệu', '10–20 triệu', '20–50 triệu', 'Trên 50 triệu']
+export const quoteOptions = [{ id: 'unsure', label: 'quote.plans.unsure' }, { id: 'automation', label: 'plans.sheetsToolsAppsScriptAppsheet' }, { id: 'website', label: 'plans.websiteHelpMeChooseAPlan' }, ...['launch', 'business', 'custom', 'apps-script', 'appsheet'].map(id => ({ id, label: plans.find(p => p.id === id)!.formLabel }))]
+export const budgets = ['quote.budgets.unknown', 'quote.budgets.under10', 'quote.budgets.from10To20', 'quote.budgets.from20To50', 'quote.budgets.over50']

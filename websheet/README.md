@@ -1,6 +1,6 @@
 # WebSheet — Nuxt / Vue 3
 
-Website tĩnh giới thiệu dịch vụ thiết kế website, Google Sheets, Apps Script và AppSheet. Đã dựng trang chủ và năm trang dịch vụ bằng Nuxt 4 + Vue 3 + Vite + TypeScript, giữ giao diện và nội dung theo [đặc tả](NUXT_VUE3_DESIGN.md) và [hướng dẫn code](AI_CODING_GUIDE.md).
+Website tĩnh giới thiệu dịch vụ thiết kế website, Google Sheets, Apps Script và AppSheet. Trang chủ và năm trang dịch vụ có hai bản Việt/Anh (12 URL prerender), dùng Nuxt 4 + Vue 3 + Vite + TypeScript.
 
 ## Chạy local
 
@@ -23,6 +23,17 @@ npm run preview
 ```
 
 `build` và `generate` là alias cho `build:production`, xuất HTML tĩnh vào `.output/production/public/`. Dev xuất riêng vào `.output/dev/public/`; build môi trường này không xóa output của môi trường kia. `preview`/`preview:dev` phục vụ output tương ứng tại cổng 4174, gồm trang 404. `test:browser` cần Google Chrome tại `/usr/bin/google-chrome` hoặc biến `CHROME_BIN`; test tự mở server local trên cổng trống, chụp ảnh vào `/tmp/websheet-preview/`.
+
+Nuxt sinh types vào `.nuxt/` mặc định để khớp references trong `tsconfig.json`, kể cả trên CI không có cache. Chạy các lệnh Nuxt lần lượt trong cùng checkout; output deploy được tách theo môi trường.
+
+## Tiếng Việt và tiếng Anh
+
+- Tiếng Việt giữ URL hiện tại (`/`, `/dich-vu/.../`); tiếng Anh có tiền tố `/en/`. Không tự chuyển theo ngôn ngữ trình duyệt hoặc cookie.
+- Nút VI/EN giữ trang, query và anchor hiện tại khi đổi ngôn ngữ. Liên kết nội bộ giữ ngôn ngữ đang xem. Draft form được giữ trong phiên điều hướng; nội dung khách nhập không tự dịch.
+- Nội dung, form, FAQ, metadata và dữ liệu có cấu trúc được dịch khi render HTML. Mỗi trang có canonical riêng; production có `hreflang` vi/en/x-default và sitemap 12 URL. Dev vẫn `noindex`, không canonical/sitemap.
+- `shared/locales/vi.json` và `shared/locales/en.json` dùng chung key cố định, ví dụ `"nav.services": "Dịch vụ"` / `"nav.services": "Services"`. Trong template dùng `$t('nav.services')`, `$localePath(...)` và `$priceMillions(...)`; trong script dùng `useLocale()`. Khi sửa câu chữ, chỉ sửa giá trị trong JSON; khi thêm key, thêm vào cả hai file. Nội dung động dùng placeholder như `{name}` và gọi `t(key, { name })`. `shared/i18n.ts` xử lý dịch và URL; `npm run test:i18n` kiểm tra hai bộ key và placeholder khớp nhau.
+- Giá vẫn tính bằng VND; đổi ngôn ngữ chỉ đổi cách diễn đạt và dấu phân cách, không quy đổi tỷ giá.
+- Chạy `npm run test:i18n`, build, `npm run test:output` và `npm run test:browser` để kiểm tra URL, nội dung, SEO, chuyển ngôn ngữ, form và giao diện mobile.
 
 ## Cấu hình
 
@@ -55,7 +66,7 @@ Dev có `noindex, follow` trong HTML và header `X-Robots-Tag` qua file `_header
 
 ## Các phần đã dựng
 
-- Sáu route public, hai layout dùng chung `SiteHeader` và menu mobile. Menu dịch vụ dẫn về các section trang chủ, đánh dấu Dịch vụ; homepage đánh dấu section đang xem.
+- Sáu trang với 12 URL Việt/Anh, hai layout dùng chung `SiteHeader`, bộ chọn ngôn ngữ và menu mobile. Menu dịch vụ dẫn về các section trang chủ cùng ngôn ngữ, đánh dấu Dịch vụ; homepage đánh dấu section đang xem.
 - Nội dung chung (quy trình, liên hệ) ở landing; trang dịch vụ giữ giải pháp, phạm vi, demo và FAQ chuyên biệt. Website có một khu vực so sánh gói, gallery không lặp giá. Apps Script/AppSheet giữ panel giá thiết kế riêng. CTA cuối trang được rút gọn và chọn sẵn dịch vụ trong form.
 - Hai thẻ chọn dịch vụ có preview HTML/CSS An Studio và SheetFlow ngay trong thẻ; không có section mẫu riêng trên trang chủ. Gallery đầy đủ nằm ở trang dịch vụ. Link cũ `/#giao-dien` đưa về nhóm dịch vụ.
 - Năm gói giá, lấy giá/nhãn/features từ registry; giá Google là thiết kế riêng theo yêu cầu.
@@ -102,7 +113,7 @@ Cloudflare Git Builds: tạo hai Worker, chọn root directory `websheet`. Nhán
 
 Production tắt URL `workers.dev` và version preview, chỉ phục vụ custom domain. Trước khi deploy production, zone `websheet.shop` phải hoạt động trong tài khoản Cloudflare; nếu DNS còn quản lý ở Hostinger, cần chuyển nameserver theo hướng dẫn Cloudflare. Wrangler đăng ký Custom Domain khi deploy nhưng không tự sửa nameserver tại nhà đăng ký. Dev không cần domain riêng. Xem [Cloudflare environments](https://developers.cloudflare.com/workers/wrangler/environments/) và [Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
 
-`robots.txt`/`sitemap.xml` được sinh từ cùng site URL/route registry khi build; không sửa output thủ công. Sau deploy, kiểm tra trang chủ, năm route dịch vụ, robots, sitemap, favicon và HTTP 404. Dev không có sitemap; production có XML chứa sáu URL `https://websheet.shop/…`.
+`robots.txt`/`sitemap.xml` được sinh từ cùng site URL/route registry khi build; không sửa output thủ công. Sau deploy, kiểm tra hai ngôn ngữ của trang chủ và năm trang dịch vụ, robots, sitemap, favicon và HTTP 404. Dev không có sitemap; production có XML chứa 12 URL `https://websheet.shop/…`.
 
 Xác minh property `websheet.shop` trong Search Console rồi gửi `https://websheet.shop/sitemap.xml`; token cũ không chứng minh domain mới đã được xác minh. Nếu phục vụ hostname cũ hoặc `www`, cấu hình redirect 301/308 theo từng path sau khi domain chính hoạt động. Chưa đăng nhập Cloudflare trên máy tại thời điểm thiết lập; việc build/dry-run không có nghĩa đã deploy online.
 

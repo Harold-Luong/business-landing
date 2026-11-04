@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import { emailLink } from '~~/shared/contact'
 const props = defineProps<{ summary: string, name: string }>()
+const { t } = useLocale()
 const dialog = ref<HTMLDialogElement | null>(null)
 const textarea = ref<HTMLTextAreaElement | null>(null)
 const status = ref('')
 const email = useRuntimeConfig().public.contactEmail.trim()
-const emailHref = computed(() => emailLink(email) ? `${emailLink(email)}?subject=${encodeURIComponent('Yêu cầu tư vấn dự án — ' + props.name.trim())}&body=${encodeURIComponent(props.summary)}` : '')
+const emailHref = computed(() => emailLink(email) ? `${emailLink(email)}?subject=${encodeURIComponent(t('quote.emailSubject') + ' ' + props.name.trim())}&body=${encodeURIComponent(props.summary)}` : '')
 const downloads = new Map<string, ReturnType<typeof setTimeout>>()
 function open() { status.value = ''; dialog.value?.showModal() }
 defineExpose({ open })
@@ -16,10 +17,10 @@ function onBackdrop(event: MouseEvent) {
 async function copy() {
     try {
         await navigator.clipboard.writeText(props.summary)
-        status.value = 'Đã sao chép. Bạn có thể dán nội dung vào email hoặc ứng dụng nhắn tin.'
+        status.value = 'quote.dialog.copiedYouCanPasteThisIntoAn'
     } catch {
         textarea.value?.focus(); textarea.value?.select()
-        status.value = 'Nội dung đã được chọn. Nhấn Ctrl+C (hoặc ⌘C) để sao chép, hoặc tải file bên dưới.'
+        status.value = 'quote.dialog.theTextIsSelectedPressCtrlC'
     }
 }
 function download() {
@@ -28,7 +29,7 @@ function download() {
     link.href = url; link.download = 'yeu-cau-tu-van-du-an.txt'
     document.body.append(link); link.click(); link.remove()
     downloads.set(url, setTimeout(() => { URL.revokeObjectURL(url); downloads.delete(url) }, 1000))
-    status.value = 'Đã tạo file yêu cầu để trình duyệt tải xuống. Thông tin chưa được gửi đi.'
+    status.value = 'quote.dialog.yourRequestFileIsReadyToDownload'
 }
 onBeforeUnmount(() => {
     dialog.value?.close()
@@ -39,20 +40,16 @@ onBeforeUnmount(() => {
 <template>
     <dialog ref="dialog" @click="onBackdrop" id="quote-dialog" aria-labelledby="quote-title">
         <div class="dialog-top">
-            <p class="eyebrow">BẢN YÊU CẦU CỦA BẠN</p><button class="dialog-close" @click="dialog?.close()"
-                type="button" aria-label="Đóng bản yêu cầu">×</button>
+            <p class="eyebrow">{{ $t("quote.dialog.yourProjectRequest") }}</p><button class="dialog-close" @click="dialog?.close()"
+                type="button" :aria-label="$t('quote.dialog.closeProjectRequest')">×</button>
         </div>
-        <h2 id="quote-title">Bản yêu cầu tư vấn</h2>
-        <p>Bản yêu cầu đã được tạo, <strong>chưa được gửi</strong>. Sao chép nội dung để chia sẻ với đơn vị tư vấn.</p>
-        <label class="sr-only" for="quote-summary">Nội dung yêu cầu</label><textarea id="quote-summary" ref="textarea"
+        <h2 id="quote-title">{{ $t("quote.dialog.projectConsultationRequest") }}</h2>
+        <p>{{ $t("quote.dialog.yourRequestHasBeenCreated") }} <strong>{{ $t("quote.dialog.butNotSent") }}</strong>{{ $t("quote.dialog.copyTheTextToShareItWith") }}</p>
+        <label class="sr-only" for="quote-summary">{{ $t("quote.dialog.requestDetails") }}</label><textarea id="quote-summary" ref="textarea"
             :value="summary" rows="10" readonly></textarea>
-        <div class="dialog-actions"><button class="button button-dark" type="button" id="copy-quote" @click="copy">Sao
-                chép yêu cầu
-                <span aria-hidden="true">↗</span></button><a class="button button-outline" id="email-quote"
-                v-if="emailHref" :href="emailHref">Mở
-                ứng dụng email</a><button class="text-link" id="download-quote" @click="download" type="button">Tải file
-                .txt ↓</button>
+        <div class="dialog-actions"><button class="button button-dark" type="button" id="copy-quote" @click="copy">{{ $t("quote.dialog.copyRequest") }} <span aria-hidden="true">↗</span></button><a class="button button-outline" id="email-quote"
+                v-if="emailHref" :href="emailHref">{{ $t("quote.dialog.openEmailApp") }}</a><button class="text-link" id="download-quote" @click="download" type="button">{{ $t("quote.dialog.downloadTxt") }}</button>
         </div>
-        <p id="copy-status" role="status" aria-live="polite">{{ status }}</p>
+        <p id="copy-status" role="status" aria-live="polite">{{ $t(status) }}</p>
     </dialog>
 </template>

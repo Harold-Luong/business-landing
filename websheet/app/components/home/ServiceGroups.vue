@@ -3,10 +3,10 @@
         <!-- Preserve incoming links from independently deployed demos. -->
         <span id="giao-dien" class="service-samples-anchor" aria-hidden="true"></span>
         <div class="container">
-            <p class="eyebrow">01 / CHỌN NHÓM DỊCH VỤ</p>
-            <h2 class="sr-only" id="services-title">Giải pháp cho nhu cầu của bạn</h2>
+            <p class="eyebrow">{{ $t("services.groups.eyebrow") }}</p>
+            <h2 class="sr-only" id="services-title">{{ $t("services.groups.solutionsForYourNeeds") }}</h2>
             <div class="service-paths">
-                <NuxtLink v-reveal class="service-family" id="dich-vu-google" to="/dich-vu/google-automation/"
+                <NuxtLink v-reveal class="service-family" id="dich-vu-google" :to="$localePath('/dich-vu/google-automation/')"
                     aria-labelledby="google-services-title google-service-link">
                     <div class="service-family-top">
                         <span class="service-family-icon" aria-hidden="true">
@@ -17,25 +17,21 @@
                                 <path d="M7 10v7h7M10 7h7v7"></path>
                             </svg>
                         </span>
-                        <span class="service-family-label">TỰ ĐỘNG HÓA CÔNG VIỆC</span>
+                        <span class="service-family-label">{{ $t("services.groups.workflowAutomation") }}</span>
                     </div>
                     <h3 id="google-services-title">Google Automation</h3>
-                    <p>
-                        Tiện ích Google Sheets với Apps Script và AppSheet để tự động hóa thao tác và
-                        quản lý công việc.
-                    </p>
+                    <p> {{ $t("services.groups.googleSheetsToolsBuiltWithAppsScript") }} </p>
                     <figure class="service-family-preview">
-                        <div role="img" aria-label="Minh họa giao diện quản lý đơn hàng SheetFlow trong Google Sheets">
+                        <div role="img" :aria-label="$t('services.groups.illustrationOfTheSheetflowOrderManagementInterface')">
                             <SheetTeaser aria-hidden="true" />
                         </div>
-                        <figcaption>SheetFlow · Giao diện minh họa theo yêu cầu</figcaption>
+                        <figcaption>{{ $t("services.groups.sheetflowCustomInterfaceConcept") }}</figcaption>
                     </figure>
                     <div class="service-family-actions">
-                        <span class="service-detail-link" id="google-service-link">Xem giải pháp tự động hóa
-                            <span aria-hidden="true">↗</span></span>
+                        <span class="service-detail-link" id="google-service-link">{{ $t("services.groups.exploreAutomationSolutions") }} <span aria-hidden="true">↗</span></span>
                     </div>
                 </NuxtLink>
-                <NuxtLink v-reveal="80" class="service-family" id="dich-vu-website" to="/dich-vu/thiet-ke-website/"
+                <NuxtLink v-reveal="80" class="service-family" id="dich-vu-website" :to="$localePath('/dich-vu/thiet-ke-website/')"
                     aria-labelledby="web-services-title website-service-link">
                     <div class="service-family-top">
                         <span class="service-family-icon" aria-hidden="true">
@@ -46,29 +42,23 @@
                                 <path d="M3 12h18M5 6h14M5 18h14"></path>
                             </svg>
                         </span>
-                        <span class="service-family-label">WEBSITE CHO DOANH NGHIỆP</span>
+                        <span class="service-family-label">{{ $t("services.groups.websitesForBusinesses") }}</span>
                     </div>
                     <h3 id="web-services-title">Website &amp; Web App</h3>
-                    <p>
-                        Thiết kế landing page, website doanh nghiệp và ứng dụng web theo mục tiêu kinh
-                        doanh của bạn.
-                    </p>
+                    <p> {{ $t("services.groups.landingPagesBusinessWebsitesAndWebApplications") }} </p>
                     <figure class="service-family-preview">
-                        <div role="img" aria-label="Minh họa website kiến trúc và nội thất An Studio">
+                        <div role="img" :aria-label="$t('services.groups.illustrationOfTheAnStudioArchitectureAnd')">
                             <AnStudioPreview aria-hidden="true" />
                         </div>
-                        <figcaption>An Studio · Mẫu website kiến trúc &amp; nội thất</figcaption>
+                        <figcaption>{{ $t("services.groups.anStudioArchitectureInteriorDesignWebsiteConcept") }}</figcaption>
                     </figure>
                     <div class="service-family-actions">
-                        <span class="service-detail-link" id="website-service-link">Xem dịch vụ website <span
+                        <span class="service-detail-link" id="website-service-link">{{ $t("services.groups.exploreWebDesignServices") }} <span
                                 aria-hidden="true">↗</span></span>
                     </div>
                 </NuxtLink>
             </div>
-            <p v-reveal class="service-samples-note">
-                Giao diện minh họa; xem mẫu chi tiết trong từng dịch vụ. Phạm vi triển khai được
-                thống nhất theo nhu cầu của bạn.
-            </p>
+            <p v-reveal class="service-samples-note"> {{ $t("services.groups.illustrativeInterfacesExploreConceptsOnEachService") }} </p>
         </div>
     </section>
 </template>

@@ -13,32 +13,31 @@ const urls = useDemoUrls()
         aria-labelledby="website-samples-title">
         <div v-reveal class="section-heading">
             <div>
-                <p class="eyebrow">MẪU WEBSITE</p>
-                <h2 id="website-samples-title">Chọn hướng giao diện phù hợp.</h2>
+                <p class="eyebrow">{{ $t("gallery.websiteConcepts") }}</p>
+                <h2 id="website-samples-title">{{ $t("gallery.findTheRightVisualDirection") }}</h2>
             </div>
-            <p>Khám phá landing page, website doanh nghiệp và web app theo từng phạm vi dịch vụ.</p>
+            <p>{{ $t("gallery.exploreLandingPagesBusinessWebsitesAndWeb") }}</p>
         </div>
         <div class="work-grid">
             <article v-for="(sample, index) in cards" v-reveal="index * 80" :key="sample.id" class="work-card">
                 <a v-if="urls[sample.id]" :href="urls[sample.id]" target="_blank" rel="noopener noreferrer"
-                    :aria-label="`Xem demo ${sample.name}, mở trong tab mới`">
+                    :aria-label="`${$t('common.viewDemo')} ${sample.name}, ${$t('common.opensInNewTab')}`">
                     <component :is="previews[sample.id as keyof typeof previews]" />
                 </a>
                 <component :is="previews[sample.id as keyof typeof previews]" v-else />
                 <div class="work-caption">
                     <div>
-                        <h3>{{ sample.name }}</h3>
-                        <p>{{ sample.description }}</p>
-                    </div><span>{{ planById[sample.plan].name }}</span>
+                        <h3>{{ $t(sample.name) }}</h3>
+                        <p>{{ $t(sample.description) }}</p>
+                    </div><span>{{ $t(planById[sample.plan].name) }}</span>
                 </div>
                 <div class="work-actions">
                     <DemoLink :sample-id="sample.id" />
-                    <NuxtLink class="text-link" :to="sampleQuoteHref(sample)">Chọn mẫu này <span
+                    <NuxtLink class="text-link" :to="$localePath(sampleQuoteHref(sample))">{{ $t("gallery.chooseThisConcept") }} <span
                             aria-hidden="true">→</span></NuxtLink>
                 </div>
             </article>
         </div>
-        <p class="showcase-note"><span aria-hidden="true">✳</span> Các mẫu website minh họa theo từng gói. CMS, backend
-            và tích hợp được triển khai theo phạm vi thỏa thuận.</p>
+        <p class="showcase-note"><span aria-hidden="true">✳</span> {{ $t("gallery.websiteConceptsIllustrateTheDifferentPlansCms") }}</p>
     </section>
 </template>
