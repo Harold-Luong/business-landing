@@ -19,7 +19,7 @@ import { planById } from '~/data/plans'
                         <li>{{ $t(planById['apps-script'].scope) }}</li>
                         <li>{{ $t("pricing.google.estimated") }} {{ $t(planById['apps-script'].delivery) }}</li>
                     </ul>
-                    <NuxtLink class="text-link" :to="$localePath('/dich-vu/google-apps-script/')">{{ $t("automation.exploreAppsScript") }} <span
+                    <NuxtLink class="text-link text-link--icon" :to="$localePath('/dich-vu/google-apps-script/')"><span class="link-label">{{ $t("automation.exploreAppsScript") }}</span> <span
                             aria-hidden="true">↗</span></NuxtLink>
                 </article>
                 <article v-reveal class="detail-card">
@@ -30,7 +30,7 @@ import { planById } from '~/data/plans'
                         <li>{{ $t(planById['appsheet'].scope) }}</li>
                         <li>{{ $t("pricing.google.estimated") }} {{ $t(planById['appsheet'].delivery) }}</li>
                     </ul>
-                    <NuxtLink class="text-link" :to="$localePath('/dich-vu/appsheet/')">{{ $t("automation.exploreAppsheet") }} <span
+                    <NuxtLink class="text-link text-link--icon" :to="$localePath('/dich-vu/appsheet/')"><span class="link-label">{{ $t("automation.exploreAppsheet") }}</span> <span
                             aria-hidden="true">↗</span></NuxtLink>
                 </article>
             </div>

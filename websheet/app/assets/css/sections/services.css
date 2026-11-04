@@ -76,8 +76,8 @@
     outline-offset: 4px;
 }
 
-.service-family:hover .service-detail-link,
-.service-family:focus-visible .service-detail-link {
+.service-family:hover .service-detail-link > .link-label,
+.service-family:focus-visible .service-detail-link > .link-label {
     text-decoration: underline;
 }
 

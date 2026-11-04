@@ -204,11 +204,12 @@ summary:focus-visible {
     padding: 0;
 }
 
-.text-link > span {
+.text-link > span:not(.link-label) {
     font-size: 21px;
 }
 
-.text-link:hover {
+.text-link:hover:not(.text-link--icon),
+.text-link:hover > .link-label {
     text-decoration: underline;
     text-underline-offset: 5px;
 }

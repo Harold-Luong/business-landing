@@ -28,7 +28,7 @@
                         <figcaption>{{ $t("services.groups.sheetflowCustomInterfaceConcept") }}</figcaption>
                     </figure>
                     <div class="service-family-actions">
-                        <span class="service-detail-link" id="google-service-link">{{ $t("services.groups.exploreAutomationSolutions") }} <span aria-hidden="true">↗</span></span>
+                        <span class="service-detail-link" id="google-service-link"><span class="link-label">{{ $t("services.groups.exploreAutomationSolutions") }}</span> <span aria-hidden="true">↗</span></span>
                     </div>
                 </NuxtLink>
                 <NuxtLink v-reveal="80" class="service-family" id="dich-vu-website" :to="$localePath('/dich-vu/thiet-ke-website/')"
@@ -53,7 +53,7 @@
                         <figcaption>{{ $t("services.groups.anStudioArchitectureInteriorDesignWebsiteConcept") }}</figcaption>
                     </figure>
                     <div class="service-family-actions">
-                        <span class="service-detail-link" id="website-service-link">{{ $t("services.groups.exploreWebDesignServices") }} <span
+                        <span class="service-detail-link" id="website-service-link"><span class="link-label">{{ $t("services.groups.exploreWebDesignServices") }}</span> <span
                                 aria-hidden="true">↗</span></span>
                     </div>
                 </NuxtLink>
