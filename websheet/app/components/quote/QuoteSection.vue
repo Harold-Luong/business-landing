@@ -8,16 +8,16 @@ const emailHref = emailLink(email)
     <section class="section contact" id="lien-he" tabindex="-1" aria-labelledby="contact-title">
         <div class="container contact-grid">
             <div v-reveal class="contact-copy">
-                <p class="eyebrow">LIÊN HỆ &amp; TƯ VẤN</p>
-                <h2 id="contact-title">Mô tả dự án<br>và tính năng<br><span>bạn cần.</span><span class="contact-spark" aria-hidden="true">✳</span></h2>
-                <p>Liên hệ trực tiếp qua email, Zalo hoặc hotline để trao đổi nhu cầu và nhận tư vấn cho dự án của bạn.</p>
+                <p class="eyebrow">{{ $t("quote.section.contactConsultation") }}</p>
+                <h2 id="contact-title">{{ $t("quote.form.projectDescription") }}<br>{{ $t("quote.section.andTheFeatures") }}<br><span>{{ $t("quote.section.youNeed") }}</span><span class="contact-spark" aria-hidden="true">✳</span></h2>
+                <p>{{ $t("quote.section.contactUsByEmailZaloOrPhone") }}</p>
                 <div class="contact-promise"><span aria-hidden="true">↗</span>
-                    <div><strong>Nếu chưa có yêu cầu chi tiết</strong>
-                        <p>Bạn có thể nêu lĩnh vực kinh doanh<br>và công việc muốn giải quyết.</p>
+                    <div><strong>{{ $t("quote.section.noDetailedBriefYet") }}</strong>
+                        <p>{{ $t("quote.section.tellUsAboutYourBusiness") }}<br>{{ $t("quote.section.andTheProblemYouWantToSolve") }}</p>
                     </div>
                 </div>
             </div>
-            <address v-reveal class="contact-channels" aria-label="Kênh liên hệ WebSheet">
+            <address v-reveal class="contact-channels" :aria-label="$t('quote.section.contactWebsheet')">
                 <a v-if="emailHref" :href="emailHref">
                     <span class="contact-channel-icon" aria-hidden="true">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" focusable="false">
@@ -38,9 +38,9 @@ const emailHref = emailLink(email)
                         </svg>
                     </span>
                     <span class="contact-channel-text">
-                        <span class="contact-channel-label">Kết nối Zalo <span aria-hidden="true">↗</span></span>
+                        <span class="contact-channel-label">{{ $t("quote.section.connectOnZalo") }} <span aria-hidden="true">↗</span></span>
                         <span class="contact-channel-value">{{ contactDetails.zalo.label }}</span>
-                        <span class="sr-only"> (mở tab mới)</span>
+                        <span class="sr-only"> {{ $t("quote.section.opensANewTab") }}</span>
                     </span>
                 </a>
                 <a :href="`tel:${contactDetails.hotline.number}`">

@@ -1,10 +1,10 @@
 <template>
     <div class="service-detail">
-        <a class="skip-link" href="#noi-dung">Chuyển đến nội dung</a>
+        <a class="skip-link" href="#noi-dung">{{ $t("layout.skipToContent") }}</a>
         <SiteHeader />
         <slot />
-        <footer class="container detail-footer"><span>WebSheet · Thiết kế & lập trình theo yêu cầu</span>
-            <NuxtLink to="/">Về trang chủ ↑</NuxtLink>
+        <footer class="container detail-footer"><span>{{ $t("service.websheetCustomDesignDevelopment") }}</span>
+            <NuxtLink :to="$localePath('/')">{{ $t("service.backToHome") }}</NuxtLink>
         </footer>
     </div>
 </template>

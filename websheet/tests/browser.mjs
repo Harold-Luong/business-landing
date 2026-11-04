@@ -2,7 +2,7 @@ import assert from 'node:assert/strict'
 import { mkdir } from 'node:fs/promises'
 import { withBrowser, poll, delay } from './browser-helper.mjs'
 import { startServer } from './static-server.mjs'
-import { routes } from '../shared/site.ts'
+import { vietnameseRoutes as routes } from '../shared/site.ts'
 const server = await startServer()
 const shots = '/tmp/websheet-preview'
 await mkdir(shots, { recursive: true })
@@ -99,7 +99,62 @@ try {
     await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 })
     assert.equal(await evaluate("document.querySelector('.menu-toggle').getAttribute('aria-expanded')"), 'false')
     assert.equal(await evaluate("document.activeElement.className"), 'menu-toggle')
+    // English pages are directly addressable, translated and usable on desktop/mobile.
+    for (const width of [1440, 768, 390, 320]) {
+      await send('Emulation.setDeviceMetricsOverride', { width, height: 900, deviceScaleFactor: 1, mobile: false })
+      for (const path of routes) {
+        await navigate('/en' + path)
+        assert.equal(await evaluate('document.documentElement.lang'), 'en')
+        assert.ok(await evaluate('document.documentElement.scrollWidth <= innerWidth + 1'), `/en${path} overflows at ${width}`)
+        assert.deepEqual(await evaluate("[...document.querySelectorAll('#navigation > a')].map(a => a.textContent.replace('↗', '').trim())"), ['Services', 'Pricing', 'Process', 'Contact'])
+        const links = await evaluate("[...document.querySelectorAll('a[href]')].filter(a => !a.closest('.language-switch')).map(a => a.getAttribute('href')).filter(href => href.startsWith('/') && !href.startsWith('//'))")
+        assert.ok(links.every(href => href.startsWith('/en/')), 'Internal links stay English: ' + links.join(', '))
+      }
+      await navigate('/en/')
+      assert.equal(await evaluate("document.querySelector('.language-switch').open"), false)
+      await evaluate("document.querySelector('.language-switch summary').focus()")
+      await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13, text: '\r' })
+      await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13 })
+      await poll(() => evaluate("document.querySelector('.language-switch').open"))
+      assert.ok(await evaluate("document.querySelector('.language-options').getBoundingClientRect().left >= 0"), 'Language dropdown fits the viewport')
+      assert.equal(await evaluate("document.querySelector('.language-options [aria-current]').lang"), 'en')
+      if (width === 1440 || width === 390) await screenshot(`${shots}/language-menu-${width}.png`)
+      await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 })
+      await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 })
+      assert.equal(await evaluate("document.querySelector('.language-switch').open"), false)
+      assert.equal(await evaluate("document.activeElement === document.querySelector('.language-switch summary')"), true)
+      await evaluate("document.querySelector('.language-switch summary').click(); document.querySelector('h1').click()")
+      assert.equal(await evaluate("document.querySelector('.language-switch').open"), false)
+      if (width === 1440 || width === 390) await screenshot(`${shots}/en-${width}.png`, true)
+    }
+    await navigate('/dich-vu/appsheet/?plan=appsheet#pham-vi')
+    await evaluate("window.__localeMarker = 'kept'; document.querySelector('.language-switch summary').click(); document.querySelector('.language-switch a[lang=en]').click()")
+    await poll(() => evaluate("location.pathname === '/en/dich-vu/appsheet/' && document.documentElement.lang === 'en'"))
+    assert.equal(await evaluate('location.search + location.hash'), '?plan=appsheet#pham-vi')
+    assert.equal(await evaluate('window.__localeMarker'), 'kept', 'Language switch stays client-side')
+    assert.ok(await evaluate("document.title.includes('Custom AppSheet')"))
+    if (process.env.NUXT_PUBLIC_SITE_URL) {
+      assert.equal(await evaluate("document.querySelector('link[rel=canonical]').href"), process.env.NUXT_PUBLIC_SITE_URL + 'en/dich-vu/appsheet/')
+      assert.equal(await evaluate("document.querySelectorAll('link[rel=alternate][hreflang]').length"), 3)
+    }
+    await evaluate("document.querySelector('.language-switch summary').click(); document.querySelector('.language-switch a[lang=vi]').click()")
+    await poll(() => evaluate("location.pathname === '/dich-vu/appsheet/' && document.documentElement.lang === 'vi'"))
+    assert.ok(await evaluate("document.title.includes('Thiết kế ứng dụng AppSheet')"))
+    await navigate('/en/?plan=business#quote-form')
+    await poll(() => evaluate("document.activeElement.id === 'lien-he'"))
+    assert.equal(await evaluate("document.querySelector('form, #quote-dialog')"), null)
+    assert.equal(await evaluate("document.querySelectorAll('.contact-channel-icon svg').length"), expectedEmail ? 3 : 2)
+    assert.ok(await evaluate("document.querySelector('.contact-copy').textContent.includes('Contact us directly')"))
+    await evaluate("document.querySelector('.language-switch summary').click(); document.querySelector('.language-switch a[lang=vi]').click()")
+    await poll(() => evaluate("document.documentElement.lang === 'vi'"))
+    assert.equal(await evaluate('location.search + location.hash'), '?plan=business#quote-form')
+    assert.equal(await evaluate("document.querySelector('form, #quote-dialog')"), null)
     await send('Emulation.setScriptExecutionDisabled', { value: true })
+    await send('Page.navigate', { url: server.url + '/en/' })
+    await delay(500)
+    assert.equal(await evaluate('document.documentElement.lang'), 'en')
+    assert.ok(await evaluate("document.body.textContent.includes('Web design.')"))
+    assert.equal(await evaluate("document.querySelector('.language-switch a[lang=vi]').getAttribute('href')"), '/')
     await send('Page.navigate', { url: server.url + '/' })
     await delay(500)
     assert.equal(await evaluate("document.querySelector('form, #quote-dialog')"), null)
@@ -108,6 +163,6 @@ try {
     assert.equal(await evaluate("document.querySelector('[data-reveal-state=pending]')"), null, 'Prerendered/no-JS content must never be hidden')
     await send('Emulation.setScriptExecutionDisabled', { value: false })
     assert.deepEqual(errors, [], 'Browser console/hydration errors')
-    console.log('PASS: scroll reveal, reduced motion, keyboard focus, print; 36 route/viewport checks; contact-only CTAs, legacy form bookmarks, direct contact links, menu, no-JS and 404. Screenshots: ' + shots)
+    console.log('PASS: 60 VI/EN route/viewport checks; language switching, localized navigation/SEO, contact-only CTAs, direct contact icons/links, legacy form bookmarks, no-JS, reveal, keyboard, menu and 404. Screenshots: ' + shots)
   })
 } finally { await server.close() }

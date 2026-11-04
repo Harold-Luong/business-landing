@@ -14,7 +14,7 @@
                     <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
                 </div>
             </div>
-        </div><span class="preview-index">CONCEPT / 03 · SỐ LIỆU MINH HỌA</span><span class="preview-arrow"
+        </div><span class="preview-index">{{ $t("preview.orbit.concept03SampleData") }}</span><span class="preview-arrow"
             aria-hidden="true">↗</span>
     </div>
 </template>

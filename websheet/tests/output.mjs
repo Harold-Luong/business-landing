@@ -2,22 +2,38 @@ import assert from 'node:assert/strict'
 import { readFile, readdir, access } from 'node:fs/promises'
 import { routes, homeMeta, serviceMeta } from '../shared/site.ts'
 import { publicConfig, validateUrl, robots, sitemap } from '../shared/config.ts'
+import { basePath, localeFromPath, localizedPath, translate } from '../shared/i18n.ts'
+import vietnamese from '../shared/locales/vi.json' with { type: 'json' }
 const config = publicConfig(process.env)
 const root = process.env.WEBSHEET_OUTPUT_DIR || '.output/production/public'
 const read = path => readFile(`${root}/${path}`, 'utf8')
 for (const path of routes) {
+  const locale = localeFromPath(path)
+  const originalPath = basePath(path)
+  const isHome = originalPath === '/'
   const html = await read(path.slice(1) + 'index.html')
+  assert.ok(html.includes(`lang="${locale}"`), path + ' document language')
   assert.equal((html.match(/<h1(?:\s|>)/g) || []).length, 1, path + ' H1')
   assert.equal((html.match(/<title>/g) || []).length, 1)
   assert.ok(html.includes('WebSheet'))
   assert.ok(!html.includes('CoreBrisk'))
   assert.ok(!html.includes('/demos/'))
   assert.ok(!html.includes('NuxtWelcome'))
-  const meta = serviceMeta.find(page => page.path === path) || homeMeta
+  const meta = serviceMeta.find(page => page.path === originalPath) || homeMeta
   const title = html.match(/<title>(.*?)<\/title>/)[1].replaceAll('&amp;', '&')
-  assert.equal(title, meta.title)
+  assert.equal(title, translate(meta.title, locale))
   const schemas = [...html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs)].map(match => JSON.parse(match[1]))
-  assert.equal(schemas[0]['@type'], path === '/' ? 'ProfessionalService' : 'Service')
+  assert.equal(schemas[0]['@type'], isHome ? 'ProfessionalService' : 'Service')
+  const visibleText = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '').replace(/<[^>]*>/g, '')
+  for (const key of Object.keys(vietnamese)) {
+    assert.ok(!visibleText.includes(key), `${path} unresolved message: ${key}`)
+    assert.ok(!JSON.stringify(schemas).includes(key), `${path} unresolved schema message: ${key}`)
+  }
+  if (locale === 'en') {
+    // The language selector names Vietnamese in its own language on both locales.
+    assert.ok(!/[À-ỹĐđ]/u.test(visibleText.replaceAll('Tiếng Việt', '').replaceAll('×', '').replaceAll('ƒx', '')), path + ' fully translated visible content')
+    assert.ok(html.includes('hreflang="vi"') && html.includes('hreflang="en"'), path + ' language switch links')
+  }
   if (config.siteUrl) {
     const canonical = new URL(path, config.siteUrl).href
     const canonicalTags = html.match(/<link\b[^>]*rel="canonical"[^>]*>/g) || []
@@ -27,11 +43,17 @@ for (const path of routes) {
     assert.ok(!/<meta\b[^>]*name="robots"[^>]*content="[^"]*noindex/.test(html), path + ' must be indexable')
     assert.ok(html.includes('index, follow, max-image-preview:large'))
     assert.equal(schemas.length, 2)
-    assert.equal(schemas[1]['@type'], path === '/' ? 'WebSite' : 'BreadcrumbList')
+    assert.equal(schemas[1]['@type'], isHome ? 'WebSite' : 'BreadcrumbList')
+    const alternates = html.match(/<link\b[^>]*rel="alternate"[^>]*>/g) || []
+    assert.equal(alternates.length, 3, path + ' hreflang set')
+    for (const language of ['vi', 'en', 'x-default']) {
+      const expectedUrl = new URL(localizedPath(originalPath, language === 'en' ? 'en' : 'vi'), config.siteUrl).href
+      assert.ok(alternates.some(tag => tag.includes(`hreflang="${language}"`) && tag.includes(`href="${expectedUrl}"`)))
+    }
     assert.ok(html.includes(`${config.siteUrl}social-card.png`))
-    if (path === '/') {
+    if (isHome) {
       assert.equal(schemas[1].name, 'WebSheet')
-      assert.equal(schemas[1].url, config.siteUrl)
+      assert.equal(schemas[1].url, canonical)
       assert.equal(schemas[0].logo.url, `${config.siteUrl}logo.png`)
     } else {
       assert.equal(schemas[0].url, canonical)
@@ -80,4 +102,4 @@ assert.throws(() => validateUrl('http://example.test', 'demo'))
 assert.throws(() => validateUrl('https://user:pass@example.test', 'demo'))
 assert.throws(() => validateUrl('https://example.test/path', 'site', true))
 assert.equal(validateUrl(' https://websheet.shop ', 'site', true), 'https://websheet.shop/')
-console.log(`PASS: six prerendered pages, metadata/schema, ${config.siteUrl ? 'production' : 'preview'} SEO, assets, demo isolation and URL validation.`)
+console.log(`PASS: 12 VI/EN prerendered pages, translated content, metadata/schema/hreflang, ${config.siteUrl ? 'production' : 'preview'} SEO, assets and URL validation.`)

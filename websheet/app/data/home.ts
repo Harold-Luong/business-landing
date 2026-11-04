@@ -1,13 +1,13 @@
 export const homeFaqs = [
   {
-    "question": "Google Apps Script là gì?",
+    "question": "home.whatIsGoogleAppsScript",
     "paragraphs": [
       [
         {
-          "text": "Công cụ lập trình của Google giúp tự động tổng hợp bảng tính, tạo báo cáo và gửi nhắc việc theo quy tắc. "
+          "text": "home.googleSProgrammingToolForAutomaticallyConsolidating"
         },
         {
-          "text": "Xem cách triển khai Apps Script →",
+          "text": "home.exploreAppsScriptImplementation",
           "href": "/dich-vu/google-apps-script/"
         },
         {
@@ -17,14 +17,14 @@ export const homeFaqs = [
     ]
   },
   {
-    "question": "AppSheet là gì?",
+    "question": "home.whatIsAppsheet",
     "paragraphs": [
       [
         {
-          "text": "Nền tảng tạo ứng dụng từ dữ liệu như Google Sheets. Nhân viên nhập liệu và theo dõi công việc qua app mà không cần biết lập trình. "
+          "text": "home.aPlatformForBuildingAppsFromData"
         },
         {
-          "text": "Tìm hiểu AppSheet →",
+          "text": "home.learnAboutAppsheet",
           "href": "/dich-vu/appsheet/"
         },
         {
@@ -34,45 +34,45 @@ export const homeFaqs = [
     ]
   },
   {
-    "question": "Tiện ích Sheets gồm những gì? Extension là gì?",
+    "question": "home.whatAreSheetsToolsWhatIsAn",
     "paragraphs": [
       [
         {
-          "text": "Tại WebSheet, tiện ích Sheets là nhóm giải pháp gồm Apps Script và AppSheet, không phải gói tính phí riêng. Extension là tiện ích mở rộng; extension trình duyệt được cài vào trình duyệt. Menu hoặc thanh bên trong Sheets có thể được xây bằng Apps Script theo phạm vi thỏa thuận. "
+          "text": "home.atWebsheetSheetsToolsIncludeAppsScript"
         },
         {
-          "text": "Tìm hiểu tiện ích Sheets →",
+          "text": "home.learnAboutSheetsTools",
           "href": "/dich-vu/tien-ich-google-sheets/"
         }
       ]
     ]
   },
   {
-    "question": "Cần chuẩn bị gì để nhận tư vấn?",
+    "question": "home.whatShouldIPrepareForAConsultation",
     "paragraphs": [
       [
         {
-          "text": "Mô tả mục tiêu, ngân sách và thời gian mong muốn. Với website, gửi nội dung hoặc mẫu bạn thích; với tự động hóa, gửi quy trình và bảng dữ liệu mẫu đã ẩn thông tin riêng tư."
+          "text": "home.describeYourGoalsBudgetAndDesiredTimeline"
         }
       ]
     ]
   },
   {
-    "question": "Có chi phí ngoài giá triển khai không?",
+    "question": "home.areThereCostsBeyondImplementation",
     "paragraphs": [
       [
         {
-          "text": "Tên miền, hosting, nội dung, bản quyền AppSheet/Google Workspace và dịch vụ bên thứ ba được tính riêng nếu cần. Mọi thay đổi phạm vi đều được báo giá và chỉ thực hiện khi bạn đồng ý. "
+          "text": "home.domainHostingContentAppsheetGoogleWorkspaceLicenses"
         }
       ]
     ]
   },
   {
-    "question": "Sau bàn giao được hỗ trợ thế nào?",
+    "question": "home.whatSupportIsAvailableAfterHandover",
     "paragraphs": [
       [
         {
-          "text": "Bạn nhận mã nguồn hoặc cấu hình, hướng dẫn sử dụng và bảo hành lỗi theo gói. Bảo trì, cập nhật nội dung hay thêm tính năng được báo giá riêng."
+          "text": "home.youReceiveSourceCodeOrConfigurationUsage"
         }
       ]
     ]

@@ -3,60 +3,60 @@ export const services = {
   "google-automation": {
     "name": "Google Automation",
     "plan": "automation",
-    "eyebrow": "GOOGLE SHEETS & ỨNG DỤNG NỘI BỘ",
+    "eyebrow": "services.googleSheetsInternalApps",
     "title": [
-      "Chọn giải pháp.",
-      "Bớt việc thủ công."
+      "services.chooseYourSolution",
+      "services.reduceManualWork"
     ],
-    "lead": "So sánh hai hướng triển khai: Apps Script xử lý dữ liệu ngay trong bảng tính; AppSheet tạo giao diện nhập liệu và quản lý cho nhóm.",
+    "lead": "services.compareTwoApproachesAppsScriptProcessesData",
     "gallery": false,
     "faqs": [
       {
-        "question": "Tôi chưa biết mình cần Apps Script hay AppSheet?",
+        "question": "services.howDoIKnowWhetherINeed",
         "paragraphs": [
           [
             {
-              "text": "Nếu chủ yếu muốn tự động chạy các bước xử lý bảng tính, hãy xem Apps Script. Nếu nhân viên cần giao diện nhập liệu và theo dõi công việc theo vai trò, hãy xem AppSheet. Bạn có thể mô tả quy trình để được tư vấn trước khi chọn."
+              "text": "services.ifYouMainlyWantToAutomateSpreadsheet"
             }
           ]
         ]
       },
       {
-        "question": "Tiện ích Sheets có phải extension trình duyệt không?",
+        "question": "services.areSheetsToolsBrowserExtensions",
         "paragraphs": [
           [
             {
-              "text": "Trong cách phân nhóm dịch vụ của WebSheet, tiện ích Sheets bao gồm giải pháp bằng Apps Script và AppSheet. Menu hoặc thanh bên trong bảng tính có thể xây bằng Apps Script. Extension trình duyệt là loại tiện ích khác, được khảo sát theo yêu cầu."
+              "text": "services.websheetSSheetsToolsCategoryIncludesApps"
             }
           ]
         ]
       },
       {
-        "question": "Có thể kết hợp nhiều giải pháp không?",
+        "question": "services.canSolutionsBeCombined",
         "paragraphs": [
           [
             {
-              "text": "Có thể kết hợp tùy quy trình, dữ liệu và giới hạn của các dịch vụ sử dụng. Các phần tích hợp, tài khoản và chi phí duy trì sẽ được làm rõ khi thống nhất phạm vi."
+              "text": "services.solutionsCanWorkTogetherDependingOnYour"
             }
           ]
         ]
       },
       {
-        "question": "Giá này là thiết kế riêng hay mua mẫu có sẵn?",
+        "question": "services.areTheseCustomDevelopmentOrReadyMade",
         "paragraphs": [
           [
             {
-              "text": "Đây là chi phí thiết kế và triển khai theo yêu cầu: khảo sát quy trình, xây dựng giải pháp, kiểm thử và bàn giao theo phạm vi đã thống nhất. Mẫu làm sẵn có cấu trúc và tính năng cố định nên giá thấp hơn. Giá và phạm vi sử dụng sẽ được công bố riêng theo từng sản phẩm. Các demo trên website hiện dùng để tham khảo giao diện."
+              "text": "services.thesePricesCoverCustomDesignAndImplementation"
             }
           ]
         ]
       }
     ],
-    "ctaTitle": "Cần chọn Apps Script hay AppSheet?",
-    "ctaText": "Mô tả công việc đang làm, số người sử dụng và kết quả cần nhận.",
+    "ctaTitle": "services.appsScriptOrAppsheet",
+    "ctaText": "services.describeYourCurrentTasksNumberOfUsers",
     "related": [
       {
-        "label": "Khám phá dịch vụ Website",
+        "label": "services.exploreWebsiteServices",
         "href": "/dich-vu/thiet-ke-website/"
       }
     ]
@@ -64,285 +64,285 @@ export const services = {
   "google-apps-script": {
     "name": "Google Apps Script",
     "plan": "apps-script",
-    "eyebrow": "TỰ ĐỘNG HÓA GOOGLE SHEETS",
+    "eyebrow": "services.googleSheetsAutomation",
     "title": [
-      "Lập trình Google Apps Script.",
-      "Bớt việc lặp lại mỗi ngày."
+      "services.googleAppsScriptDevelopment",
+      "services.fewerRepetitiveTasks"
     ],
-    "lead": "Bạn đang sao chép dữ liệu giữa các file, tổng hợp báo cáo mỗi chiều hoặc gửi email nhắc việc bằng tay? WebSheet xây quy trình Apps Script theo các bước làm việc thực tế, để nhóm tập trung vào xử lý kết quả.",
+    "lead": "services.copyingDataBetweenFilesCompilingDailyReports",
     "estimate": {
-      "label": "CHI PHÍ THIẾT KẾ THEO YÊU CẦU",
+      "label": "services.customDevelopmentCost",
       "facts": [
         {
-          "label": "Thời gian dự kiến",
-          "value": "3–5 ngày làm việc"
+          "label": "pricing.comparison.estimatedTimeline",
+          "value": "plans.delivery.threeToFiveDays"
         },
         {
-          "label": "Bàn giao",
-          "value": "Mã nguồn & hướng dẫn vận hành"
+          "label": "services.deliverables",
+          "value": "services.sourceCodeOperatingInstructions"
         }
       ],
-      "note": "Giá dành cho thiết kế và triển khai riêng theo quy trình của bạn, không phải giá mua mẫu có sẵn. Chi phí chính thức được xác nhận sau khi trao đổi yêu cầu; chưa gồm bản quyền, dịch vụ bên thứ ba và thuế nếu áp dụng. Tiến độ tính từ khi chốt yêu cầu và nhận đủ dữ liệu mẫu.",
+      "note": "services.pricingCoversCustomDesignAndImplementationFor",
       "pricePlan": "apps-script"
     },
     "gallery": true,
     "faqs": [
       {
-        "question": "Tôi có cần mở máy để chương trình chạy không?",
+        "question": "services.doesMyComputerNeedToStayOn",
         "paragraphs": [
           [
             {
-              "text": "Apps Script chạy trên hạ tầng của Google. Với luồng chạy theo lịch đã được cấu hình và cấp quyền phù hợp, bạn không cần giữ máy tính cá nhân mở. Luồng dùng nút bấm vẫn cần người dùng thao tác."
+              "text": "services.appsScriptRunsOnGoogleSInfrastructure"
             }
           ]
         ]
       },
       {
-        "question": "Có thể chạy không giới hạn dữ liệu không?",
+        "question": "services.canItProcessUnlimitedData",
         "paragraphs": [
           [
             {
-              "text": "Không nên mặc định như vậy. Thời gian chạy và số lần gọi dịch vụ có giới hạn; cần kiểm tra lượng dữ liệu, tần suất và loại tài khoản trước khi chọn cách triển khai."
+              "text": "services.noRuntimeAndServiceCallsHaveLimits"
             }
           ]
         ]
       },
       {
-        "question": "Giá này là thiết kế riêng hay mua mẫu có sẵn?",
+        "question": "services.areTheseCustomDevelopmentOrReadyMade",
         "paragraphs": [
           [
             {
-              "text": "Đây là chi phí thiết kế và triển khai theo yêu cầu: khảo sát quy trình, xây dựng giải pháp, kiểm thử và bàn giao theo phạm vi đã thống nhất. Mẫu làm sẵn có cấu trúc và tính năng cố định nên giá thấp hơn. Giá và phạm vi sử dụng sẽ được công bố riêng theo từng sản phẩm. Các demo trên website hiện dùng để tham khảo giao diện."
+              "text": "services.thesePricesCoverCustomDesignAndImplementation"
             }
           ]
         ]
       }
     ],
-    "ctaTitle": "Trao đổi về quy trình cần tự động hóa",
-    "ctaText": "Chuẩn bị bảng mẫu đã ẩn thông tin riêng tư, quy tắc xử lý và tần suất chạy mong muốn.",
+    "ctaTitle": "services.discussTheWorkflowYouWantToAutomate",
+    "ctaText": "services.prepareASampleSpreadsheetWithPrivateData",
     "related": [
       {
-        "label": "Ứng dụng AppSheet",
+        "label": "automation.appsheetApps",
         "href": "/dich-vu/appsheet/"
       },
       {
-        "label": "Nhóm tiện ích Sheets",
+        "label": "services.sheetsToolsOverview",
         "href": "/dich-vu/google-automation/"
       },
       {
-        "label": "Thiết kế website",
+        "label": "hero.webDesign",
         "href": "/dich-vu/thiet-ke-website/"
       }
     ]
   },
   "appsheet": {
-    "name": "Ứng dụng AppSheet",
+    "name": "automation.appsheetApps",
     "plan": "appsheet",
-    "eyebrow": "ỨNG DỤNG QUẢN LÝ NỘI BỘ",
+    "eyebrow": "services.internalBusinessApps",
     "title": [
-      "Thiết kế ứng dụng AppSheet.",
-      "Đưa quy trình vào một ứng dụng."
+      "services.customAppsheetApplications",
+      "services.turnYourWorkflowIntoAnApp"
     ],
-    "lead": "Khi nhiều người cùng nhập liệu vào bảng tính, việc theo dõi người phụ trách và trạng thái xử lý có thể trở nên khó khăn. WebSheet thiết lập ứng dụng AppSheet với màn hình nhập liệu, danh sách và báo cáo theo công việc của nhóm.",
+    "lead": "services.whenManyPeopleEditSpreadsheetsTrackingResponsibilities",
     "estimate": {
-      "label": "CHI PHÍ THIẾT KẾ THEO YÊU CẦU",
+      "label": "services.customDevelopmentCost",
       "facts": [
         {
-          "label": "Thời gian dự kiến",
-          "value": "7–12 ngày làm việc"
+          "label": "pricing.comparison.estimatedTimeline",
+          "value": "plans.delivery.sevenToTwelveDays"
         },
         {
-          "label": "Bàn giao",
-          "value": "Cấu hình app & hướng dẫn quản trị"
+          "label": "services.deliverables",
+          "value": "services.appConfigurationAdminGuidance"
         }
       ],
-      "note": "Giá dành cho thiết kế và triển khai riêng theo quy trình của bạn, không phải giá mua mẫu có sẵn. Chi phí chính thức được xác nhận sau khi trao đổi yêu cầu; chưa gồm bản quyền, dịch vụ bên thứ ba và thuế nếu áp dụng. Tiến độ tính từ khi chốt yêu cầu và nhận đủ dữ liệu mẫu.",
+      "note": "services.pricingCoversCustomDesignAndImplementationFor",
       "pricePlan": "appsheet"
     },
     "gallery": false,
     "faqs": [
       {
-        "question": "AppSheet có thay thế hoàn toàn Google Sheets không?",
+        "question": "services.doesAppsheetFullyReplaceGoogleSheets",
         "paragraphs": [
           [
             {
-              "text": "Trong phương án dùng Sheets làm nguồn dữ liệu, bảng tính vẫn lưu dữ liệu còn AppSheet cung cấp giao diện thao tác. Cần thống nhất ai được sửa trực tiếp bảng nguồn để tránh thay đổi cấu trúc ngoài ý muốn."
+              "text": "services.whenSheetsIsUsedAsTheData"
             }
           ]
         ]
       },
       {
-        "question": "Phí sử dụng hằng tháng có nằm trong giá triển khai không?",
+        "question": "services.areMonthlyFeesIncludedInImplementation",
         "paragraphs": [
           [
             {
-              "text": "Không. Phí bản quyền nếu cần được tách khỏi chi phí xây ứng dụng. WebSheet kiểm tra tài khoản hiện có, số người dùng và tính năng để làm rõ chi phí trước khi triển khai."
+              "text": "services.noAnyRequiredLicenseFeesAreSeparate"
             }
           ]
         ]
       },
       {
-        "question": "Có phù hợp với mọi hệ thống quản lý không?",
+        "question": "services.isAppsheetSuitableForEveryManagementSystem",
         "paragraphs": [
           [
             {
-              "text": "Cần khảo sát trước. Nếu yêu cầu giao diện quá đặc thù, lượng dữ liệu hoặc tích hợp vượt khả năng phù hợp của AppSheet, có thể cân nhắc web app riêng. Phương án được chọn theo nhu cầu thực tế."
+              "text": "services.anInitialAssessmentIsNeededIfYour"
             }
           ]
         ]
       },
       {
-        "question": "Giá này là thiết kế riêng hay mua mẫu có sẵn?",
+        "question": "services.areTheseCustomDevelopmentOrReadyMade",
         "paragraphs": [
           [
             {
-              "text": "Đây là chi phí thiết kế và triển khai theo yêu cầu: khảo sát quy trình, xây dựng giải pháp, kiểm thử và bàn giao theo phạm vi đã thống nhất. Mẫu làm sẵn có cấu trúc và tính năng cố định nên giá thấp hơn. Giá và phạm vi sử dụng sẽ được công bố riêng theo từng sản phẩm. Các demo trên website hiện dùng để tham khảo giao diện."
+              "text": "services.thesePricesCoverCustomDesignAndImplementation"
             }
           ]
         ]
       }
     ],
-    "ctaTitle": "Trao đổi về ứng dụng nội bộ",
-    "ctaText": "Cho biết các bảng dữ liệu, màn hình cần dùng và quyền thao tác của từng nhóm người dùng.",
+    "ctaTitle": "services.discussYourInternalApp",
+    "ctaText": "services.shareTheDataTablesScreensAndAccess",
     "related": [
       {
         "label": "Google Apps Script",
         "href": "/dich-vu/google-apps-script/"
       },
       {
-        "label": "Nhóm tiện ích Sheets",
+        "label": "services.sheetsToolsOverview",
         "href": "/dich-vu/google-automation/"
       },
       {
-        "label": "Thiết kế website",
+        "label": "hero.webDesign",
         "href": "/dich-vu/thiet-ke-website/"
       }
     ]
   },
   "tien-ich-google-sheets": {
-    "name": "Tiện ích Google Sheets",
+    "name": "seo.googleSheetsTools",
     "plan": "automation",
-    "eyebrow": "MENU, THANH BÊN & CÔNG CỤ BẢNG TÍNH",
+    "eyebrow": "services.menusSidebarsSpreadsheetTools",
     "title": [
-      "Tiện ích Google Sheets.",
+      "services.googleSheetsTools",
       "Apps Script & AppSheet."
     ],
-    "lead": "Tại WebSheet, tiện ích Sheets là tên gọi chung cho các giải pháp tự động hóa và quản lý công việc bằng Apps Script hoặc AppSheet. Bạn chọn theo nhu cầu sử dụng; đây không phải một gói báo giá riêng.",
+    "lead": "services.atWebsheetSheetsToolsIsAnUmbrella",
     "gallery": false,
     "faqs": [
       {
-        "question": "Tiện ích Sheets có tính phí riêng không?",
+        "question": "services.isThereASeparateChargeForSheets",
         "paragraphs": [
           [
             {
-              "text": "Không có gói tiện ích Sheets riêng. Chi phí triển khai thuộc giải pháp Apps Script hoặc AppSheet được chọn, theo phạm vi đã thống nhất."
+              "text": "services.thereIsNoSeparateSheetsToolsPlan"
             }
           ]
         ]
       },
       {
-        "question": "Menu và thanh bên trong Sheets thuộc giải pháp nào?",
+        "question": "services.whichSolutionSupportsSheetsMenusAndSidebars",
         "paragraphs": [
           [
             {
-              "text": "Có thể xây bằng Apps Script. Chức năng, số thao tác và cách phân phối cho người dùng được khảo sát khi báo giá."
+              "text": "services.theseCanBeBuiltWithAppsScript"
             }
           ]
         ]
       },
       {
-        "question": "Extension trình duyệt có giống tiện ích Sheets không?",
+        "question": "services.areBrowserExtensionsTheSameAsSheets",
         "paragraphs": [
           [
             {
-              "text": "Extension trình duyệt được cài vào trình duyệt như Chrome để bổ sung chức năng. Nhóm tiện ích Sheets ở đây tập trung vào công việc với dữ liệu Google Sheets qua Apps Script hoặc AppSheet; yêu cầu extension trình duyệt được trao đổi riêng."
+              "text": "services.browserExtensionsAreInstalledInBrowsersSuch"
             }
           ]
         ]
       },
       {
-        "question": "Giá này là thiết kế riêng hay mua mẫu có sẵn?",
+        "question": "services.areTheseCustomDevelopmentOrReadyMade",
         "paragraphs": [
           [
             {
-              "text": "Đây là chi phí thiết kế và triển khai theo yêu cầu: khảo sát quy trình, xây dựng giải pháp, kiểm thử và bàn giao theo phạm vi đã thống nhất. Mẫu làm sẵn có cấu trúc và tính năng cố định nên giá thấp hơn. Giá và phạm vi sử dụng sẽ được công bố riêng theo từng sản phẩm. Các demo trên website hiện dùng để tham khảo giao diện."
+              "text": "services.thesePricesCoverCustomDesignAndImplementation"
             }
           ]
         ]
       }
     ],
-    "ctaTitle": "Bạn muốn rút gọn thao tác nào trong Sheets?",
-    "ctaText": "Mô tả thao tác hiện tại và kết quả mong muốn; chưa cần cấp quyền truy cập dữ liệu thật.",
+    "ctaTitle": "services.whichStepsWouldYouLikeToSimplify",
+    "ctaText": "services.describeWhatYouDoNowAndThe",
     "related": [
       {
         "label": "Google Apps Script",
         "href": "/dich-vu/google-apps-script/"
       },
       {
-        "label": "Ứng dụng AppSheet",
+        "label": "automation.appsheetApps",
         "href": "/dich-vu/appsheet/"
       },
       {
-        "label": "Thiết kế website",
+        "label": "hero.webDesign",
         "href": "/dich-vu/thiet-ke-website/"
       }
     ]
   },
   "thiet-ke-website": {
-    "name": "Thiết kế website",
+    "name": "hero.webDesign",
     "plan": "launch",
     "eyebrow": "LANDING PAGE, WEBSITE & WEB APP",
     "title": [
-      "Thiết kế website doanh nghiệp.",
-      "Rõ nội dung, đúng nhu cầu."
+      "services.businessWebsiteDesign",
+      "services.clearContentBuiltForYourNeeds"
     ],
-    "lead": "Chọn landing page, website có quản trị nội dung hoặc web app theo nghiệp vụ. Xem các concept giao diện và phạm vi Launch, Business, Custom bên dưới.",
+    "lead": "services.chooseALandingPageAWebsiteWith",
     "gallery": true,
     "faqs": [
       {
-        "question": "Landing page có tự cập nhật nội dung được không?",
+        "question": "services.canIUpdateLandingPageContentMyself",
         "paragraphs": [
           [
             {
-              "text": "Gói Launch mặc định là trang tĩnh. Nếu cần giao diện quản trị để tự đăng bài hoặc sửa dịch vụ thường xuyên, hãy chọn gói Business hoặc trao đổi phạm vi CMS bổ sung."
+              "text": "services.launchIsAStaticPageByDefault"
             }
           ]
         ]
       },
       {
-        "question": "SEO kỹ thuật có đảm bảo lên top Google không?",
+        "question": "services.doesTechnicalSeoGuaranteeTopGoogleRankings",
         "paragraphs": [
           [
             {
-              "text": "Không. SEO kỹ thuật hỗ trợ công cụ tìm kiếm truy cập và hiểu nội dung. Kết quả còn phụ thuộc nội dung hữu ích, mức độ cạnh tranh và nhiều yếu tố khác; không có cam kết thứ hạng trong các gói trên."
+              "text": "services.noTechnicalSeoHelpsSearchEnginesAccess"
             }
           ]
         ]
       },
       {
-        "question": "Các mẫu trên trang có phải dự án khách hàng thật không?",
+        "question": "services.areTheConceptsRealClientProjects",
         "paragraphs": [
           [
             {
-              "text": "Aster S5, An Studio và Orbit là concept minh họa phạm vi dịch vụ. Bạn có thể dùng chúng để trao đổi hướng giao diện; chức năng thực tế được thống nhất riêng trong dự án."
+              "text": "services.asterS5AnStudioAndOrbitAre"
             }
           ]
         ]
       }
     ],
-    "ctaTitle": "Trao đổi về website bạn cần",
-    "ctaText": "Chia sẻ mục tiêu website, nội dung dự kiến và tính năng cần có để xác định gói phù hợp.",
+    "ctaTitle": "services.discussTheWebsiteYouNeed",
+    "ctaText": "services.shareYourWebsiteGoalsPlannedContentAnd",
     "related": [
       {
         "label": "Google Apps Script",
         "href": "/dich-vu/google-apps-script/"
       },
       {
-        "label": "Ứng dụng AppSheet",
+        "label": "automation.appsheetApps",
         "href": "/dich-vu/appsheet/"
       },
       {
-        "label": "Nhóm tiện ích Sheets",
+        "label": "services.sheetsToolsOverview",
         "href": "/dich-vu/google-automation/"
       }
     ]
