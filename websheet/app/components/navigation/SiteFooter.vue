@@ -15,6 +15,7 @@ const year = useState('copyright-year', () => new Date().getFullYear())
                 </div>
                 <NuxtLink class="footer-top" :to="$localePath('#')" :aria-label="$t('footer.backToTop')">↑</NuxtLink>
             </div>
+            <ServiceLinks />
             <div class="footer-bottom"><span>© <span id="year">{{ year }}</span> WebSheet.</span><span>{{ $t("footer.designDevelopmentWebsiteMaintenance") }}</span></div>
         </div>
     </footer>

@@ -51,7 +51,7 @@
             </div>
         </div>
         <div class="container hero-bottom"><span>{{ $t("hero.ourServices") }}</span>
-            <div><span>Apps Script</span><b>✳</b><span>AppSheet</span><b>✳</b><span>{{ $t("hero.sheetsTools") }}</span><b>✳</b><span>{{ $t("hero.webDesign") }}</span></div>
+            <div><span>Google Apps Script</span><b aria-hidden="true">✳</b><span>AppSheet</span><b aria-hidden="true">✳</b><span>{{ $t("hero.webDesign") }}</span></div>
         </div>
     </section>
 </template>

@@ -5,8 +5,8 @@ export const services = {
     "plan": "automation",
     "eyebrow": "services.googleSheetsInternalApps",
     "title": [
-      "services.chooseYourSolution",
-      "services.reduceManualWork"
+      "services.automateGoogleSheets",
+      "services.withAppsScriptAndAppsheet"
     ],
     "lead": "services.compareTwoApproachesAppsScriptProcessesData",
     "gallery": false,
@@ -225,7 +225,7 @@ export const services = {
     "eyebrow": "services.menusSidebarsSpreadsheetTools",
     "title": [
       "services.googleSheetsTools",
-      "Apps Script & AppSheet."
+      "services.menusButtonsAndSidebars"
     ],
     "lead": "services.atWebsheetSheetsToolsIsAnUmbrella",
     "gallery": false,
