@@ -1,4 +1,4 @@
-/* Google Automation: thẻ gọn. Website: bảng so sánh, cuộn trong khung trên mobile. */
+/* Các gói dịch vụ xếp cạnh nhau trên desktop, thành một cột trên màn hình nhỏ. */
 .pricing {
     background: #f7f9f3;
     border-block: 1px solid var(--line);
@@ -226,6 +226,9 @@
     min-height: 44px;
     color: var(--accent);
     font-size: 13px;
+}
+
+.price-detail-link > .link-label {
     text-decoration: underline;
     text-underline-offset: 4px;
 }
@@ -243,60 +246,39 @@
     border-top: 1px solid var(--line);
 }
 
-.comparison-hint {
-    display: none;
-    margin-bottom: 16px;
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 1.7;
-}
-
-.comparison-scroll {
-    position: relative;
-    overflow-x: auto;
+.comparison-plans {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     border: 1px solid #d5dfcf;
     border-radius: 8px;
     background: #fff;
-    scrollbar-color: #afc49c #eff4e9;
-}
-
-.comparison-scroll:focus-visible {
-    outline: 3px solid var(--accent);
-    outline-offset: 4px;
-}
-
-.comparison-table {
-    width: 100%;
-    table-layout: fixed;
-    border-collapse: separate;
-    border-spacing: 0;
-    text-align: left;
     font-size: 14px;
     line-height: 1.7;
 }
 
-.comparison-table th,
-.comparison-table td {
-    padding: 18px 22px;
-    vertical-align: top;
+.comparison-card {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 6;
+    min-width: 0;
     overflow-wrap: break-word;
 }
 
-.comparison-table th {
-    font-weight: 500;
+.comparison-facts {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 4;
+    margin: 0;
 }
 
-.comparison-table td {
+.comparison-cell {
+    border-top: 1px solid var(--line);
+    padding: 18px 22px;
     color: var(--muted);
 }
 
-.comparison-table thead th {
-    padding-block: 24px;
-}
-
-.comparison-table tbody th,
-.comparison-table tbody td {
-    border-top: 1px solid var(--line);
+.comparison-facts dd {
+    margin: 0;
 }
 
 .comparison-criterion {
@@ -307,13 +289,14 @@
     font-weight: 600;
 }
 
-.comparison-plan {
-    padding: 0;
+.comparison-card > .comparison-plan {
+    padding: 24px 22px;
     border: 0;
+    border-radius: 0;
     background: transparent;
 }
 
-.comparison-table .recommended-column {
+.comparison-card.recommended-column {
     background: #edf5e5;
     border-inline: 1px solid #d0dfc5;
 }
@@ -326,12 +309,12 @@
     color: #39532b;
 }
 
-.comparison-table .plan-details {
+.comparison-card .plan-details {
     margin: 0;
     border: 0;
 }
 
-.comparison-table .plan-details summary:focus-visible {
+.comparison-card .plan-details summary:focus-visible {
     outline-offset: 0;
 }
 
@@ -342,12 +325,9 @@
     .automation-grid .price-card h3 {
         font-size: 20px;
     }
-    .comparison-table th,
-    .comparison-table td {
+    .comparison-cell,
+    .comparison-card > .comparison-plan {
         padding: 16px;
-    }
-    .comparison-plan {
-        padding: 0;
     }
 }
 
@@ -362,37 +342,26 @@
     .plan-scope {
         min-height: 0;
     }
-    .comparison-hint {
-        display: block;
+    .comparison-plans {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 20px;
+        border: 0;
+        background: transparent;
     }
-    .comparison-table {
-        min-width: 624px;
+    .comparison-card {
+        grid-template-rows: auto;
+        grid-row: auto;
+        border: 1px solid #d5dfcf;
+        border-radius: 8px;
+        background: #fff;
     }
-    .comparison-scroll {
-        scroll-padding-inline: 12px;
+    .comparison-facts {
+        grid-template-rows: auto;
+        grid-row: auto;
     }
-    .comparison-table th,
-    .comparison-table td {
-        padding: 16px 12px;
-    }
-    .comparison-plan {
-        padding: 0;
-    }
-    .comparison-plan h3 {
-        font-size: 21px;
-    }
-    .comparison-plan .price strong {
-        font-size: 32px;
-    }
-    .comparison-plan .price strong span {
-        font-size: 16px;
-    }
-    .comparison-plan > .button {
-        padding-inline: 10px;
-        font-size: 12px;
-    }
-    .comparison-table .plan-details summary {
-        font-size: 13px;
+    .comparison-cell,
+    .comparison-card > .comparison-plan {
+        padding: 20px 24px;
     }
 }
 
@@ -410,7 +379,8 @@
     .price-card {
         padding: 22px;
     }
-    .comparison-plan {
-        padding: 0;
+    .comparison-cell,
+    .comparison-card > .comparison-plan {
+        padding: 18px 22px;
     }
 }

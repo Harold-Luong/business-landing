@@ -15,6 +15,29 @@ try {
       await evaluate('document.fonts.ready')
       await delay(80)
     }
+    const checkComparison = async width => {
+      const layout = await evaluate(`(() => {
+        const section = document.querySelector('#bang-gia-website');
+        const cards = [...section.querySelectorAll('article')];
+        cards.forEach(card => card.querySelector('details').open = true);
+        const result = {
+          fits: [section, ...cards].every(el => el.scrollWidth <= el.clientWidth + 1),
+          cards: cards.map(card => {
+            const rect = card.getBoundingClientRect();
+            return { top: rect.top, bottom: rect.bottom, left: rect.left, right: rect.right };
+          }),
+        };
+        cards.forEach(card => card.querySelector('details').open = false);
+        return result;
+      })()`)
+      assert.equal(layout.cards.length, 3)
+      assert.ok(layout.fits, `Expanded website plans must fit without horizontal scrolling at ${width}`)
+      for (let i = 1; i < layout.cards.length; i++) {
+        const previous = layout.cards[i - 1], current = layout.cards[i]
+        if (width <= 850) assert.ok(current.top >= previous.bottom - 1 && Math.abs(current.left - previous.left) <= 1, `Website plans stack vertically at ${width}`)
+        else assert.ok(current.left >= previous.right - 1 && Math.abs(current.top - previous.top) <= 1, `Website plans sit side by side at ${width}`)
+      }
+    }
     await send('Emulation.setFocusEmulationEnabled', { enabled: true })
     await send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 800, deviceScaleFactor: 1, mobile: false })
     await send('Emulation.setEmulatedMedia', { features: [{ name: 'prefers-reduced-motion', value: 'no-preference' }] })
@@ -46,6 +69,7 @@ try {
         await navigate(path)
         assert.ok(await evaluate('document.documentElement.scrollWidth <= innerWidth + 1'), `${path} overflows at ${width}`)
         assert.equal(await evaluate("document.querySelectorAll('h1').length"), 1)
+        if (path === '/') await checkComparison(width)
         assert.deepEqual(await evaluate("[...document.querySelectorAll('#navigation > a')].map(a => a.textContent.replace('↗', '').trim())"), ['Dịch vụ', 'Bảng giá', 'Quy trình', 'Liên hệ'])
         if (path !== '/') {
           assert.deepEqual(await evaluate("[...document.querySelectorAll('#navigation > a')].map(a => a.getAttribute('href'))"), ['/#dich-vu', '/#bang-gia', '/#quy-trinh', '/#lien-he'])
@@ -105,6 +129,7 @@ try {
       for (const path of routes) {
         await navigate('/en' + path)
         assert.equal(await evaluate('document.documentElement.lang'), 'en')
+        if (path === '/') await checkComparison(width)
         assert.ok(await evaluate('document.documentElement.scrollWidth <= innerWidth + 1'), `/en${path} overflows at ${width}`)
         assert.deepEqual(await evaluate("[...document.querySelectorAll('#navigation > a')].map(a => a.textContent.replace('↗', '').trim())"), ['Services', 'Pricing', 'Process', 'Contact'])
         const links = await evaluate("[...document.querySelectorAll('a[href]')].filter(a => !a.closest('.language-switch')).map(a => a.getAttribute('href')).filter(href => href.startsWith('/') && !href.startsWith('//'))")
