@@ -3,7 +3,7 @@ withDefaults(defineProps<{ to?: string }>(), { to: '/' })
 </script>
 <template>
   <NuxtLink class="brand" :to="$localePath(to)" :aria-label="$t('brand.websheetHome')">
-    <svg class="websheet-mark" width="39" height="39" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="7" fill="currentColor" /><path d="m8 12 5 17 7-12 7 12 5-17" fill="none" stroke="#fdfefb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+    <img class="websheet-mark" src="/brand/websheet-mark.png" width="39" height="39" alt="" decoding="async">
     <span>WebSheet<span class="brand-sub">WEBSITE & GOOGLE SHEETS</span></span>
   </NuxtLink>
 </template>
