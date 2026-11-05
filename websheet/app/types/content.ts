@@ -33,6 +33,5 @@ export type ServiceContent = {
   faqs: Faq[]
   ctaTitle: string
   ctaText: string
-  related: { label: string, href: string }[]
 }
 export type QuoteDraft = { name: string, company: string, email: string, plan: QuotePlanId, budget: string, message: string }

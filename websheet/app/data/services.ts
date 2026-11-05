@@ -53,13 +53,7 @@ export const services = {
       }
     ],
     "ctaTitle": "services.appsScriptOrAppsheet",
-    "ctaText": "services.describeYourCurrentTasksNumberOfUsers",
-    "related": [
-      {
-        "label": "services.exploreWebsiteServices",
-        "href": "/dich-vu/thiet-ke-website/"
-      }
-    ]
+    "ctaText": "services.describeYourCurrentTasksNumberOfUsers"
   },
   "google-apps-script": {
     "name": "Google Apps Script",
@@ -119,21 +113,7 @@ export const services = {
       }
     ],
     "ctaTitle": "services.discussTheWorkflowYouWantToAutomate",
-    "ctaText": "services.prepareASampleSpreadsheetWithPrivateData",
-    "related": [
-      {
-        "label": "automation.appsheetApps",
-        "href": "/dich-vu/appsheet/"
-      },
-      {
-        "label": "services.sheetsToolsOverview",
-        "href": "/dich-vu/google-automation/"
-      },
-      {
-        "label": "hero.webDesign",
-        "href": "/dich-vu/thiet-ke-website/"
-      }
-    ]
+    "ctaText": "services.prepareASampleSpreadsheetWithPrivateData"
   },
   "appsheet": {
     "name": "automation.appsheetApps",
@@ -203,21 +183,7 @@ export const services = {
       }
     ],
     "ctaTitle": "services.discussYourInternalApp",
-    "ctaText": "services.shareTheDataTablesScreensAndAccess",
-    "related": [
-      {
-        "label": "Google Apps Script",
-        "href": "/dich-vu/google-apps-script/"
-      },
-      {
-        "label": "services.sheetsToolsOverview",
-        "href": "/dich-vu/google-automation/"
-      },
-      {
-        "label": "hero.webDesign",
-        "href": "/dich-vu/thiet-ke-website/"
-      }
-    ]
+    "ctaText": "services.shareTheDataTablesScreensAndAccess"
   },
   "tien-ich-google-sheets": {
     "name": "seo.googleSheetsTools",
@@ -272,21 +238,7 @@ export const services = {
       }
     ],
     "ctaTitle": "services.whichStepsWouldYouLikeToSimplify",
-    "ctaText": "services.describeWhatYouDoNowAndThe",
-    "related": [
-      {
-        "label": "Google Apps Script",
-        "href": "/dich-vu/google-apps-script/"
-      },
-      {
-        "label": "automation.appsheetApps",
-        "href": "/dich-vu/appsheet/"
-      },
-      {
-        "label": "hero.webDesign",
-        "href": "/dich-vu/thiet-ke-website/"
-      }
-    ]
+    "ctaText": "services.describeWhatYouDoNowAndThe"
   },
   "thiet-ke-website": {
     "name": "hero.webDesign",
@@ -331,20 +283,6 @@ export const services = {
       }
     ],
     "ctaTitle": "services.discussTheWebsiteYouNeed",
-    "ctaText": "services.shareYourWebsiteGoalsPlannedContentAnd",
-    "related": [
-      {
-        "label": "Google Apps Script",
-        "href": "/dich-vu/google-apps-script/"
-      },
-      {
-        "label": "automation.appsheetApps",
-        "href": "/dich-vu/appsheet/"
-      },
-      {
-        "label": "services.sheetsToolsOverview",
-        "href": "/dich-vu/google-automation/"
-      }
-    ]
+    "ctaText": "services.shareYourWebsiteGoalsPlannedContentAnd"
   }
 } satisfies Record<string, ServiceContent>
