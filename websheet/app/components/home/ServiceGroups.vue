@@ -6,8 +6,7 @@
             <p class="eyebrow">{{ $t("services.groups.eyebrow") }}</p>
             <h2 class="sr-only" id="services-title">{{ $t("services.groups.solutionsForYourNeeds") }}</h2>
             <div class="service-paths">
-                <NuxtLink v-reveal class="service-family" id="dich-vu-google" :to="$localePath('/dich-vu/google-automation/')"
-                    aria-labelledby="google-services-title google-service-link">
+                <article v-reveal class="service-family" id="dich-vu-google" aria-labelledby="google-services-title">
                     <div class="service-family-top">
                         <span class="service-family-icon" aria-hidden="true">
                             <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -28,11 +27,10 @@
                         <figcaption>{{ $t("services.groups.sheetflowCustomInterfaceConcept") }}</figcaption>
                     </figure>
                     <div class="service-family-actions">
-                        <span class="service-detail-link" id="google-service-link"><span class="link-label">{{ $t("services.groups.exploreAutomationSolutions") }}</span> <span aria-hidden="true">↗</span></span>
+                        <NuxtLink class="service-detail-link" :to="$localePath('/dich-vu/google-automation/')"><span class="link-label">{{ $t("services.groups.exploreAutomationSolutions") }}</span> <span aria-hidden="true">↗</span></NuxtLink>
                     </div>
-                </NuxtLink>
-                <NuxtLink v-reveal="80" class="service-family" id="dich-vu-website" :to="$localePath('/dich-vu/thiet-ke-website/')"
-                    aria-labelledby="web-services-title website-service-link">
+                </article>
+                <article v-reveal="80" class="service-family" id="dich-vu-website" aria-labelledby="web-services-title">
                     <div class="service-family-top">
                         <span class="service-family-icon" aria-hidden="true">
                             <svg viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
@@ -47,16 +45,14 @@
                     <h3 id="web-services-title">Website &amp; Web App</h3>
                     <p> {{ $t("services.groups.landingPagesBusinessWebsitesAndWebApplications") }} </p>
                     <figure class="service-family-preview">
-                        <div role="img" :aria-label="$t('services.groups.illustrationOfTheAnStudioArchitectureAnd')">
-                            <AnStudioPreview aria-hidden="true" />
-                        </div>
+                        <AnStudioPreview />
                         <figcaption>{{ $t("services.groups.anStudioArchitectureInteriorDesignWebsiteConcept") }}</figcaption>
                     </figure>
                     <div class="service-family-actions">
-                        <span class="service-detail-link" id="website-service-link"><span class="link-label">{{ $t("services.groups.exploreWebDesignServices") }}</span> <span
-                                aria-hidden="true">↗</span></span>
+                        <NuxtLink class="service-detail-link" :to="$localePath('/dich-vu/thiet-ke-website/')"><span class="link-label">{{ $t("services.groups.exploreWebDesignServices") }}</span> <span
+                                aria-hidden="true">↗</span></NuxtLink>
                     </div>
-                </NuxtLink>
+                </article>
             </div>
             <p v-reveal class="service-samples-note"> {{ $t("services.groups.illustrativeInterfacesExploreConceptsOnEachService") }} </p>
         </div>

@@ -238,26 +238,23 @@
         gap: 7px 13px;
         justify-content: space-between;
     }
-    .hero-bottom > div b {
+    .hero-bottom > div .hero-separator {
         font-size: 13px;
     }
     .hero-bottom > div > span:last-child {
         width: auto;
     }
-    .hero-bottom > div b:last-of-type {
-        display: block;
-    }
     .hero-bottom > div {
         display: grid;
         grid-template-columns: 1fr auto 1fr;
     }
-    .hero-bottom > div b:nth-of-type(2) {
+    .hero-bottom > div .hero-separator:nth-child(4) {
         display: none;
     }
     .hero-bottom > div span {
         white-space: nowrap;
     }
-    .hero-bottom > div span:nth-of-type(2n) {
+    .hero-bottom > div > span:nth-child(3) {
         text-align: right;
     }
     .section {
@@ -346,7 +343,7 @@
         border-top: 1px solid var(--line);
         padding-top: 18px;
     }
-    .step-number b {
+    .step-number .step-icon {
         display: none;
     }
     .step-number {

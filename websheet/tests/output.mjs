@@ -4,6 +4,7 @@ import { routes, homeMeta, serviceMeta } from '../shared/site.ts'
 import { publicConfig, validateUrl, robots, sitemap } from '../shared/config.ts'
 import { basePath, localeFromPath, localizedPath, translate } from '../shared/i18n.ts'
 import vietnamese from '../shared/locales/vi.json' with { type: 'json' }
+import { bundledDemoUrls } from '../shared/demos.ts'
 const config = publicConfig(process.env)
 const root = process.env.WEBSHEET_OUTPUT_DIR || '.output/production/public'
 const read = path => readFile(`${root}/${path}`, 'utf8')
@@ -17,7 +18,6 @@ for (const path of routes) {
     assert.equal((html.match(/<title>/g) || []).length, 1)
     assert.ok(html.includes('WebSheet'))
     assert.ok(!html.includes('CoreBrisk'))
-    assert.ok(!html.includes('/demos/'))
     assert.ok(!html.includes('NuxtWelcome'))
     const meta = serviceMeta.find(page => page.path === originalPath) || homeMeta
     const title = html.match(/<title>(.*?)<\/title>/)[1].replaceAll('&amp;', '&')
@@ -76,7 +76,18 @@ if (process.env.WEBSHEET_DEPLOY_ENV === 'dev') {
     await assert.rejects(access(`${root}/_headers`), 'production must not inherit the dev noindex header')
 }
 await access(`${root}/404.html`) // Hosting serves this fallback with HTTP 404; checked by test:browser.
-await assert.rejects(access(`${root}/demos`))
+for (const [id, path] of Object.entries(bundledDemoUrls)) {
+    const demo = await read(path.slice(1) + 'index.html')
+    assert.ok(/name="robots"[^>]*content="noindex/.test(demo), id + ' demo stays noindex')
+    assert.ok(!demo.includes('CoreBrisk') && !demo.includes('<!-- CONTACT_URL -->'), id + ' resolved branding and CTA')
+    assert.ok(demo.includes(`href="/?concept=${id}#lien-he"`), id + ' contact link')
+    assert.ok(demo.includes('href="/dich-vu/thiet-ke-website/#mau-giao-dien"'), id + ' back to gallery')
+    for (const match of demo.matchAll(/(?:src|href)="([^"#?]+)(?:[?#][^"]*)?"/g)) {
+        const href = match[1]
+        if (href.startsWith('/') || /^[a-z]+:/i.test(href)) continue
+        await access(`${root}${path}${href}`)
+    }
+}
 await assert.rejects(access(`${root}/aster-preview-480.webp`))
 await assert.rejects(access(`${root}/aster-preview-960.webp`))
 for (const [file, width, height] of [['favicon.png', 192, 192], ['apple-touch-icon.png', 180, 180], ['logo.png', 512, 512], ['social-card.png', 1200, 630]]) {
@@ -95,8 +106,9 @@ assert.ok(home.includes('id="lien-he"'))
 assert.ok(home.includes('https://zalo.me/0975666614'))
 assert.ok(home.includes('tel:+84947787904'))
 const gallery = await read('dich-vu/thiet-ke-website/index.html')
-if (config.asterDemoUrl) assert.ok(gallery.includes(config.asterDemoUrl))
-else assert.ok(gallery.includes('Demo đang chuẩn bị'))
+for (const [id, url] of Object.entries({ aster: config.asterDemoUrl, 'an-studio': config.anStudioDemoUrl, orbit: config.orbitDemoUrl })) {
+    assert.ok(gallery.includes(`href="${url || bundledDemoUrls[id]}"`), id + ' live demo link')
+}
 assert.equal(validateUrl('', 'demo'), '')
 assert.throws(() => validateUrl('http://example.test', 'demo'))
 assert.throws(() => validateUrl('https://user:pass@example.test', 'demo'))

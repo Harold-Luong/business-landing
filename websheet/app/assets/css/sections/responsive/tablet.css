@@ -63,7 +63,7 @@
         justify-content: flex-start;
         gap: 9px 17px;
     }
-    .hero-bottom > div b:last-of-type {
+    .hero-bottom > div .hero-separator:nth-child(4) {
         display: none;
     }
     .hero-bottom > div > span:last-child {

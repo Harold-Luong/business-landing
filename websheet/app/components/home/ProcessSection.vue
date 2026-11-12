@@ -9,19 +9,19 @@
                     <p>{{ $t("process.youApproveTheResultsAtEachStep") }}</p>
                 </div>
                 <ol class="process-grid">
-                    <li v-reveal><span class="step-number">01 <b aria-hidden="true">↗</b></span>
+                    <li v-reveal><span class="step-number">01 <span class="step-icon" aria-hidden="true">↗</span></span>
                         <h3>{{ $t("process.discoveryConsultation") }}</h3>
                         <p>{{ $t("process.agreeOnGoalsScopeBudgetAndTimeline") }}</p>
                     </li>
-                    <li v-reveal><span class="step-number">02 <b aria-hidden="true">↗</b></span>
+                    <li v-reveal><span class="step-number">02 <span class="step-icon" aria-hidden="true">↗</span></span>
                         <h3>{{ $t("process.designReview") }}</h3>
                         <p>{{ $t("process.approveTheDesignOrWorkflowBeforeDevelopment") }}</p>
                     </li>
-                    <li v-reveal><span class="step-number">03 <b aria-hidden="true">↗</b></span>
+                    <li v-reveal><span class="step-number">03 <span class="step-icon" aria-hidden="true">↗</span></span>
                         <h3>{{ $t("process.developmentTesting") }}</h3>
                         <p>{{ $t("process.testTheFeaturesAndReviewTheResults") }}</p>
                     </li>
-                    <li v-reveal><span class="step-number">04 <b aria-hidden="true">✓</b></span>
+                    <li v-reveal><span class="step-number">04 <span class="step-icon" aria-hidden="true">✓</span></span>
                         <h3>{{ $t("process.deploymentHandover") }}</h3>
                         <p>{{ $t("process.signOffReceiveTheDeliverablesAndLearn") }}</p>
                     </li>

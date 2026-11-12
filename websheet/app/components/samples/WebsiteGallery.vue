@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { samples, sampleQuoteHref } from '~/data/samples'
+import { samples } from '~/data/samples'
 import { planById } from '~/data/plans'
 import AsterPreview from './AsterPreview.vue'
 import AnStudioPreview from './AnStudioPreview.vue'
@@ -31,13 +31,19 @@ const urls = useDemoUrls()
                         <p>{{ $t(sample.description) }}</p>
                     </div><span>{{ $t(planById[sample.plan].name) }}</span>
                 </div>
-                <div class="work-actions">
-                    <DemoLink :sample-id="sample.id" />
-                    <NuxtLink class="text-link" :to="$localePath(sampleQuoteHref(sample))">{{ $t("gallery.chooseThisConcept") }} <span
-                            aria-hidden="true">→</span></NuxtLink>
-                </div>
+                <p v-if="sample.features" class="gallery-features">{{ $t(sample.features) }}</p>
             </article>
         </div>
-        <p class="showcase-note"><span aria-hidden="true">✳</span> {{ $t("gallery.websiteConceptsIllustrateTheDifferentPlansCms") }}</p>
+        <p class="showcase-note"><span aria-hidden="true">✳</span> {{
+            $t("gallery.demoTechnology") }}</p>
     </section>
 </template>
+
+<style scoped>
+.gallery-features {
+    margin-top: 16px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+</style>

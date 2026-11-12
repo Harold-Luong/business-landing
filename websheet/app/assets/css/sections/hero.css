@@ -473,7 +473,7 @@
     color: #52634b;
 }
 
-.hero-bottom b {
+.hero-bottom .hero-separator {
     color: #94af69;
     font-size: 18px;
     font-weight: 400;

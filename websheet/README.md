@@ -14,7 +14,7 @@ npm ci
 npm run dev
 ```
 
-Dev server mặc định tại `http://localhost:3000`. Project này độc lập với Vite ở thư mục cha; build không đọc source, CSS hay demo từ project cha.
+Dev server mặc định tại `http://localhost:3000`. Nuxt phục vụ website chính; build đóng kèm ba project demo độc lập trong `../demos/`.
 
 ```bash
 npm run typecheck
@@ -50,7 +50,9 @@ Copy `.env.example` thành `.env` để chạy local bằng `npm run dev`. Các 
 | `NUXT_PUBLIC_ORBIT_DEMO_URL` | URL HTTPS demo Orbit được triển khai riêng |
 | `NUXT_PUBLIC_SHEETS_DEMO_URL` | URL HTTPS demo Sheets được triển khai riêng |
 
-URL demo trống hiển thị “Demo đang chuẩn bị”; thẻ mẫu và CTA tư vấn vẫn hoạt động. URL sai làm build thất bại. Không có fallback `/demos/`, không copy source hoặc build demo cùng landing. Thay biến cần generate lại vì đây là SSG.
+Aster, An Studio và Orbit mặc định mở demo đóng kèm tại `/demos/aster/`, `/demos/an-studio/`, `/demos/orbit/`. Có thể ghi đè bằng URL HTTPS riêng qua biến tương ứng. SheetFlow chưa có demo đóng kèm: URL trống hiển thị “Demo đang chuẩn bị”. URL sai làm build thất bại. Thay biến cần build và deploy lại vì đây là SSG.
+
+`build:dev` và `build:production` đóng gói nội dung từ `../demos/` vào output; cần giữ cả thư mục này khi checkout trên CI. Demo giữ `noindex`, không nằm trong sitemap, và các nút quay lại/chọn mẫu dẫn về gallery hoặc liên hệ của WebSheet. Dùng `npm run build:production` rồi `npm run preview` để xem toàn bộ website và demo tại localhost:4174; `npm run dev` chỉ chạy ứng dụng Nuxt, các demo có lệnh dev độc lập trong README riêng.
 
 SEO production được cấu hình cho `https://websheet.shop/`: HTML cho phép index, canonical và sitemap dùng domain này. `.env.example` dành cho local nên để trống `NUXT_PUBLIC_SITE_URL` để HTML có `noindex`. File `public/robots.txt` chỉ là bản dùng cho local; khi build, Nuxt sinh lại robots và sitemap theo môi trường. Thay đổi metadata trong `shared/site.ts` cần build và deploy production mới xuất hiện trên website.
 
@@ -89,7 +91,7 @@ Biểu tượng chữ W và ảnh chia sẻ là phương án nhận diện tạm
 - `app/assets/css/`: CSS/font đã chuyển vào project này.
 - `shared/site.ts`: metadata và route registry; `shared/config.ts`: validate URL, robots/sitemap.
 - `nuxt.config.ts`: Vite builder, prerender và xuất robots/sitemap sau generate.
-- `tests/`: kiểm thử HTML/assets/SEO và trình duyệt; không kiểm thử ứng dụng nội bộ của demo.
+- `tests/`: kiểm thử HTML/assets/SEO, giao diện website và các liên kết mở/quay lại demo.
 
 Các module UI/editor có sẵn trong scaffold không được bật trong `nuxt.config.ts`; giao diện dùng CSS của WebSheet. Bộ dependency scaffold được giữ; chỉ bổ sung công cụ typecheck cần thiết.
 
@@ -120,3 +122,17 @@ Production tắt URL `workers.dev` và version preview, chỉ phục vụ custom
 Xác minh property `websheet.shop` trong Search Console rồi gửi `https://websheet.shop/sitemap.xml`; token cũ không chứng minh domain mới đã được xác minh. Nếu phục vụ hostname cũ hoặc `www`, cấu hình redirect 301/308 theo từng path sau khi domain chính hoạt động. Chưa đăng nhập Cloudflare trên máy tại thời điểm thiết lập; việc build/dry-run không có nghĩa đã deploy online.
 
 Nguồn ảnh Aster: preview từ concept demo hiện có, xe và thông số giả định; không phải dự án khách hàng thật. Giấy phép font đi kèm `public/fonts/OFL.txt`.
+
+## Ảnh chụp demo
+
+Hero và gallery dùng ảnh WebP chụp từ chính các demo tại `public/previews/`; SheetFlow vẫn là hình minh họa và được ghi rõ trong chú thích.
+
+Sau khi sửa giao diện demo, chạy trong `websheet`:
+
+```bash
+npm run build:production
+npm run capture:demos
+npm run build:production
+```
+
+Lệnh chụp dùng Chrome và server localhost, đợi ảnh/font tải xong, chụp ba demo ở 1440 × 1000 và An Studio mobile ở 390 × 960. Ảnh được lưu trong repo; build/deploy thông thường không cần chụp lại. Bản build cuối đưa ảnh mới vào website.

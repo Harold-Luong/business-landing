@@ -17,7 +17,7 @@
     margin-bottom: 18px;
 }
 
-.step-number b {
+.step-number .step-icon {
     font-size: 20px;
     font-weight: 400;
     color: #778b62;

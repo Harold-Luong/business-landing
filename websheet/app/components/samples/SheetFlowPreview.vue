@@ -33,7 +33,7 @@
           </div>
           <div class="sheet-summary">
             <div>
-              Doanh thu<strong>24,8 <small>{{ $t("pricing.google.million") }}</small></strong>
+              {{ $t("preview.sheetFlow.revenue") }}<strong>24,8 <small>{{ $t("pricing.google.million") }}</small></strong>
             </div>
             <div>{{ $t("preview.sheetFlow.orders") }}<strong>32</strong></div>
             <div> {{ $t("preview.sheetFlow.completed") }}<strong>24 <small>/ 32</small></strong>

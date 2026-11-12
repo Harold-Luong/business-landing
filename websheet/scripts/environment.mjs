@@ -36,7 +36,10 @@ const run = (entry, args = []) => {
     if (result.error) throw result.error
     if (result.status !== 0) process.exit(result.status ?? 1)
 }
-const build = () => run(resolve(dirname(require.resolve('nuxt/package.json')), 'bin/nuxt.mjs'), ['generate', '--dotenv', dotenv])
+const build = () => {
+    run(resolve(dirname(require.resolve('nuxt/package.json')), 'bin/nuxt.mjs'), ['generate', '--dotenv', dotenv])
+    run(resolve(root, 'scripts/bundle-demos.mjs'))
+}
 const testOutput = () => run(resolve(root, 'tests/output.mjs'))
 
 console.log(`WebSheet ${environment}: ${action} → ${env.WEBSHEET_OUTPUT_DIR}`)
