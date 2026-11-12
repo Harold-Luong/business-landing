@@ -1,0 +1,4 @@
+Tool: built-in image_gen (edit)
+Input: the recolored preview of the user's uploaded WS logo.
+
+Refine this recolored WS logo: remove ALL dark blotches, speckling, grain, holes, uneven shading and transparency artifacts from the square background. Make the rounded square a perfectly uniform solid opaque sage green #527449. Make the area outside the rounded square a perfectly uniform solid opaque warm white #FDFEFB, not black and not transparent. The W, document folded corner and six table cells must be solid #FDFEFB. The S must be solid pale sage #DCEBCF. Absolutely no texture, gradient, shadow, glow, transparency or noise anywhere. Preserve all existing WS letter contours, layout, paper symbol, six cells, rounded corners and margins exactly. Clean flat vector-like raster logo, crisp antialiased edges. Change only the fill uniformity and remove visual defects; no new elements, no labels.

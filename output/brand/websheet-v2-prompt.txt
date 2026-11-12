@@ -1,0 +1,10 @@
+Tool: built-in image_gen (generate)
+
+Use case: logo-brand
+Asset type: polished identity presentation for WebSheet, a Vietnamese website design and Google Sheets automation studio.
+Primary request: design a completely new cohesive logo suite in flat vector-like graphic design.
+Concept: a compact geometric W assembled from a small number of rounded spreadsheet cells, with purposeful negative space. Strong simple silhouette legible as a favicon. Avoid combining literal WS letters with document folds.
+Color palette: sage #527449, pale sage #DCEBCF, forest #293E33, warm white #FDFEFB, drawn from the existing website.
+Composition: a refined landscape brand presentation on warm white. A large primary horizontal logo at top left; below, a large standalone symbol, a reversed white logo on forest field, and small favicon applications. Beautiful disciplined spacing, understated contemporary editorial design. All versions must use the identical symbol.
+Text (verbatim): "WebSheet" only. Geometric humanist sans serif, medium weight, precise kerning. Do not add slogans or extraneous labels.
+Constraints: original distinctive simple mark; flat uniform fills; no gradient, texture, mockup objects, shadows, photo effects or watermark. Clear planar design appropriate for subsequent SVG production.
