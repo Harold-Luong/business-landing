@@ -25,7 +25,7 @@ import { googlePlans } from '~/data/plans'
                     <ul class="feature-list">
                         <li v-for="feature in plan.features" :key="feature">{{ $t(feature) }}</li>
                     </ul>
-                    <NuxtLink class="price-detail-link" :to="$localePath(plan.detailHref)"><span class="link-label">{{ $t("pricing.google.servicePage") }}</span> <span
+                    <NuxtLink class="price-detail-link" :to="$localePath(plan.detailHref)"><span class="link-label">{{ $t("pricing.google.serviceDetails", { name: $t(plan.name) }) }}</span> <span
                             aria-hidden="true">→</span></NuxtLink>
                 </details>
             </article>

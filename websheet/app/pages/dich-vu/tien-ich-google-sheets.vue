@@ -10,6 +10,7 @@ definePageMeta({ layout: 'service' })
         <ServiceHero :service="service" />
 
         <TienIchGoogleSheetsContent />
+        <SheetFlowPreview />
         <ServiceFaq :items="service.faqs" />
         <ServiceClosing :service="service" />
     </main>

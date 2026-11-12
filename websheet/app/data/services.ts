@@ -82,6 +82,25 @@ export const services = {
     "gallery": true,
     "faqs": [
       {
+        "question": "examples.emailQuestion",
+        "paragraphs": [
+          [
+            {
+              "text": "examples.emailAnswer"
+            }
+          ],
+          [
+            {
+              "text": "examples.emailLimits"
+            },
+            {
+              "text": "examples.googleQuotas",
+              "href": "https://developers.google.com/apps-script/guides/services/quotas"
+            }
+          ]
+        ]
+      },
+      {
         "question": "services.doesMyComputerNeedToStayOn",
         "paragraphs": [
           [
@@ -142,6 +161,20 @@ export const services = {
     "gallery": false,
     "faqs": [
       {
+        "question": "examples.appsheetAccessQuestion",
+        "paragraphs": [
+          [
+            {
+              "text": "examples.appsheetAccessAnswer"
+            },
+            {
+              "text": "examples.appsheetSecurity",
+              "href": "https://support.google.com/appsheet/answer/10104977"
+            }
+          ]
+        ]
+      },
+      {
         "question": "services.doesAppsheetFullyReplaceGoogleSheets",
         "paragraphs": [
           [
@@ -194,7 +227,7 @@ export const services = {
       "services.menusButtonsAndSidebars"
     ],
     "lead": "services.atWebsheetSheetsToolsIsAnUmbrella",
-    "gallery": false,
+    "gallery": true,
     "faqs": [
       {
         "question": "services.isThereASeparateChargeForSheets",

@@ -8,8 +8,8 @@ definePageMeta({ layout: 'service' })
 <template>
     <main id="noi-dung">
         <ServiceHero :service="service" />
-        <SheetFlowPreview />
         <GoogleAppsScriptContent />
+        <SheetFlowPreview />
         <ServiceFaq :items="service.faqs" />
         <ServiceClosing :service="service" />
     </main>
