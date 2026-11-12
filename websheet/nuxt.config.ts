@@ -12,6 +12,11 @@ const outputDir = resolve('.output', environment)
 export default defineNuxtConfig({
   // Use .nuxt so the generated types match tsconfig.json on a clean CI build.
   builder: 'vite',
+  vite: {
+    server: {
+      allowedHosts: ['websheet.local'],
+    },
+  },
   debug: false,
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
