@@ -7,7 +7,7 @@ import { websitePlans } from '~/data/plans'
       <h3>{{ $t(plan.name) }} {{ $t("services.plans.from") }} {{ $priceMillions(plan.startingPriceVnd) }} {{ $t("pricing.google.million") }}</h3>
       <p>{{ $t("services.plans.timeline") }} {{ $t(plan.delivery) }}.</p>
       <ul class="detail-package-features"><li v-for="feature in plan.features" :key="feature">{{ $t(feature) }}</li></ul>
-      <NuxtLink class="text-link" :to="$localePath(`/?plan=${plan.id}#lien-he`)" :aria-label="`${$t('pricing.comparison.chooseThisPlan')}: ${$t(plan.name)}`">{{ $t("pricing.comparison.chooseThisPlan") }} <span aria-hidden="true">→</span></NuxtLink>
+      <NuxtLink class="text-link" :to="$localePath(`/?plan=${plan.id}#lien-he`)">{{ $t('links.choosePlan', { name: $t(plan.name) }) }} <span aria-hidden="true">→</span></NuxtLink>
     </article>
   </div>
 </template>

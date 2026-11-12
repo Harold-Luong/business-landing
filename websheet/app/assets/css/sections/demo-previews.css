@@ -31,7 +31,7 @@
 .sheet-demo-card {
     display: grid;
     grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-    border: 1px solid #d5dfcf;
+    border: 1px solid var(--line-strong);
     border-radius: 12px;
     overflow: hidden;
     background: #fff;
@@ -42,14 +42,14 @@
     flex-direction: column;
     justify-content: center;
     padding: 36px 28px 24px;
-    background: #eaf2e6;
+    background: var(--sheet-preview-bg);
 }
 .sheet-window {
     overflow: hidden;
     border: 1px solid #cbdacc;
     border-radius: 8px;
     background: #fff;
-    box-shadow: 0 16px 35px #264d2e12;
+    box-shadow: 0 16px 35px var(--shadow-soft);
     color: #35483c;
 }
 .sheet-window-heading {
@@ -176,7 +176,7 @@
 .sheet-tabs strong { color: #23764c; }
 .sheet-preview-note {
     margin-top: 20px;
-    color: #52664e;
+    color: var(--muted);
     font-size: 9px;
     letter-spacing: 1px;
 }
@@ -185,7 +185,7 @@
     padding: 36px;
 }
 .sheet-demo-tag {
-    color: #3a7048;
+    color: var(--accent);
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -210,7 +210,7 @@
     line-height: 1.6;
     list-style: disc;
 }
-.sheet-demo-copy li::marker { color: #558044; }
+.sheet-demo-copy li::marker { color: var(--accent); }
 .sheet-demo-actions {
     display: flex;
     flex-wrap: wrap;
@@ -221,9 +221,9 @@
 .sheet-demo-actions .text-link { font-size: 12px; }
 .sheet-demo-pending {
     padding: 10px 12px;
-    border: 1px dashed #c6d3bd;
+    border: 1px dashed var(--line-strong);
     border-radius: 4px;
-    color: #617058;
+    color: var(--muted);
     font-size: 12px;
 }
 .sheet-demo-copy .sheet-demo-note {
@@ -365,7 +365,7 @@
     bottom: -24px;
 }
 .sheet-teaser {
-    background: #eaf2e6;
+    background: var(--sheet-preview-bg);
     color: #286042;
 }
 .sheet-teaser .preview-title {
@@ -383,7 +383,7 @@
     border: 1px solid #cbdacc;
     border-radius: 6px;
     background: #fff;
-    box-shadow: 0 12px 28px #264d2e12;
+    box-shadow: 0 12px 28px var(--shadow-soft);
     transform: rotate(-2deg);
 }
 .sheet-teaser-grid > div {

@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { readFile, readdir, access } from 'node:fs/promises'
-import { routes, homeMeta, serviceMeta } from '../shared/site.ts'
+import { routes, homeMeta, serviceMeta, resourceMeta } from '../shared/site.ts'
 import { publicConfig, validateUrl, robots, sitemap } from '../shared/config.ts'
 import { basePath, localeFromPath, localizedPath, translate } from '../shared/i18n.ts'
 import vietnamese from '../shared/locales/vi.json' with { type: 'json' }
@@ -19,11 +19,11 @@ for (const path of routes) {
     assert.ok(html.includes('WebSheet'))
     assert.ok(!html.includes('CoreBrisk'))
     assert.ok(!html.includes('NuxtWelcome'))
-    const meta = serviceMeta.find(page => page.path === originalPath) || homeMeta
+    const meta = [...serviceMeta, ...resourceMeta].find(page => page.path === originalPath) || homeMeta
     const title = html.match(/<title>(.*?)<\/title>/)[1].replaceAll('&amp;', '&')
     assert.equal(title, translate(meta.title, locale))
     const schemas = [...html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/gs)].map(match => JSON.parse(match[1]))
-    assert.equal(schemas[0]['@type'], isHome ? 'ProfessionalService' : 'Service')
+    assert.equal(schemas[0]['@type'], isHome ? 'ProfessionalService' : meta.kind === 'article' ? 'Article' : 'Service')
     const visibleText = html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, '').replace(/<[^>]*>/g, '')
     for (const key of Object.keys(vietnamese)) {
         assert.ok(!visibleText.includes(key), `${path} unresolved message: ${key}`)
@@ -114,4 +114,21 @@ assert.throws(() => validateUrl('http://example.test', 'demo'))
 assert.throws(() => validateUrl('https://user:pass@example.test', 'demo'))
 assert.throws(() => validateUrl('https://example.test/path', 'site', true))
 assert.equal(validateUrl(' https://websheet.shop ', 'site', true), 'https://websheet.shop/')
-console.log(`PASS: 12 VI/EN prerendered pages, translated content, metadata/schema/hreflang, ${config.siteUrl ? 'production' : 'preview'} SEO, assets and URL validation.`)
+console.log(`PASS: ${routes.length} VI/EN prerendered pages, translated content, metadata/schema/hreflang, ${config.siteUrl ? 'production' : 'preview'} SEO, assets and URL validation.`)
+
+for (const resource of resourceMeta) {
+    for (const language of ['vi', 'en']) {
+        const path = localizedPath(resource.path, language)
+        const article = await read(path.slice(1) + 'index.html')
+        assert.ok(article.includes('runEmailQueue'), path + ' prerendered example code')
+        assert.ok(article.includes('dryRun: true'), path + ' preview by default')
+        assert.ok(article.includes('href="/resources/email-queue.csv"'), path + ' CSV download')
+        assert.ok(article.includes('href="/resources/send-approved-emails.gs"'), path + ' source download')
+        assert.ok(article.includes('property="og:type" content="article"'))
+        const landing = await read(language === 'vi' ? 'index.html' : 'en/index.html')
+        assert.ok(landing.includes(`href="${path}"`), path + ' discoverable from home')
+    }
+}
+for (const file of ['email-queue.csv', 'send-approved-emails.gs']) {
+    assert.equal(await read('resources/' + file), await readFile('public/resources/' + file, 'utf8'))
+}

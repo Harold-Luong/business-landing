@@ -1,6 +1,6 @@
 /* Chân trang và nút quay về đầu trang. */
 .site-footer {
-    background: #fdfefb;
+    background: var(--paper);
     color: var(--ink);
     border-top: 1px solid var(--line);
     padding-top: 50px;
@@ -24,7 +24,7 @@
     display: flex;
     gap: 23px;
     font-size: 10px;
-    color: #596b50;
+    color: var(--muted);
 }
 
 .footer-main > div > a:hover {
@@ -34,7 +34,7 @@
 .footer-top {
     width: 41px;
     height: 41px;
-    border: 1px solid #ccd8c8;
+    border: 1px solid var(--line-strong);
     border-radius: 50%;
     display: grid;
     place-items: center;

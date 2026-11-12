@@ -20,7 +20,7 @@ const rows = [
                     <div class="price"><span>{{ $t("pricing.google.from") }}</span><strong>{{ $priceMillions(plan.startingPriceVnd)
                             }}<span> {{ $t("pricing.google.million") }}</span></strong><small>{{ $t("pricing.google.vndProject") }}</small></div>
                     <NuxtLink class="button" :class="plan.recommended ? 'button-dark' : 'button-outline'"
-                        :to="$localePath('#lien-he')" :aria-label="`${$t('pricing.comparison.chooseThisPlan')}: ${$t(plan.name)}`">{{ $t("pricing.comparison.chooseThisPlan") }} <span aria-hidden="true">↗</span>
+                        :to="$localePath('#lien-he')">{{ $t('links.choosePlan', { name: $t(plan.name) }) }} <span aria-hidden="true">↗</span>
                     </NuxtLink>
                 </div>
                 <dl class="comparison-facts">

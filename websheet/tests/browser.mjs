@@ -76,7 +76,7 @@ try {
           assert.equal(await evaluate("document.querySelector('#navigation [aria-current]')?.getAttribute('href')"), '/#dich-vu')
           assert.equal(await evaluate("document.querySelector('.detail-process')"), null)
         }
-        if ([1440,390].includes(width) && ['/', '/dich-vu/thiet-ke-website/', '/dich-vu/google-apps-script/'].includes(path)) {
+        if ([1440,390].includes(width) && ['/', '/dich-vu/thiet-ke-website/', '/dich-vu/google-apps-script/', '/huong-dan/gui-email-tu-google-sheets/'].includes(path)) {
           await evaluate(`Promise.all([...document.images].map(image => { image.loading = 'eager'; return image.decode().catch(() => {}) }))`)
           // Visit blocks before full-page capture; an offscreen block intentionally waits for scrolling.
           await evaluate(`(async () => { for (let y = 0; y < document.documentElement.scrollHeight; y += innerHeight * 0.75) { window.scrollTo({top:y, behavior:'instant'}); await new Promise(resolve => setTimeout(resolve, 40)); } window.scrollTo({top:0, behavior:'instant'}); })()`)
@@ -84,6 +84,24 @@ try {
           await screenshot(`${shots}/${path === '/' ? 'home' : path.split('/')[2]}-${width}.png`, true)
         }
       }
+    }
+    for (const language of ['', '/en']) {
+      await navigate(language + '/huong-dan/gui-email-tu-google-sheets/')
+      await evaluate("document.querySelector('.guide-code').open = true")
+      assert.ok(await evaluate("document.querySelector('.guide-code code').textContent.includes('dryRun: true')"))
+      assert.ok(await evaluate('document.documentElement.scrollWidth <= innerWidth + 1'), 'Expanded code fits mobile')
+      await evaluate("Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async text => { window.__copiedGuide = text } } })")
+      await evaluate("document.querySelector('.guide-actions button').click()")
+      await poll(() => evaluate("window.__copiedGuide?.includes('runEmailQueue') && !!document.querySelector('.copy-feedback').textContent.trim()"))
+      await evaluate("Object.defineProperty(navigator, 'clipboard', { configurable: true, value: { writeText: async () => { throw new Error('denied') } } })")
+      await evaluate("document.querySelector('.guide-actions button').click()")
+      await poll(() => evaluate("document.querySelector('.copy-feedback').textContent.includes('.gs')"))
+    }
+    for (const language of ['', '/en']) {
+      await navigate(language + '/')
+      const labels = await evaluate("[...document.querySelectorAll('.price-card > a.button')].map(a => a.textContent.replace('↗', '').trim())")
+      assert.equal(labels.length, 5)
+      assert.equal(new Set(labels).size, 5, 'Pricing CTA text identifies each plan or service')
     }
     // Shared mobile menu must navigate from a service back to landing anchors.
     await navigate('/dich-vu/google-automation/')
@@ -134,7 +152,7 @@ try {
         assert.ok(await evaluate('document.documentElement.scrollWidth <= innerWidth + 1'), `/en${path} overflows at ${width}`)
         assert.deepEqual(await evaluate("[...document.querySelectorAll('#navigation > a')].map(a => a.textContent.replace('↗', '').trim())"), ['Services', 'Pricing', 'Process', 'Contact'])
         const links = await evaluate("[...document.querySelectorAll('a[href]')].filter(a => !a.closest('.language-switch')).map(a => a.getAttribute('href')).filter(href => href.startsWith('/') && !href.startsWith('//'))")
-        assert.ok(links.every(href => href.startsWith('/en/') || /^\/demos\/(aster|an-studio|orbit)\/$/.test(href)), 'Internal links stay English; shared demos keep their own URLs: ' + links.join(', '))
+        assert.ok(links.every(href => href.startsWith('/en/') || /^\/demos\/(aster|an-studio|orbit)\/$/.test(href) || /^\/resources\/(email-queue\.csv|send-approved-emails\.gs)$/.test(href)), 'Internal links stay English; shared demos keep their own URLs: ' + links.join(', '))
       }
       await navigate('/en/')
       assert.equal(await evaluate("document.querySelector('.language-switch').open"), false)
@@ -187,6 +205,9 @@ try {
     assert.equal(await evaluate("document.querySelectorAll('.contact-channels a').length"), expectedEmail ? 3 : 2)
     assert.ok(await evaluate("document.body.textContent.includes('Thiết kế website.')"))
     assert.equal(await evaluate("document.querySelector('[data-reveal-state=pending]')"), null, 'Prerendered/no-JS content must never be hidden')
+    await send('Page.navigate', { url: server.url + '/huong-dan/gui-email-tu-google-sheets/' })
+    await poll(() => evaluate("document.readyState === 'complete' && !!document.querySelector('.guide-code')"))
+    assert.ok(await evaluate("document.querySelector('.guide-code code').textContent.includes('runEmailQueue')"), 'Guide code is readable without JS')
     await send('Emulation.setScriptExecutionDisabled', { value: false })
     for (const id of ['aster', 'an-studio', 'orbit']) {
       const response = await fetch(`${server.url}/demos/${id}/`)
@@ -200,6 +221,6 @@ try {
       await poll(() => evaluate(`location.pathname === '/dich-vu/thiet-ke-website/' && location.hash === '#mau-giao-dien' && !!document.querySelector('#__nuxt')?.__vue_app__`))
     }
     assert.deepEqual(errors, [], 'Browser console/hydration errors')
-    console.log('PASS: 60 VI/EN route/viewport checks; language switching, localized navigation/SEO, contact-only CTAs, direct contact icons/links, legacy form bookmarks, no-JS, reveal, keyboard, menu and 404. Screenshots: ' + shots)
+    console.log('PASS: ' + (routes.length * 10) + ' VI/EN route/viewport checks; language switching, localized navigation/SEO, contact-only CTAs, direct contact icons/links, legacy form bookmarks, no-JS, reveal, keyboard, menu and 404. Screenshots: ' + shots)
   })
 } finally { await server.close() }

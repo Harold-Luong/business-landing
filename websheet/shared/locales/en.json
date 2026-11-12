@@ -510,5 +510,17 @@
     "website.buildTitle": "Design, build and test",
     "website.buildText": "Approve the design, build a preview and check mobile and desktop layouts, links and the contact flow. CMS, account and API features are tested against the agreed scope.",
     "website.handoverTitle": "Review and hand over",
-    "website.handoverText": "Check functionality against requirements and hand over source code and usage instructions. Domain, hosting and administrator account setup follow the agreed deployment plan."
+    "website.handoverText": "Check functionality against requirements and hand over source code and usage instructions. Domain, hosting and administrator account setup follow the agreed deployment plan.",
+    "resources.label": "PRACTICAL GUIDE",
+    "resources.emailGuideTitle": "Send emails from Google Sheets with Apps Script",
+    "resources.emailGuideSeoTitle": "Send emails from Google Sheets: Apps Script and CSV template | WebSheet",
+    "resources.emailGuideDescription": "Set up an email queue in Sheets, preview messages, send approved rows and track results. Includes a free Apps Script example and CSV template.",
+    "resources.readEmailGuide": "Guide to sending email from Google Sheets",
+    "resources.emailGuideTeaser": "Try the CSV and Apps Script example: preview your messages and approve recipients before sending.",
+    "links.discussService": "Discuss {name}",
+    "links.choosePlan": "Choose {name}",
+    "links.footerServices": "Service categories",
+    "links.footerPricing": "Compare service pricing",
+    "links.googlePricing": "Google Automation pricing",
+    "links.websitePricing": "Website and web app pricing"
 }

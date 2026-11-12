@@ -9,8 +9,8 @@ const year = useState('copyright-year', () => new Date().getFullYear())
                 <BrandMark :to="$localePath('#')"></BrandMark>
                 <p>{{ $t("hero.title") }}<br>{{ $t("footer.customDevelopment") }}</p>
                 <div>
-                    <NuxtLink :to="$localePath('#dich-vu')">{{ $t("nav.services") }}</NuxtLink>
-                    <NuxtLink :to="$localePath('#bang-gia')">{{ $t("footer.pricing") }}</NuxtLink>
+                    <NuxtLink :to="$localePath('#dich-vu')">{{ $t("links.footerServices") }}</NuxtLink>
+                    <NuxtLink :to="$localePath('#bang-gia')">{{ $t("links.footerPricing") }}</NuxtLink>
                     <NuxtLink :to="$localePath('#cau-hoi')">{{ $t("footer.frequentlyAskedQuestions") }}</NuxtLink>
                 </div>
                 <NuxtLink class="footer-top" :to="$localePath('#')" :aria-label="$t('footer.backToTop')">↑</NuxtLink>

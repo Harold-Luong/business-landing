@@ -1,5 +1,5 @@
 .detail-intro {
-    background: linear-gradient(125deg, #fdfefb 20%, #f0f6e9 100%);
+    background: var(--hero-gradient);
     padding: 28px 0 76px;
 }
 
@@ -50,7 +50,7 @@
 
 .detail-estimate {
     padding: 30px;
-    border: 1px solid #d5e1cc;
+    border: 1px solid var(--line-strong);
     border-radius: 6px;
     background: #ffffffbd;
 }

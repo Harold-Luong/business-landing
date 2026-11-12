@@ -7,6 +7,7 @@ useSiteSeo();
     <ServiceGroups />
     <PricingSection />
     <ProcessSection />
+    <EmailGuideCallout />
     <HomeFaq />
     <QuoteSection />
   </main>

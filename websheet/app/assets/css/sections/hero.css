@@ -1,6 +1,6 @@
 /* Hero, mockup trình duyệt/điện thoại và dải giới thiệu dịch vụ. */
 .hero {
-    background: linear-gradient(125deg, #fdfefb 20%, #f0f6e9 100%);
+    background: var(--hero-gradient);
     color: var(--ink);
     overflow: hidden;
 }
@@ -25,9 +25,9 @@
 .status-dot {
     width: 6px;
     height: 6px;
-    background: #719564;
+    background: var(--accent);
     border-radius: 50%;
-    box-shadow: 0 0 0 4px #71956412;
+    box-shadow: 0 0 0 4px #b24a3212;
 }
 
 .hero h1 {
@@ -43,7 +43,7 @@
     font-weight: 400;
     vertical-align: middle;
     margin-left: 25px;
-    color: #789666;
+    color: var(--accent);
 }
 
 .hero-description {
@@ -101,7 +101,7 @@
 }
 
 .orbit {
-    border: 1px solid #7896661c;
+    border: 1px solid #b24a321c;
     position: absolute;
     width: 490px;
     height: 490px;
@@ -130,7 +130,7 @@
     border-radius: 4px;
     padding: 10px 15px;
     font-size: 10px;
-    box-shadow: 0 6px 24px #38522b0a;
+    box-shadow: 0 6px 24px var(--shadow-soft);
 }
 
 .mini-icon {
@@ -141,9 +141,9 @@
 
 .browser-mock {
     width: 94%;
-    border: 2px solid #d6dfd0;
+    border: 2px solid var(--line-strong);
     border-radius: 12px;
-    box-shadow: 0 24px 55px #38522b14;
+    box-shadow: 0 24px 55px var(--shadow-soft);
     transform: rotate(-3deg);
     overflow: hidden;
     background: #eeece5;
@@ -151,8 +151,8 @@
 
 .browser-bar {
     height: 29px;
-    background: #f5f7f1;
-    color: #66755d;
+    background: var(--surface);
+    color: var(--muted);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -163,11 +163,11 @@
 .browser-dots {
     font-size: 7px;
     letter-spacing: 2px;
-    color: #8c9483;
+    color: var(--muted);
 }
 
 .mock-site {
-    color: #3c4136;
+    color: var(--ink);
     padding: 17px 22px 10px;
 }
 
@@ -320,12 +320,12 @@
     width: 126px;
     height: 242px;
     background: #f2eee3;
-    border: 3px solid #bac8b2;
+    border: 3px solid var(--line-strong);
     border-radius: 20px;
-    color: #414839;
+    color: var(--ink);
     padding: 17px 9px 8px;
     transform: rotate(7deg);
-    box-shadow: 0 12px 28px #38522b1a;
+    box-shadow: 0 12px 28px var(--shadow-soft);
 }
 
 .phone-camera {
@@ -335,7 +335,7 @@
     width: 36px;
     height: 5px;
     border-radius: 0 0 9px 9px;
-    background: #bac8b2;
+    background: var(--line-strong);
 }
 
 .phone-logo {
@@ -402,24 +402,24 @@
     align-items: center;
     gap: 10px;
     background: #fff;
-    color: #263022;
+    color: var(--ink);
     padding: 12px 18px;
     border: 1px solid var(--line);
     border-radius: 5px;
-    box-shadow: 0 8px 24px #38522b0f;
+    box-shadow: 0 8px 24px var(--shadow-soft);
     transform: rotate(-3deg);
 }
 
 .quality-icon {
-    background: #dbecc4;
-    border: 1px solid #a0ba82;
+    background: var(--accent-soft);
+    border: 1px solid var(--accent-line);
     border-radius: 50%;
     font-size: 17px;
     width: 33px;
     height: 33px;
     text-align: center;
     line-height: 31px;
-    color: #526e32;
+    color: var(--accent);
 }
 
 .quality-badge strong {
@@ -431,7 +431,7 @@
 .quality-badge div > span {
     display: block;
     font-size: 7px;
-    color: #68735f;
+    color: var(--muted);
     margin-top: 2px;
 }
 
@@ -470,11 +470,11 @@
     max-width: 780px;
     font-size: 13px;
     font-weight: 400;
-    color: #52634b;
+    color: var(--muted);
 }
 
 .hero-bottom .hero-separator {
-    color: #94af69;
+    color: var(--accent);
     font-size: 18px;
     font-weight: 400;
 }

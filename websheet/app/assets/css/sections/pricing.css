@@ -1,6 +1,6 @@
 /* Các gói dịch vụ xếp cạnh nhau trên desktop, thành một cột trên màn hình nhỏ. */
 .pricing {
-    background: #f7f9f3;
+    background: var(--pricing-bg);
     border-block: 1px solid var(--line);
 }
 
@@ -35,14 +35,14 @@
     gap: 24px;
     min-height: 48px;
     padding: 12px 18px;
-    border: 1px solid #cddbc5;
+    border: 1px solid var(--line-strong);
     border-radius: 5px;
     background: #fff;
     font-size: 13px;
 }
 
 .pricing-navigation a:hover {
-    background: var(--lime);
+    background: var(--accent-soft);
 }
 
 .pricing-group-heading {
@@ -54,7 +54,7 @@
     padding: 20px 24px;
     border-left: 3px solid var(--accent);
     border-radius: 4px;
-    background: #edf5e5;
+    background: var(--recommended-bg);
     font-size: 13px;
     line-height: 1.8;
 }
@@ -249,7 +249,7 @@
 .comparison-plans {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    border: 1px solid #d5dfcf;
+    border: 1px solid var(--line-strong);
     border-radius: 8px;
     background: #fff;
     font-size: 14px;
@@ -297,16 +297,16 @@
 }
 
 .comparison-card.recommended-column {
-    background: #edf5e5;
-    border-inline: 1px solid #d0dfc5;
+    background: var(--recommended-bg);
+    border-inline: 1px solid var(--accent-line);
 }
 
 .recommended {
     width: fit-content;
     padding: 4px 10px;
     border-radius: 4px;
-    background: #d9eacb;
-    color: #39532b;
+    background: var(--accent-soft);
+    color: var(--ink);
 }
 
 .comparison-card .plan-details {
@@ -351,7 +351,7 @@
     .comparison-card {
         grid-template-rows: auto;
         grid-row: auto;
-        border: 1px solid #d5dfcf;
+        border: 1px solid var(--line-strong);
         border-radius: 8px;
         background: #fff;
     }

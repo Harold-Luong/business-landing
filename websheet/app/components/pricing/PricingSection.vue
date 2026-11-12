@@ -7,8 +7,8 @@
                 <p>{{ $t("pricing.startingPricesForTheScopeBelowA") }}</p>
             </div>
             <nav class="pricing-navigation" :aria-label="$t('pricing.pricingCategories')">
-                <NuxtLink :to="$localePath('#bang-gia-google')">Google Automation <span aria-hidden="true">↘</span></NuxtLink>
-                <NuxtLink :to="$localePath('#bang-gia-website')">Website &amp; web app <span aria-hidden="true">↘</span></NuxtLink>
+                <NuxtLink :to="$localePath('#bang-gia-google')">{{ $t("links.googlePricing") }} <span aria-hidden="true">↘</span></NuxtLink>
+                <NuxtLink :to="$localePath('#bang-gia-website')">{{ $t("links.websitePricing") }} <span aria-hidden="true">↘</span></NuxtLink>
             </nav>
             <GooglePricing></GooglePricing>
             <WebsiteComparison></WebsiteComparison>

@@ -20,7 +20,7 @@
 }
 
 .work-preview:hover {
-    box-shadow: 0 10px 30px #2027221c;
+    box-shadow: 0 10px 30px var(--shadow-soft);
 }
 
 .preview-top {
@@ -140,9 +140,9 @@
 .work-caption > span {
     font-size: 9px;
     padding: 5px 9px;
-    border: 1px solid #dfe3d8;
+    border: 1px solid var(--line);
     border-radius: 4px;
-    color: #5e6c54;
+    color: var(--muted);
 }
 
 .saas-preview {
@@ -260,7 +260,7 @@
     text-align: center;
     margin-top: 38px;
     font-size: 11px;
-    color: #6e775f;
+    color: var(--muted);
 }
 
 .showcase-note > span {

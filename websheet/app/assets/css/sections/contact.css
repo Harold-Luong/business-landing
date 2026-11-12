@@ -1,6 +1,6 @@
 /* Phần liên hệ, form tư vấn và các trường nhập liệu. */
 .contact {
-    background: #edf5e6;
+    background: var(--contact-bg);
 }
 
 .contact-grid {
@@ -22,7 +22,7 @@
 }
 
 .contact h2 > span:first-child {
-    color: #5d793e;
+    color: var(--accent);
 }
 
 .contact-spark {
@@ -31,13 +31,13 @@
     font-weight: 400;
     line-height: 1;
     margin: 17px 0;
-    color: #54723b;
+    color: var(--accent);
 }
 
 .contact-copy > p:not(.eyebrow) {
     font-size: 12px;
     line-height: 1.95;
-    color: #606e51;
+    color: var(--muted);
     max-width: 359px;
 }
 
@@ -59,7 +59,7 @@
     gap: 12px;
     min-height: 44px;
     padding: 12px 16px;
-    border: 1px solid #bfcea9;
+    border: 1px solid var(--accent-line);
     border-radius: 6px;
     color: var(--ink);
 }
@@ -75,8 +75,8 @@
     width: 40px;
     height: 40px;
     border-radius: 10px;
-    background: #dfead4;
-    color: #54723b;
+    background: var(--accent-soft);
+    color: var(--accent);
 }
 
 .contact-channel-icon-zalo {
@@ -106,7 +106,7 @@
     align-items: center;
     gap: 17px;
     margin-top: 29px;
-    border-top: 1px solid #bfcea9;
+    border-top: 1px solid var(--accent-line);
     padding-top: 24px;
 }
 
@@ -116,9 +116,9 @@
     height: 43px;
     display: grid;
     place-items: center;
-    border: 1px solid #b6c79e;
+    border: 1px solid var(--accent-line);
     border-radius: 50%;
-    color: #5d7545;
+    color: var(--accent);
 }
 
 .contact-promise strong {
@@ -129,7 +129,7 @@
 .contact-promise p {
     font-size: 10px;
     line-height: 1.8;
-    color: #6c785d;
+    color: var(--muted);
     margin-top: 4px;
 }
 
@@ -138,7 +138,7 @@
     border: 1px solid var(--line);
     padding: 32px;
     border-radius: 6px;
-    box-shadow: 0 8px 30px #495e3208;
+    box-shadow: 0 8px 30px var(--shadow-soft);
 }
 
 .contact-form h3 {
@@ -148,7 +148,7 @@
 
 .form-intro {
     font-size: 10px;
-    color: #76816a;
+    color: var(--muted);
     margin: 9px 0 25px;
 }
 
@@ -169,23 +169,23 @@
 .field label {
     font-size: 10px;
     font-weight: 500;
-    color: #455239;
+    color: var(--text);
 }
 
 .field label > span {
-    color: #597635;
+    color: var(--accent);
 }
 
 .field input,
 .field select,
 .field textarea {
-    border: 1px solid #dce2d3;
+    border: 1px solid var(--line-strong);
     border-radius: 5px;
     background: #fff;
     padding: 11px 12px;
     width: 100%;
     min-width: 0;
-    color: #38452e;
+    color: var(--text);
     font-size: 11px;
     line-height: 1.6;
     transition: border-color 0.2s;
@@ -193,7 +193,7 @@
 
 .field input::placeholder,
 .field textarea::placeholder {
-    color: #858e7c;
+    color: var(--muted);
 }
 
 .field textarea {
@@ -204,12 +204,12 @@
 .field input:hover,
 .field textarea:hover,
 .field select:hover {
-    border-color: #b2c399;
+    border-color: var(--line-strong);
 }
 
 .form-privacy {
     font-size: 9px;
-    color: #748068;
+    color: var(--muted);
     line-height: 1.8;
     margin-bottom: 16px;
 }

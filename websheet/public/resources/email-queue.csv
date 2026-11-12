@@ -1,0 +1,2 @@
+Email,Name,Subject,Message,Approved,Status,SentAt,Error
+your-address@example.com,Alex,Appointment reminder,Hello {{name}}! This is a test reminder.,FALSE,,,

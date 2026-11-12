@@ -510,5 +510,17 @@
     "website.buildTitle": "Thiết kế, xây dựng và kiểm thử",
     "website.buildText": "Duyệt giao diện, triển khai trên bản xem thử rồi kiểm tra điện thoại, máy tính, liên kết và luồng liên hệ. CMS, tài khoản hay API được kiểm thử theo phạm vi đã chốt.",
     "website.handoverTitle": "Nghiệm thu và bàn giao",
-    "website.handoverText": "Đối chiếu chức năng với yêu cầu, bàn giao mã nguồn và hướng dẫn sử dụng. Cấu hình tên miền, hosting và tài khoản quản trị được xác nhận theo phương án triển khai."
+    "website.handoverText": "Đối chiếu chức năng với yêu cầu, bàn giao mã nguồn và hướng dẫn sử dụng. Cấu hình tên miền, hosting và tài khoản quản trị được xác nhận theo phương án triển khai.",
+    "resources.label": "HƯỚNG DẪN THỰC HÀNH",
+    "resources.emailGuideTitle": "Gửi email tự động từ Google Sheets bằng Apps Script",
+    "resources.emailGuideSeoTitle": "Gửi email từ Google Sheets: mã Apps Script và CSV mẫu | WebSheet",
+    "resources.emailGuideDescription": "Hướng dẫn tạo danh sách email trong Sheets, xem trước, gửi các dòng đã duyệt và theo dõi trạng thái. Kèm mã Apps Script và CSV mẫu tải miễn phí.",
+    "resources.readEmailGuide": "Hướng dẫn gửi email từ Google Sheets",
+    "resources.emailGuideTeaser": "Tự thử với CSV và mã Apps Script mẫu: xem trước nội dung, duyệt người nhận rồi mới gửi.",
+    "links.discussService": "Trao đổi về {name}",
+    "links.choosePlan": "Chọn gói {name}",
+    "links.footerServices": "Các nhóm dịch vụ",
+    "links.footerPricing": "So sánh giá dịch vụ",
+    "links.googlePricing": "Bảng giá Google Automation",
+    "links.websitePricing": "Bảng giá website và web app"
 }

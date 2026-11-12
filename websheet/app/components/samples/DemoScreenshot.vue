@@ -18,6 +18,6 @@ const names = { aster: 'Aster S5', 'an-studio': 'An Studio', orbit: 'Orbit' }
     aspect-ratio: 36 / 25;
     border: 1px solid var(--line);
     border-radius: 8px;
-    background: #f5f5f0;
+    background: var(--surface);
 }
 </style>

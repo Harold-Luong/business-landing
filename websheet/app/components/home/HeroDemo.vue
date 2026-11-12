@@ -45,10 +45,10 @@ const urls = useDemoUrls()
     left: 1%;
     width: 91%;
     overflow: hidden;
-    border: 2px solid #d6dfd0;
+    border: 2px solid var(--line-strong);
     border-radius: 10px;
     background: #eeece5;
-    box-shadow: 0 24px 55px #38522b14;
+    box-shadow: 0 24px 55px var(--shadow-soft);
     transform: rotate(-3deg);
 }
 .hero-demo-bar {
@@ -56,8 +56,8 @@ const urls = useDemoUrls()
     justify-content: space-between;
     align-items: center;
     padding: 9px 12px;
-    background: #f5f7f1;
-    color: #66755d;
+    background: var(--surface);
+    color: var(--muted);
     font-size: 9px;
 }
 .hero-demo img {
@@ -71,10 +71,10 @@ const urls = useDemoUrls()
     right: 1%;
     bottom: 7%;
     overflow: hidden;
-    border: 5px solid #293e33;
+    border: 5px solid var(--ink);
     border-radius: 17px;
     background: #eeece5;
-    box-shadow: 0 16px 36px #293e3326;
+    box-shadow: 0 16px 36px var(--shadow-strong);
     transform: rotate(5deg);
     pointer-events: none;
 }

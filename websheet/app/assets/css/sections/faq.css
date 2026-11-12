@@ -1,7 +1,7 @@
 /* Khu vực câu hỏi thường gặp và accordion dùng chung. */
 .faq {
-    background: #f8faf6;
-    border-top: 1px solid #e8ebe1;
+    background: var(--surface);
+    border-top: 1px solid var(--line);
 }
 
 .faq-grid {
@@ -13,7 +13,7 @@
 .faq-grid > div > p:not(.eyebrow) {
     font-size: 12px;
     line-height: 1.9;
-    color: #6e7763;
+    color: var(--muted);
     margin: 22px 0;
 }
 
@@ -22,11 +22,11 @@
 }
 
 .faq-list details {
-    border-bottom: 1px solid #d6ddce;
+    border-bottom: 1px solid var(--line-strong);
 }
 
 .faq-list details:first-child {
-    border-top: 1px solid #d6ddce;
+    border-top: 1px solid var(--line-strong);
 }
 
 .faq-list summary {
@@ -50,7 +50,7 @@
     top: 17px;
     font-size: 23px;
     font-weight: 400;
-    color: #72835c;
+    color: var(--accent);
 }
 
 .faq-list details[open] summary::after {
@@ -60,12 +60,12 @@
 .faq-list details p {
     font-size: 14px;
     line-height: 1.8;
-    color: #68735d;
+    color: var(--muted);
     padding: 0 28px 24px 0;
 }
 
 .faq-list summary:hover {
-    color: #557632;
+    color: var(--accent);
 }
 
 .faq-list p a {

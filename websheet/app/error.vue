@@ -8,8 +8,8 @@ useHead(() => ({ htmlAttrs: { lang: locale.value } }))
 <template>
   <main class="container section error-page">
     <BrandMark />
-    <p class="eyebrow">{{ error.statusCode }}</p>
-    <h1>{{ $t(error.statusCode === 404 ? 'error.thisPageIsnTHereYet' : 'error.thisPageIsUnavailableRightNow') }}</h1>
+    <p class="eyebrow">{{ error.status }}</p>
+    <h1>{{ $t(error.status === 404 ? 'error.thisPageIsnTHereYet' : 'error.thisPageIsUnavailableRightNow') }}</h1>
     <p>{{ $t("error.exploreCustomWebsiteAndGoogleSheetsServices") }}</p>
     <a class="button button-dark" :href="$localePath('/')">{{ $t("error.backToHome") }} <span aria-hidden="true">↗</span></a>
   </main>

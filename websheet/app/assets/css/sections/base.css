@@ -1,16 +1,32 @@
 /* Biến màu, reset, typography, bố cục và thành phần dùng chung. */
 :root {
     font-family: "Be Vietnam Pro", sans-serif;
-    color: #34443c;
-    background: #fdfefb;
+    color: var(--text);
+    background: var(--paper);
     font-synthesis: none;
-    --ink: #293e33;
-    --muted: #657469;
-    --lime: #dcebcf;
-    --accent: #527449;
-    --line: #e2e9df;
-    --paper: #fdfefb;
-    --surface: #f3f7ef;
+    /* Navy typography, terracotta actions, warm paper and cool section surfaces. */
+    --font-body: 'Be Vietnam Pro', sans-serif;
+    --ink: #213c58;
+    --text: #34485c;
+    --muted: #596879;
+    --accent: #b24a32;
+    --accent-hover: #943922;
+    --accent-soft: #f8e4d8;
+    --accent-line: #dfb29a;
+    --line: #e1e5ea;
+    --line-strong: #c7d2dd;
+    --paper: #fffaf5;
+    --surface: #f0f4f8;
+    --card: #ffffff;
+    --focus: #285b89;
+    --hero-gradient: linear-gradient(125deg, var(--paper) 20%, #e8eff7 100%);
+    --header-bg: #fffaf5f2;
+    --pricing-bg: #f0f4f8;
+    --contact-bg: #f8ece5;
+    --recommended-bg: #fcf0e8;
+    --sheet-preview-bg: #edf2f7;
+    --shadow-soft: #213c5814;
+    --shadow-strong: #213c5826;
 }
 
 *,
@@ -110,7 +126,7 @@ input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
 summary:focus-visible {
-    outline: 3px solid #648f25;
+    outline: 3px solid var(--focus);
     outline-offset: 5px;
 }
 
@@ -129,7 +145,7 @@ summary:focus-visible {
     font-weight: 500;
     line-height: 1.8;
     margin-bottom: 22px;
-    color: #516244;
+    color: var(--muted);
 }
 
 .eyebrow.light {
@@ -146,9 +162,9 @@ summary:focus-visible {
     justify-content: center;
     gap: 28px;
     padding: 14px 22px;
-    background: var(--lime);
-    color: var(--ink);
-    border: 1px solid #c6d9b7;
+    background: var(--accent);
+    color: var(--card);
+    border: 1px solid var(--accent);
     border-radius: 4px;
     font-weight: 500;
     font-size: 13px;
@@ -159,7 +175,7 @@ summary:focus-visible {
 }
 
 .button:hover {
-    background: #cfe2bf;
+    background: var(--accent-hover);
     transform: translateY(-1px);
 }
 
@@ -176,7 +192,8 @@ summary:focus-visible {
 
 .button-outline {
     background: transparent;
-    border-color: #ccd8c8;
+    color: var(--ink);
+    border-color: var(--line-strong);
 }
 
 .button-outline:hover {
@@ -190,7 +207,7 @@ summary:focus-visible {
 }
 
 .button-dark:hover {
-    background: #41613a;
+    background: var(--accent-hover);
 }
 
 .text-link {
@@ -228,7 +245,7 @@ summary:focus-visible {
     top: -100px;
     left: 20px;
     padding: 12px 20px;
-    background: var(--lime);
+    background: var(--accent-soft);
     color: var(--ink);
     z-index: 20;
 }

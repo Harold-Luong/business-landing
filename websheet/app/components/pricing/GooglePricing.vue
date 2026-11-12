@@ -19,7 +19,7 @@ import { googlePlans } from '~/data/plans'
                 <div class="price"><span>{{ $t("pricing.google.from") }}</span><strong>{{ $priceMillions(plan.startingPriceVnd) }}<span> {{ $t("pricing.google.million") }}</span></strong><small>{{ $t("pricing.google.vndProject") }}</small></div>
                 <p class="plan-scope">{{ $t(plan.scope) }}</p>
                 <p class="delivery">{{ $t("pricing.google.estimated") }} {{ $t(plan.delivery) }}</p>
-                <NuxtLink class="button button-outline" :to="$localePath('#lien-he')" :aria-label="`${$t('pricing.google.discussYourRequirements')} ${$t(plan.name)}`">{{ $t("pricing.google.discussYourRequirements") }} <span aria-hidden="true">↗</span></NuxtLink>
+                <NuxtLink class="button button-outline" :to="$localePath('#lien-he')">{{ $t('links.discussService', { name: $t(plan.name) }) }} <span aria-hidden="true">↗</span></NuxtLink>
                 <details class="plan-details">
                     <summary>{{ $t("pricing.google.viewDetails") }}<span class="sr-only"> {{ $t(plan.name) }}</span></summary>
                     <ul class="feature-list">

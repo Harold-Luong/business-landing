@@ -48,7 +48,7 @@ test('dynamic copy uses translated templates without reinterpreting parameter va
 })
 
 test('every Vietnamese page has exactly one English variant', () => {
-  assert.equal(routes.length, 12)
-  assert.equal(new Set(routes).size, 12)
+  assert.equal(routes.length, vietnameseRoutes.length * 2)
+  assert.equal(new Set(routes).size, routes.length)
   for (const path of vietnameseRoutes) assert.ok(routes.includes(localizedPath(path, 'en')))
 })

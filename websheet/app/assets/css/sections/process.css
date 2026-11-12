@@ -9,18 +9,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-top: 1px solid #d9dfcf;
+    border-top: 1px solid var(--line);
     padding-top: 21px;
     font-size: 32px;
     letter-spacing: -1px;
-    color: #748361;
+    color: var(--muted);
     margin-bottom: 18px;
 }
 
 .step-number .step-icon {
     font-size: 20px;
     font-weight: 400;
-    color: #778b62;
+    color: var(--accent);
 }
 
 .process-grid h3 {
@@ -32,7 +32,7 @@
 .process-grid p {
     font-size: 14px;
     line-height: 1.75;
-    color: #6b735f;
+    color: var(--muted);
     min-height: 0;
 }
 

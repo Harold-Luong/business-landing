@@ -20,7 +20,8 @@
     "test:browser": "node scripts/environment.mjs production test:browser",
     "test:browser:dev": "node scripts/environment.mjs dev test:browser",
     "generate:brand": "node scripts/brand-assets.mjs",
-    "capture:demos": "node scripts/capture-demos.mjs"
+    "capture:demos": "node scripts/capture-demos.mjs",
+    "test:email-guide": "node tests/email-guide.mjs"
   },
   "dependencies": {
     "@nuxt/a11y": "^1.0.0-alpha.1",

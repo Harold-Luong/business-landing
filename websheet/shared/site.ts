@@ -39,5 +39,13 @@ export const serviceMeta = [
     "plan": "launch"
   }
 ]
-export const vietnameseRoutes = ['/', ...serviceMeta.map(page => page.path)]
+export const emailGuideMeta = {
+  path: '/huong-dan/gui-email-tu-google-sheets/',
+  name: 'resources.emailGuideTitle',
+  title: 'resources.emailGuideSeoTitle',
+  description: 'resources.emailGuideDescription',
+  kind: 'article' as const,
+}
+export const resourceMeta = [emailGuideMeta]
+export const vietnameseRoutes = ['/', ...serviceMeta.map(page => page.path), ...resourceMeta.map(page => page.path)]
 export const routes = [...vietnameseRoutes, ...vietnameseRoutes.map(path => `/en${path}`)]

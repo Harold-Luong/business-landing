@@ -117,7 +117,7 @@ Cloudflare Git Builds: tạo hai Worker, chọn root directory `websheet`. Nhán
 
 Production tắt URL `workers.dev` và version preview, chỉ phục vụ custom domain. Trước khi deploy production, zone `websheet.shop` phải hoạt động trong tài khoản Cloudflare; nếu DNS còn quản lý ở Hostinger, cần chuyển nameserver theo hướng dẫn Cloudflare. Wrangler đăng ký Custom Domain khi deploy nhưng không tự sửa nameserver tại nhà đăng ký. Dev không cần domain riêng. Xem [Cloudflare environments](https://developers.cloudflare.com/workers/wrangler/environments/) và [Custom Domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
 
-`robots.txt`/`sitemap.xml` được sinh từ cùng site URL/route registry khi build; không sửa output thủ công. Sau deploy, kiểm tra hai ngôn ngữ của trang chủ và năm trang dịch vụ, robots, sitemap, favicon và HTTP 404. Dev không có sitemap; production có XML chứa 12 URL `https://websheet.shop/…`.
+`robots.txt`/`sitemap.xml` được sinh từ cùng site URL/route registry khi build; không sửa output thủ công. Sau deploy, kiểm tra hai ngôn ngữ của trang chủ và năm trang dịch vụ, robots, sitemap, favicon và HTTP 404. Dev không có sitemap; production có XML chứa 14 URL `https://websheet.shop/…`.
 
 Xác minh property `websheet.shop` trong Search Console rồi gửi `https://websheet.shop/sitemap.xml`; token cũ không chứng minh domain mới đã được xác minh. Nếu phục vụ hostname cũ hoặc `www`, cấu hình redirect 301/308 theo từng path sau khi domain chính hoạt động. Chưa đăng nhập Cloudflare trên máy tại thời điểm thiết lập; việc build/dry-run không có nghĩa đã deploy online.
 
@@ -136,3 +136,14 @@ npm run build:production
 ```
 
 Lệnh chụp dùng Chrome và server localhost, đợi ảnh/font tải xong, chụp ba demo ở 1440 × 1000 và An Studio mobile ở 390 × 960. Ảnh được lưu trong repo; build/deploy thông thường không cần chụp lại. Bản build cuối đưa ảnh mới vào website.
+
+## Hướng dẫn gửi email từ Google Sheets
+
+- Tiếng Việt: `/huong-dan/gui-email-tu-google-sheets/`; tiếng Anh: `/en/huong-dan/gui-email-tu-google-sheets/`.
+- Bài được liên kết từ trang chủ và dịch vụ Apps Script, khai báo schema `Article`, canonical/hreflang và nằm trong sitemap (tổng 14 URL).
+- Nội dung: `app/data/email-guide.ts`. Mã mẫu duy nhất: `public/resources/send-approved-emails.gs`, được import dạng raw để hiển thị và phục vụ nguyên file để tải về. Bảng mẫu: `public/resources/email-queue.csv`.
+- Mã chạy trong Apps Script gắn với bảng tính của người dùng. Mặc định `dryRun: true`, CSV mặc định `Approved = FALSE`; WebSheet không gửi thư hay nhận danh sách người nhận. Đọc hướng dẫn thử một email trước khi bật lịch chạy.
+- `npm run test:email-guide` kiểm thử logic bằng dịch vụ Google mô phỏng: duyệt dòng, xem trước, quota, giới hạn lượt chạy, khóa và lỗi gửi/ghi kết quả. Đây không phải xác nhận đã gửi email trên tài khoản Google thật.
+- `test:output` kiểm tra bài và file tải về; `test:browser` kiểm tra responsive, sao chép mã (thành công/thất bại), nội dung khi tắt JavaScript và nhãn nút chọn gói.
+
+Nhãn liên kết cần mô tả hành động và gói/dịch vụ đích trong phần chữ hiển thị. Các nút chọn gói dùng tên Launch/Business/Custom, nút Google dùng tên Apps Script/AppSheet; không chỉ thêm tên vào `aria-label`. Logo ở header/footer có thể dùng cùng nhãn khi cùng đích đến.

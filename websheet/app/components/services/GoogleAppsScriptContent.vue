@@ -8,6 +8,7 @@
             </div>
             <ServiceExamples :items="['examples.email', 'examples.excel', 'examples.reports']" />
         </section>
+        <EmailGuideCallout />
         <section v-reveal class="detail-scope" aria-labelledby="pham-vi">
             <div class="container detail-scope-grid">
                 <div>

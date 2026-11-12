@@ -3,7 +3,7 @@ import { validateUrl } from '~~/shared/config'
 import { contactDetails, emailLink } from '~~/shared/contact'
 import { localizedPath } from '~~/shared/i18n'
 
-type PageMeta = { path: string, name: string, title: string, description: string }
+type PageMeta = { path: string, name: string, title: string, description: string, kind?: 'article' }
 export function useSiteSeo(page?: PageMeta) {
   const siteUrl = validateUrl(useRuntimeConfig().public.siteUrl, 'siteUrl', true)
   const email = useRuntimeConfig().public.contactEmail.trim()
@@ -14,7 +14,7 @@ export function useSiteSeo(page?: PageMeta) {
   useSeoMeta({
     title: () => title.value, description: () => description.value,
     robots: siteUrl ? 'index, follow, max-image-preview:large' : 'noindex, follow',
-    ogType: 'website', ogLocale: () => locale.value === 'en' ? 'en_US' : 'vi_VN', ogSiteName: 'WebSheet',
+    ogType: page?.kind === 'article' ? 'article' : 'website', ogLocale: () => locale.value === 'en' ? 'en_US' : 'vi_VN', ogSiteName: 'WebSheet',
     ogTitle: () => title.value, ogDescription: () => description.value,
     ogUrl: () => canonical.value || undefined,
     ogImage: siteUrl ? `${siteUrl}social-card.png` : undefined,
@@ -26,7 +26,12 @@ export function useSiteSeo(page?: PageMeta) {
   useHead(() => {
     const language = locale.value === 'en' ? 'en' : 'vi-VN'
     const provider = { '@type': 'Organization', name: 'WebSheet', ...(siteUrl ? { '@id': `${siteUrl}#business`, url: siteUrl } : {}) }
-    const schema = page ? {
+    const schema = page?.kind === 'article' ? {
+      '@context': 'https://schema.org', '@type': 'Article', headline: t(page.name),
+      description: description.value, inLanguage: language,
+      author: provider, publisher: provider,
+      ...(canonical.value ? { url: canonical.value, mainEntityOfPage: canonical.value, image: `${siteUrl}social-card.png` } : {}),
+    } : page ? {
       '@context': 'https://schema.org', '@type': 'Service', name: t(page.name), serviceType: t(page.name),
       description: description.value, provider, areaServed: { '@type': 'Country', name: t('seo.vietnam') },
       ...(canonical.value ? { url: canonical.value } : {}),

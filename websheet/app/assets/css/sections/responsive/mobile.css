@@ -39,7 +39,7 @@
         flex-direction: column;
         align-items: stretch;
         gap: 0;
-        box-shadow: 0 12px 24px #38522b0d;
+        box-shadow: 0 12px 24px var(--shadow-soft);
     }
     .site-header nav.is-open {
         display: flex;
